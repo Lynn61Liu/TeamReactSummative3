@@ -1,4 +1,8 @@
 .App {
+  margin: 20px, auto;
+  width: 375px;
+  /* height: 800vh; */
+  border: #282c34 1px solid;
   text-align: left;
 }
 
