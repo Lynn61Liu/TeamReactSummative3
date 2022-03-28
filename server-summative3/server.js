@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
  //const api = require('../server-mult-images/routes/user.routes')
 const api = require('../server-mult-images/routes/comment.routes')
 mongoose
-  .connect('mongodb+srv://yoobeeteamone:yoobeeteamone@formativetwo.kyx6g.mongodb.net/photo?retryWrites=true&w=majority')
+  .connect('mongodb+srv://yoobeeteamone:yoobeeteamone@formativetwo.kyx6g.mongodb.net/ZIP?retryWrites=true&w=majority')
   .then((x) => {
     console.log(`Connected to Mongo from sever.js! Database name: "${x.connections[0].name}"`)
   })

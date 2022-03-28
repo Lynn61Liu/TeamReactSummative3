@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ZIPuserSchema = new Schema({
+const userSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
     userName:String,
     email:String,
@@ -9,6 +9,6 @@ const ZIPuserSchema = new Schema({
     userDescription:String,
     UserRole:String
 }, {
-    collection: 'ZIPusers'
+    collection: 'users'
 })
-module.exports = mongoose.model('ZIPuser', ZIPuserSchema)
+module.exports = mongoose.model('User', userSchema)
