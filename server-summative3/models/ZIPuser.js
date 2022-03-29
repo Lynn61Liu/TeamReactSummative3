@@ -7,7 +7,7 @@ const userSchema = new Schema({
     password:String,
     useImg:String,
     userDescription:String,
-    UserRole:String
+    serRole:String
 }, {
     collection: 'users'
 })

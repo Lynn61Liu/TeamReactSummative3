@@ -9,14 +9,7 @@ let Comment = require('../models/comment');
 
 //get all comment
 
-router.get("/comments", (req, res, next) => {
-    Comment.find().then(data => {
-        res.status(200).json({
-            message: "Comment list retrieved successfully!  ok---",
-            comments: data
-        });
-    });
-});
+
 router.get("/comments/:pID", function (req, res) {
     // console.log(req.params.pID);
     Comment.find({ postID: req.params.pID }).then((response) => {
@@ -25,26 +18,23 @@ router.get("/comments/:pID", function (req, res) {
     });
   });
 
-//   router.get("/comments/*", function (req, res) {
-//     return res.json({ result: 'pid have error' });
-//   });
-
 
 // =========================user model==========================
 let User = require('../models/ZIPuser');
-router.get("/users", (req, res, next) => {
-    User.find().then(data => {
+router.get("/login-by-email/:email", (req, res, next) => {
+    User.find({ email: req.params.email }).then(data => {
         res.status(200).json({
             message: "Comment list retrieved successfully!  ok---",
             users: data
         });
+
     });
 });
 
 // =========================animals model==========================
 let Animal = require('../models/animal');
 router.get("/animals", (req, res, next) => {
-    Animal.find().then(data => {
+    Animal.find().populate('userID').then(data => {
         res.status(200).json({
             message: "Comment list retrieved successfully!  ok---",
             animals: data
@@ -52,7 +42,7 @@ router.get("/animals", (req, res, next) => {
     });
 });
 
-router.get("/animals/:pID", function (req, res) {
+router.get("/animals-detail/:pID", function (req, res) {
     // console.log(req.params.name);
     Animal.findOne({ _id: req.params.pID }).then((response) => {
       res.json(response);
