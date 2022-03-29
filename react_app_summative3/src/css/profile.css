@@ -13,30 +13,76 @@ body {
 .profileDetails {
   display: flex;
   gap: 20px;
- align-items: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .profileImg {
-height: 83px ;
-width: 83px;
-background-color: #1ca3a6;
-background-image: url(../img/mike.jpg);
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-border-radius: 50px;
+  height: 83px;
+  width: 83px;
+  background-color: #1ca3a6;
+  background-image: url(../img/mike.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50px;
 }
 
-
 .profileDetails h3 {
-  color: #1ca3a6 ;
+  color: #1ca3a6;
   padding: 0px;
   margin: 0px;
-  
+  font-size: 20px;
 }
 .profileDetails p {
   padding: 0px;
   margin: 0px;
-  
+  font-size: 11px;
+}
+
+.profileDescription h3 {
+  color: #1ca3a6;
+  padding: 0px;
+  margin: 0px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.profileDescription p {
+  font-size: 15px;
+}
+
+.pastPosts h3{
+  color: #1ca3a6;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.profileGallery {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  border-radius: 5px;
+}
+
+.profilePost {
+  background-color: red;
+  border-radius: 0px 0px 5px 5px;
+  height: 215px;
+ 
+}
+
+.postImg {
+  height: 70%;
+  background-image: url(../img/bird.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px 5px 0px 0px;
 }
 
