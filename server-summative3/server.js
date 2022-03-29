@@ -2,8 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
- //const api = require('../server-mult-images/routes/user.routes')
-const api = require('../server-mult-images/routes/comment.routes')
+const api = require('./routes/ZIP.routes')
 mongoose
   .connect('mongodb+srv://yoobeeteamone:yoobeeteamone@formativetwo.kyx6g.mongodb.net/ZIP?retryWrites=true&w=majority')
   .then((x) => {
@@ -29,7 +28,7 @@ const server = app.listen(port, () => {
 app.use((req, res, next) => {
   // Error goes via `next()` method
   setImmediate(() => {
-    next(new Error('Something went wrong'))
+    next(new Error('Something went wrong about path'))
   })
 })
 app.use(function (err, req, res, next) {
