@@ -7,13 +7,24 @@ let express = require('express'),
 // ==========================Comment model==========================
 let Comment = require('../models/comment');
 
-//get all comment
-
-
 router.get("/comments/:postID", function (req, res) {
-
     Comment.find({ postID: req.params.postID }).populate('userID').then((response) => {
       res.json(response);
+    });
+  });
+  router.delete("/delete-comment-by-id/:id", function (req, res) {
+    Comment.deleteOne({ _id: req.params.id }).then((response) => {
+        res.status(200).json({
+            message: "delete one comment successfully! ",
+        });
+    });
+  });
+  //delete-comment-by-postID
+  router.delete("/delete-comment-by-postID/:id", function (req, res) {
+    Comment.deleteMany({postID: req.params.id}).then((response) => {
+        res.status(200).json({
+            message: "delete many comment successfully! ",
+        });
     });
   });
 
@@ -59,6 +70,16 @@ router.get("/profile/:userID", function (req, res) {
         });
     });
   });
+
+  router.delete("/delete-animals/:id", function (req, res) {
+    Animal.deleteOne({ _id: req.params.id }).then((response) => {
+        res.status(200).json({
+            message: "delete animal successfully! ",
+            delete_animals: response
+        });
+    });
+  });
+  
 
 
 //catch error path
