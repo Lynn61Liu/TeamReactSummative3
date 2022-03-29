@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.profileDisplay {
+  padding: 0px 20px;
+  margin: auto;
+  background-color: white;
+  align-items: center;
+}
+
+.profileDetails {
+  display: flex;
+  gap: 20px;
+ align-items: center;
+}
+
+.profileImg {
+height: 83px ;
+width: 83px;
+background-color: #1ca3a6;
+background-image: url(../img/mike.jpg);
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+border-radius: 50px;
+}
+
+
+.profileDetails h3 {
+  color: #1ca3a6 ;
+  padding: 0px;
+  margin: 0px;
+  
+}
+.profileDetails p {
+  padding: 0px;
+  margin: 0px;
+  
+}
+
