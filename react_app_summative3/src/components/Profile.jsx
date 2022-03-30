@@ -37,7 +37,9 @@ function Profile(props) {
               <div className="postImg"></div>
               <div className="postMenu">
                 <div>
-                  <p>username</p>
+                  <p>
+                    <span>username</span>
+                  </p>
                   <p>post date</p>
                 </div>
                 <div>
@@ -50,7 +52,39 @@ function Profile(props) {
               <div className="postImg"></div>
               <div className="postMenu">
                 <div>
-                  <p>username</p>
+                  <p>
+                    <span>username</span>
+                  </p>
+                  <p>post date</p>
+                </div>
+                <div>
+                  <a href="">edit</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="profilePost">
+              <div className="postImg"></div>
+              <div className="postMenu">
+                <div>
+                  <p>
+                    <span>username</span>
+                  </p>
+                  <p>post date</p>
+                </div>
+                <div>
+                  <a href="">edit</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="profilePost">
+              <div className="postImg"></div>
+              <div className="postMenu">
+                <div>
+                  <p>
+                    <span>username</span>
+                  </p>
                   <p>post date</p>
                 </div>
                 <div>
@@ -61,7 +95,7 @@ function Profile(props) {
           </div>
         </div>
 
-        <ol>
+        {/* <ol>
           <li>get login user infor from DB </li>
           <li>Listing all own posts </li>
           <li>view the post detail</li>
@@ -70,10 +104,10 @@ function Profile(props) {
         </ol>
 
         <h3>The following parameters come to props: </h3>
-        <div>userID:props.uID={props.uID}</div>
+        <div>userID:props.uID={props.uID}</div> */}
       </div>
 
-      <nav>
+      {/* <nav>
         <Link to="/home/detail">
           <button
             onClick={() => {
@@ -85,7 +119,7 @@ function Profile(props) {
             i'm a post
           </button>
         </Link>
-      </nav>
+      </nav> */}
     </>
   );
 }

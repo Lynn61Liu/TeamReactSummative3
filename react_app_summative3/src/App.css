@@ -1,9 +1,11 @@
+
 .App {
   margin: 20px, auto;
-  width: 375px;
+  width: 100hw;
   /* height: 800vh; */
   border: #282c34 1px solid;
   text-align: left;
+  font-family: 'PT Sans', sans-serif;;
 }
 
 .App-logo {
