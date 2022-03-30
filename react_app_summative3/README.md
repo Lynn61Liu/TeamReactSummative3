@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+## MERN Stack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The research was done about the advantages of using MERN stack for developing our app. The MERN stack is a JavaScript stack that includes 4 components: MongoDB, Express, React, and Node.js.
 
-## Available Scripts
+### `1. MongoDB`
 
-In the project directory, you can run:
+MongoDB is a cross-platform document database which is schema-less (we can store our data in documents written in a JSON-based query language). Data is stored in flexible documents with a JSON (JavaScript Object Notation)-based query language. The content, size, and number of fields in the documents can differ from one to the next. This means that the data structure to be changed over time. MongoDB is flexible and easy to scale.
 
-### `npm start`
+### `2. Express`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Express is a Node.js web application framework. It is fast, minimal and flexible framework which was used to save from writing full web server code by hand. The Express framework is designed for building robust web applications and APIs. Many popular frameworks are based on Express.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `3. React`
 
-### `npm test`
+React is JavaScript front-end library for building user interfaces. React has component-based approach which let us maintain and render components on its own and offers the reusability of the code. It makes app development faster and easier. The library is capable to run on servers, it gives the ability to run the same code on the browser as well as the server.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `4. Node.js`
 
-### `npm run build`
+Node.js is a platform built on Chrome’s JavaScript runtime for easily building fast and scalable network applications. Node.js brings JavaScript to the server. It can execute JavaScript code outside of a browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##  React Project Dependencies
+``` JSON
+"dependencies": {
+    "@mui/icons-material": "^5.4.1",
+    "@mui/lab": "^5.0.0-alpha.74",
+    "@mui/material": "^5.5.2",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.0",
+    "body-parser": "^1.19.2",
+    "imagesloaded": "^5.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-modal": "^3.14.4",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "web-vitals": "^2.1.4"
+  }
+```
