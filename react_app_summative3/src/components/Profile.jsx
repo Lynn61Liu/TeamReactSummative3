@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../css/profile.css';
 import imgMike from '../img/mike.jpg';
 import imgBird from '../img/bird.jpg';
+import { AiOutlineEdit } from "react-icons/fa";
 
 function Profile(props) {
   return (
@@ -43,7 +44,7 @@ function Profile(props) {
                   <p>post date</p>
                 </div>
                 <div>
-                  <a href="">edit</a>
+                  <a href=""> <AiOutlineEdit /> </a>
                 </div>
               </div>
             </div>

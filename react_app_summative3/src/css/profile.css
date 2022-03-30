@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  }
+}
 
 .profileDisplay {
   padding: 0px 20px;
@@ -33,7 +33,6 @@ body {
   padding: 0px;
   margin: 0px;
   font-size: 20px;
-  
 }
 .profileDetails p {
   padding: 0px;
@@ -53,14 +52,13 @@ body {
   font-size: 15px;
 }
 
-.pastPosts h3{
+.pastPosts h3 {
   color: #1ca3a6;
   padding: 0px;
   margin: 0px;
   margin-top: 20px;
   font-size: 20px;
   text-align: center;
-
 }
 
 .profileGallery {
@@ -72,8 +70,8 @@ body {
 }
 
 .profilePost {
-  border: 1px solid #555452 ;
-  border-radius:  5px;
+  border: 1px solid #555452;
+  border-radius: 5px;
   height: 150px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
 }
@@ -92,8 +90,7 @@ body {
   justify-content: space-between;
   margin: auto;
   padding: 5px;
-
-
+  font-size: 13px;
 }
 
 .postMenu p {
@@ -103,8 +100,9 @@ body {
 
 .postMenu span {
   font-weight: bold;
+  
 }
 
 hr {
-  border-top: #555452  ;
+  border-top: #555452;
 }
