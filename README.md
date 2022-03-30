@@ -10,7 +10,7 @@ To help communities engage with this vision ZIP would like to develop an app t
 
 ![zip prototype](/ReadmeImg/zip%20prototype.png)
 
-![zip prototype2](/ReadmeImg/zip%20prototype2.png)
+![zip prototype2](/ReadmeImg/ZIP%20prototype2.png)
 
 #### APP Features
 
