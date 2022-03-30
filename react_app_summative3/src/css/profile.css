@@ -70,7 +70,6 @@ body {
 }
 
 .profilePost {
-  border: 1px solid #555452;
   border-radius: 5px;
   height: 150px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
@@ -89,8 +88,9 @@ body {
   display: flex;
   justify-content: space-between;
   margin: auto;
-  padding: 5px;
+  padding: 5px 10px;
   font-size: 13px;
+  align-items: center;
 }
 
 .postMenu p {
@@ -100,7 +100,6 @@ body {
 
 .postMenu span {
   font-weight: bold;
-  
 }
 
 hr {

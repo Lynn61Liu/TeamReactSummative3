@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/profile.css';
-import imgMike from '../img/mike.jpg';
-import imgBird from '../img/bird.jpg';
-import { AiOutlineEdit } from "react-icons/fa";
+import Editbtn from '../components/Editbtn.jsx';
 
 function Profile(props) {
   return (
@@ -44,7 +42,10 @@ function Profile(props) {
                   <p>post date</p>
                 </div>
                 <div>
-                  <a href=""> <AiOutlineEdit /> </a>
+                  <a href="">
+                    {' '}
+                    <Editbtn />{' '}
+                  </a>
                 </div>
               </div>
             </div>
@@ -59,7 +60,10 @@ function Profile(props) {
                   <p>post date</p>
                 </div>
                 <div>
-                  <a href="">edit</a>
+                  <a href="">
+                    {' '}
+                    <Editbtn />{' '}
+                  </a>
                 </div>
               </div>
             </div>
@@ -74,7 +78,10 @@ function Profile(props) {
                   <p>post date</p>
                 </div>
                 <div>
-                  <a href="">edit</a>
+                  <a href="">
+                    {' '}
+                    <Editbtn />{' '}
+                  </a>
                 </div>
               </div>
             </div>
@@ -89,7 +96,10 @@ function Profile(props) {
                   <p>post date</p>
                 </div>
                 <div>
-                  <a href="">edit</a>
+                  <a href="">
+                    {' '}
+                    <Editbtn />{' '}
+                  </a>
                 </div>
               </div>
             </div>
