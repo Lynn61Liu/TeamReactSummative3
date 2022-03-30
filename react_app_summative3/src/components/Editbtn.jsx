@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { AiOutlineEdit } from "react-icons/ai";
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 class EditBtn extends Component {
-  render (){
-  return <AiOutlineEdit />
-}
+  render() {
+    return <BsThreeDotsVertical />;
+  }
 }
 
-export default EditBtn
+export default EditBtn;

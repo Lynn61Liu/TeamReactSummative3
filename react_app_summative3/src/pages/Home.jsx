@@ -14,6 +14,7 @@ function Home(props) {
   };
   return (
     <>
+ 
     <h1 style={{ backgroundColor: "grey",'width':'100%','marginTop':0}}>Top app bar 
     <Link to="/home/about"><button > about</button> </Link>
         <Link to="/home/contact"><button > contact</button> </Link>

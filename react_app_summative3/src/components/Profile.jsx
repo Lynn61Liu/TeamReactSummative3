@@ -37,7 +37,7 @@ function Profile(props) {
               <div className="postMenu">
                 <div>
                   <p>
-                    <span>username</span>
+                    <span>animal</span>
                   </p>
                   <p>post date</p>
                 </div>
@@ -55,7 +55,7 @@ function Profile(props) {
               <div className="postMenu">
                 <div>
                   <p>
-                    <span>username</span>
+                    <span>animal</span>
                   </p>
                   <p>post date</p>
                 </div>
@@ -73,7 +73,7 @@ function Profile(props) {
               <div className="postMenu">
                 <div>
                   <p>
-                    <span>username</span>
+                    <span>animal</span>
                   </p>
                   <p>post date</p>
                 </div>
@@ -91,7 +91,7 @@ function Profile(props) {
               <div className="postMenu">
                 <div>
                   <p>
-                    <span>username</span>
+                    <span>animal</span>
                   </p>
                   <p>post date</p>
                 </div>
