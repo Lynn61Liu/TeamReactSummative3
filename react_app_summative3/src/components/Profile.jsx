@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import '../css/profile.css';
-import imgMike from '../img/mike.jpg';
-import imgBird from '../img/bird.jpg';
+import Editbtn from '../components/Editbtn.jsx';
 
 function Profile(props) {
   return (
@@ -37,11 +36,16 @@ function Profile(props) {
               <div className="postImg"></div>
               <div className="postMenu">
                 <div>
-                  <p>username</p>
+                  <p>
+                    <span>animal</span>
+                  </p>
                   <p>post date</p>
                 </div>
                 <div>
-                  <a href="">edit</a>
+                  <a href=" " >
+                   
+                    <Editbtn />
+                  </a>
                 </div>
               </div>
             </div>
@@ -50,18 +54,59 @@ function Profile(props) {
               <div className="postImg"></div>
               <div className="postMenu">
                 <div>
-                  <p>username</p>
+                  <p>
+                    <span>animal</span>
+                  </p>
                   <p>post date</p>
                 </div>
                 <div>
-                  <a href="">edit</a>
+                  <a href=" ">
+                   
+                    <Editbtn />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="profilePost">
+              <div className="postImg"></div>
+              <div className="postMenu">
+                <div>
+                  <p>
+                    <span>animal</span>
+                  </p>
+                  <p>post date</p>
+                </div>
+                <div>
+                  <a href=" ">
+                    {' '}
+                    <Editbtn />{' '}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="profilePost">
+              <div className="postImg"></div>
+              <div className="postMenu">
+                <div>
+                  <p>
+                    <span>animal</span>
+                  </p>
+                  <p>post date</p>
+                </div>
+                <div>
+                  <a href=" ">
+                    {' '}
+                    <Editbtn />{' '}
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <ol>
+        {/* <ol>
           <li>get login user infor from DB </li>
           <li>Listing all own posts </li>
           <li>view the post detail</li>
@@ -70,10 +115,10 @@ function Profile(props) {
         </ol>
 
         <h3>The following parameters come to props: </h3>
-        <div>userID:props.uID={props.uID}</div>
+        <div>userID:props.uID={props.uID}</div> */}
       </div>
 
-      <nav>
+      {/* <nav>
         <Link to="/home/detail">
           <button
             onClick={() => {
@@ -85,7 +130,7 @@ function Profile(props) {
             i'm a post
           </button>
         </Link>
-      </nav>
+      </nav> */}
     </>
   );
 }

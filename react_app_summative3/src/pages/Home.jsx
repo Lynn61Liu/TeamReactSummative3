@@ -6,6 +6,11 @@ import About from "../components/About";
 import Contact from "../components/Contact";
 import Discover from "../components/Discover";
 import Profile from "../components/Profile";
+import Appbar from "../components/Appbar";
+import SimpleBottomNavigation from "../components/BottomNav";
+
+
+
 function Home(props) {
   const [postID, setPostID] = useState("");
   const getPostID = (PostID) => {
@@ -14,6 +19,7 @@ function Home(props) {
   };
   return (
     <>
+ <Appbar />
     <h1 style={{ backgroundColor: "grey",'width':'100%','marginTop':0}}>Top app bar 
     <Link to="/home/about"><button > about</button> </Link>
         <Link to="/home/contact"><button > contact</button> </Link>
@@ -39,6 +45,7 @@ function Home(props) {
         <Link to="/home/profile"><button > profile</button> </Link>
      
          </h1>
+         <SimpleBottomNavigation />
          
     </>
   );

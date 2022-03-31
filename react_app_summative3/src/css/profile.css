@@ -37,7 +37,7 @@ body {
 .profileDetails p {
   padding: 0px;
   margin: 0px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .profileDescription h3 {
@@ -52,14 +52,13 @@ body {
   font-size: 15px;
 }
 
-.pastPosts h3{
+.pastPosts h3 {
   color: #1ca3a6;
   padding: 0px;
   margin: 0px;
   margin-top: 20px;
   font-size: 20px;
   text-align: center;
-
 }
 
 .profileGallery {
@@ -71,10 +70,9 @@ body {
 }
 
 .profilePost {
-  background-color: red;
-  border-radius: 0px 0px 5px 5px;
-  height: 215px;
- 
+  border-radius: 5px;
+  height: 150px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
 }
 
 .postImg {
@@ -86,3 +84,26 @@ body {
   border-radius: 5px 5px 0px 0px;
 }
 
+.postMenu {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  padding: 5px 10px;
+  font-size: 13px;
+  align-items: center;
+}
+
+
+
+.postMenu p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.postMenu span {
+  font-weight: bold;
+}
+
+hr {
+  border-top: #555452;
+}
