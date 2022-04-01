@@ -1,0 +1,16 @@
+/* .AppbarBox {
+  background-color: rebeccapurple !important;
+  width: 90% !important;
+} */
+.appBarLink {
+  text-decoration: none;
+  color: white;
+}
+
+.AppbarDrawer {
+  z-index: 200 !important;
+}
+
+.AppbarTool {
+  z-index: 30 !important;
+}

@@ -103,6 +103,77 @@ function Profile(props) {
                 </div>
               </div>
             </div>
+            <div className="profilePost">
+              <div className="postImg"></div>
+              <div className="postMenu">
+                <div>
+                  <p>
+                    <span>animal</span>
+                  </p>
+                  <p>post date</p>
+                </div>
+                <div>
+                  <a href=" " >
+                   
+                    <Editbtn />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="profilePost">
+              <div className="postImg"></div>
+              <div className="postMenu">
+                <div>
+                  <p>
+                    <span>animal</span>
+                  </p>
+                  <p>post date</p>
+                </div>
+                <div>
+                  <a href=" ">
+                   
+                    <Editbtn />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="profilePost">
+              <div className="postImg"></div>
+              <div className="postMenu">
+                <div>
+                  <p>
+                    <span>animal</span>
+                  </p>
+                  <p>post date</p>
+                </div>
+                <div>
+                  <a href=" ">
+                    {' '}
+                    <Editbtn />{' '}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="profilePost">
+              <div className="postImg"></div>
+              <div className="postMenu">
+                <div>
+                  <p>
+                    <span>animal</span>
+                  </p>
+                  <p>post date</p>
+                </div>
+                <div>
+                  <a href=" ">
+                    {' '}
+                    <Editbtn />{' '}
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
