@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import '../css/profile.css';
 import Editbtn from '../components/Editbtn.jsx';
 
@@ -42,7 +42,7 @@ function Profile(props) {
                   <p>post date</p>
                 </div>
                 <div>
-                  <a href="">
+                  <a href=" ">
                     {' '}
                     <Editbtn />{' '}
                   </a>
@@ -60,7 +60,7 @@ function Profile(props) {
                   <p>post date</p>
                 </div>
                 <div>
-                  <a href="">
+                  <a href=" ">
                     {' '}
                     <Editbtn />{' '}
                   </a>
@@ -106,7 +106,7 @@ function Profile(props) {
           </div>
         </div>
 
-        <ol>
+        {/* <ol>
           <li>get login user infor from DB </li>
           <li>Listing all own posts </li>
           <li>view the post detail</li>
@@ -115,10 +115,10 @@ function Profile(props) {
         </ol>
 
         <h3>The following parameters come to props: </h3>
-        <div>userID:props.uID={props.uID}</div>
+        <div>userID:props.uID={props.uID}</div> */}
       </div>
 
-      <nav>
+      {/* <nav>
         <Link to="/home/detail">
           <button
             onClick={() => {
@@ -130,7 +130,7 @@ function Profile(props) {
             i'm a post
           </button>
         </Link>
-      </nav>
+      </nav> */}
     </>
   );
 }
