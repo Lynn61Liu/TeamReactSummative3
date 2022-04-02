@@ -1,16 +1,71 @@
-import React from 'react'
+import {TextField} from "@material-ui/core";
+import { Button } from "@mui/material";
+import React from "react";
+import useFormControls from './useFormControls'
 
-function Add() {
+const inputFieldValues = [
+  {
+    name: "photo",
+    label: "photo",
+    id: "my-photo",
+type:'file',
+  },
+  {
+    name: "AnimalName",
+    label: "AnimalName",
+    id: "my-name",
+  },
+  
+  {
+    name: "description",
+    label: "description",
+    id: "my-description",
+     multiline: true,
+    rows: 10,   
+  }
+];
+export const Add = () => {
+  const { handleInputValue, handleFormSubmit,formIsValid,errors } = useFormControls();
+
+  const onSelectFile=(e)=>{
+    console.log(e.currentTarget);
+    e.preventDefault();
+
+  }
   return (
-    <>
-     <h3> This is add page</h3>
-     <h3> Task </h3>
-     <ol>
-       <li>select images from local and preview</li>
-       <li>Validate the form</li>
-       <li> insert this form to DB</li>
-     </ol></>
+    <form onSubmit={handleFormSubmit}>
+      {inputFieldValues.map((inputFieldValue, index) => {
+        return (
+          <TextField 
+          type={inputFieldValue.type ?? 'text'}
+          fullWidth
+            key={index}
+            onBlur={ handleInputValue}
+            // onChange={onSelectFile}
+         onChange={handleInputValue}
+            name={inputFieldValue.name}
+            label={inputFieldValue.label}
+            multiline={inputFieldValue.multiline ?? false}
+            rows={inputFieldValue.rows ?? 1}
+        autoComplete="none"
+        {...(errors[inputFieldValue.name] && { error: true, helperText: errors[inputFieldValue.name] })}
+
+          />
+        );
+      })}
+   
+
+
+      <Button
+      //  onClick={handleposting}
+        type="submit"
+        disabled={!formIsValid()}
+      >
+        posting
+      </Button>
+    </form>
   )
 }
+
 
 export default Add
