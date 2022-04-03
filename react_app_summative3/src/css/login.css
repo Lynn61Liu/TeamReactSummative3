@@ -1,3 +1,5 @@
+
+
 *{
     margin: 0;
     padding: 0;
@@ -11,20 +13,22 @@
     text-align: center;
     font-family: sans-serif;
     justify-content: center;
-    background: url(splash.png);
+    background: url(../img/splash.png);
     background-size: cover;
     background-position: center;
+    font-family: "PT Sans", sans-serif;
   }
   .container{
     position: relative;
     width: 400px;
-    background: white;
     padding: 60px 40px;
   }
-  header{
+
+  h1{
     font-size: 40px;
     margin-bottom: 60px;
-    font-family: 'Montserrat', sans-serif;
+    color: #1ca3a6;
+    font-family: "PT Sans", sans-serif;
   }
   .input-field, form .button{
     margin: 25px 0;
@@ -44,16 +48,13 @@
   input:focus{
     border: 1px solid #83a1b4;
   }
-  .input-field label {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+
   .input-field label{
     left: 15px;
     pointer-events: none;
     color: grey;
-    font-size: 18px;
+    font-size: 20px;
+    padding: 20px;
     transition: .4s;
   }
 
@@ -73,6 +74,7 @@
     border-radius: 3px;
     margin: 0 10px;
     transition: .4s;
+    color: aliceblue;
   }
   .facebook:hover{
     border: 1px solid #4267B2;

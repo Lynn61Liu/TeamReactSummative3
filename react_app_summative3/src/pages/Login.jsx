@@ -1,8 +1,6 @@
 import React ,{useState}from 'react'
 import { Link } from 'react-router-dom'
 import "../css/login.css";
-import src from "../img/splash.png";
-<img src={src} alt="" />
 
 function Login(props) {
   const initialValues = { email:"", password: "" };
@@ -19,7 +17,7 @@ function Login(props) {
 
     <body>
   <div className="container">
-      <header>Discover NZ Wildlife</header>
+      <h1>Sign in</h1>
       <form>
      <div className="divider">
      <div className="pageform">
