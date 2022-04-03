@@ -7,6 +7,7 @@ import { InputLabel } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 import PanoramaOutlinedIcon from '@mui/icons-material/PanoramaOutlined';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+// import src from "../img/**.PNG";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,6 +105,7 @@ export const Add = () => {
         <div  className="section-wrap">
         <div className="add-lable">Animal Name </div>
         <TextField
+       aria-label="search"
           className={classes.root}
          variant="outlined"
          color="rgb(97, 96, 96)"
@@ -125,6 +127,7 @@ export const Add = () => {
         <div  className="section-wrap">
         <div className="add-lable">Listing description </div>
         <TextField
+         aria-label="search"
         size="small"
        className={classes.root}
        variant="outlined"
