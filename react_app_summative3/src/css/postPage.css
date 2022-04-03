@@ -3,6 +3,10 @@ body {
   padding: 0;
 }
 
+h3 {
+  color: #1ca3a6;
+}
+
 .postPage {
   padding: 0px 20px;
   margin: auto;
@@ -17,7 +21,6 @@ body {
 }
 
 .title h3 {
-  color: #1ca3a6;
   padding: 0px;
   margin: 0px;
   font-size: 20px;
@@ -65,3 +68,11 @@ body {
   display: flex;
   justify-content: space-around
 }
+
+.postComment {
+  background-color: #555452;
+  color: white;
+  border: 5px;
+ 
+}
+

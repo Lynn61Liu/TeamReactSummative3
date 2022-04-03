@@ -28,6 +28,11 @@ body {
   border-radius: 50px;
 }
 
+.profileImgS {
+  height: 24px;
+  width: 24px;
+}
+
 .profileDetails h3 {
   color: #1ca3a6;
   padding: 0px;
