@@ -32,6 +32,11 @@ function Detail(props) {
                 <a href=""> <Commentbtn /> </a>
               </div>
 
+              <div>
+                <h3>Description</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero unde hic nesciunt quis asperiores voluptate officia vitae corrupti rem. Perferendis iure voluptas quod omnis magnam libero dolorum dolores aliquam, accusamus provident ipsum odit alias veniam recusandae expedita possimus dicta. Ad in numquam alias, aliquam veritatis ducimus rem deserunt corporis exercitationem.</p>
+              </div>
+
             </div>
 
       
