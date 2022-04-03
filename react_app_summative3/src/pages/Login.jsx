@@ -43,7 +43,7 @@ function Login(props) {
      </div>
      <button onClick={()=>{props.getUID("user001");}}> Simulate get userID from DB</button>
 <nav>
-<Link to="/home" ><button>Login</button></Link>
+<Link to="/home" ><button className="loginbtn">Login</button></Link>
 </nav>
 </form>
 
