@@ -19,7 +19,7 @@ function Home(props) {
     <>
       <Appbar />
       {/* fix top */}
-      <div style={{ backgroundColor: "white", marginTop: "65px",paddingBottom: "95px" }}>
+      <div style={{ backgroundColor: "#f7f7f7", marginTop: "65px",paddingBottom: "95px" }}>
         <Routes>
           <Route
             index

@@ -30,10 +30,10 @@ const useFormControls = () => {
     //   console.log(temp);
 
     if ("AnimalName" in fieldValues)
-      temp.AnimalName = fieldValues.AnimalName ? "" : "This field is required.";
+      temp.AnimalName = fieldValues.AnimalName ? "" : "title name is  required.";
 
     if ("email" in fieldValues) {
-      temp.email = fieldValues.email ? "" : "This field is required.";
+      temp.email = fieldValues.email ? "" : "email is not valid.";
       if (fieldValues.email)
         temp.photo = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fieldValues.email)
           ? ""
@@ -41,7 +41,7 @@ const useFormControls = () => {
     }
 
     if ("photo" in fieldValues) {
-      temp.photo = fieldValues.photo ? "" : "This field is required.";
+      temp.photo = fieldValues.photo ? "" : "need one img.";
     }
 
     if ("description" in fieldValues)
