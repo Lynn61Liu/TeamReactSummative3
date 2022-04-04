@@ -13,7 +13,7 @@ function Detail(props) {
               <a href="">
                 < Backbtn />
               </a>
-              <h3>Animal Title</h3>
+              <h2>Animal Title</h2>
             </div>
 
             <div className="postDetail">
@@ -28,7 +28,8 @@ function Detail(props) {
               </div>
 
               <div className="btnDetail">
-                <a href=""> <Infobtn /> </a>
+              
+                <a href=""> <Infobtn  /> </a>
                 <a href=""> <Commentbtn /> </a>
               </div>
 
@@ -47,7 +48,10 @@ function Detail(props) {
               <div className='commentsDone'>
                 
                 <div className="profileImg profileImgS"></div>
-                <div id="comment-box" className='postComment'>Where did you spot that bird? <br />beautiful creature</div>
+                <div id="comment-box" className='postComment'><p>
+                Where did you spot that bird? <br />beautiful creature
+                </p>
+                </div>
 
                 
               </div>
@@ -55,7 +59,10 @@ function Detail(props) {
               <div className='commentsDone'>
                 
                 <div className="profileImg profileImgS"></div>
-                <div id="comment-box" className='postComment'>Where did you spot that bird? <br />beautiful creature</div>
+                <div id="comment-box" className='postComment'><p>
+                Where did you spot that bird? <br />beautiful creature
+                </p>
+                </div>
 
                 
               </div>
