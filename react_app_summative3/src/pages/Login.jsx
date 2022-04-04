@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/login.css";
+import history from ''
 
 const initialFormValues = {
   email: "",
@@ -10,15 +11,15 @@ const initialFormValues = {
 };
 function Login(props) {
   const initialValues = { email: "", password: "" };
-  const [formValues, setFormValues] = useState(initialValues);
+  const [inputValues, setinputValues] = useState(initialValues);
 
   const [values, setValues] = useState(initialFormValues);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    let temp = { ...formValues, [name]: value };
-    setFormValues(temp);
+    let temp = { ...inputValues, [name]: value };
+    setinputValues(temp);
 
     setValues({
       ...values,
@@ -28,7 +29,6 @@ function Login(props) {
   };
 
   const validate = (fieldValues = values) => {
-    // this function will check if the form values are valid
     let temp = { ...errors };
     if ("password" in fieldValues)
       temp.password = fieldValues.password ? "" : "Password is required.";
@@ -41,32 +41,43 @@ function Login(props) {
           : "Email is not valid.";
     }
     setErrors({ ...temp });
-    console.log(errors)
+   
   };
 
   const formIsValid = (fieldValues = values) => {
-    console.log('formIsValid trggled')
+
     const isValid =
       fieldValues.email &&
       fieldValues.password &&
       Object.values(errors).every((x) => x === "");
-      console.log('isValid',isValid)
+    
     return isValid;
   };
+
+  const handleFormSubmit =(e)=>{
+    // alert(" I'M in handleFormSubmit");
+    e.preventDefault();
+    if (formIsValid()) {
+      //   await postContactForm(values);
+      alert("You've posted your form!");
+      history.push()
+    }
+  };
+
 
 
   return (
     <div className="container">
       <div className="login-logo"></div>
       <h1 className="login-title">Welcome to the ZIP Community!</h1>
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleFormSubmit}>
         <div className="input-field">
           <label>E-mail:</label>
           <input
            className={errors.email ? "input-error" : ''}
             type="email"
             name="email"
-            value={formValues.email}
+            value={inputValues.email}
             onChange={handleChange}
           /> 
           <div className="errors">
@@ -80,7 +91,7 @@ function Login(props) {
           className={errors.password ? "input-error" : ''}
             type="password"
             name="password"
-            value={formValues.password}
+            value={inputValues.password}
             onChange={handleChange}
           />
            <div className= {errors.password ? "errors" : ''}>
@@ -88,8 +99,8 @@ function Login(props) {
           </div>
         </div>
         <div className="nav-wrap">
-          <nav>
-            <Link to="/home">
+          {/* <nav>
+            <Link to="/home"> */}
               <button 
               className="loginbtn" 
               type="submit" 
@@ -97,8 +108,8 @@ function Login(props) {
               >
                 Login
               </button>
-            </Link>
-          </nav>
+            {/* </Link>
+          </nav> */}
         </div>
       </form>
 
