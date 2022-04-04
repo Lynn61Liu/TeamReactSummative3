@@ -22,8 +22,9 @@ function Login(props) {
     // <body>  cannot set body in component。 i think all components are part of body
     // we can see the <body > exit in  ’../public/index.html ‘
     <div className="container">
+      <div className="login-logo"></div>
       {/* <h1 >Sign in</h1>    if no set className for H1 in here  ，your style will effect others page H1 style.            */}
-      <h1 className="login-title">Sign in</h1>
+      <h1 className="login-title">Welcome to the ZIP Community!</h1>
       <form className="login-form">
         {/* <div className="divider">
           <div className="pageform"> */}
@@ -63,19 +64,6 @@ function Login(props) {
         </div> */}
       </form>
 
-      <div className="auth">Or login with</div>
-      <div className="links">
-        <div className="facebook">
-          <i className="fab fa-facebook-square">
-            <span>Facebook</span>
-          </i>
-        </div>
-        <div className="google">
-          <i className="fab fa-google-plus-square">
-            <span>Google</span>
-          </i>
-        </div>
-      </div>
       <div className="signup">
         Not a member? <a href="#">Sign up now</a>
       </div>

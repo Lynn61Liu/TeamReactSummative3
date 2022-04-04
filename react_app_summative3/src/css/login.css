@@ -31,12 +31,24 @@ body {
   /* justify-content: space-around; */
 }
 
+.login-logo {
+  height: 14%;
+  margin-bottom: 30px;
+  background-color: transparent;
+  background-image: url(../img/ZIP-logo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
 /* .h1 { */
 .login-title {
   margin: 0;
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 60px;
-  color: #1ca3a6;
+  color: white;
+  text-align: center;
   /* font-family: "PT Sans", sans-serif;   
   have set it and app.css as global font-family which every page can use it */
 }
@@ -78,7 +90,8 @@ input:focus {
 }
 .nav-wrap {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  
 }
 
 .loginbtn {
@@ -92,6 +105,7 @@ input:focus {
   cursor: pointer;
   background-color: #1ca3a6;
   border-radius: 10px;
+  align-items: center;
 }
 .container .auth {
   margin: 35px 0 20px 16px;
@@ -102,48 +116,6 @@ input:focus {
 .links {
   display: flex;
   cursor: pointer;
-}
-
-.facebook,
-.google {
-  height: 40px;
-  width: 100%;
-  border: 1px solid silver;
-  background-color: rgba(240, 248, 255, 0.7);
-  border-radius: 10px;
-  margin: 0 10px;
-  /* transition: 0.4s;  
-
-  use background-color: rgba(240, 248, 255, 0.7)
-  to set the background transparency 
-  */
-}
-.facebook:hover {
-  border: 1px solid #4267b2;
-}
-.google:hover {
-  border: 1px solid #dd4b39;
-}
-.facebook i,
-.facebook span {
-  color: #4267b2;
-}
-.google i,
-.google span {
-  color: #dd4b39;
-}
-.links i {
-  font-size: 23px;
-  line-height: 40px;
-  display: flex;
-}
-.links span {
-  /* position: absolute; */
-  margin: 0 auto;
-  font-size: 17px;
-  font-weight: bold;
-  /* padding-left: 8px; */
-  font-family: "Open Sans", sans-serif;
 }
 
 .signup {
