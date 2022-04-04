@@ -38,14 +38,26 @@ function Detail(props) {
               </div>
 
               <div className='comments'>
-                <input type="text" />
-                <div>
+                
                 <div className="profileImg profileImgS"></div>
-                <div className='postComment'>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, inventore!
-</p>
-                </div>
-                </div>
+                <input type="text" placeholder='Write a comment...' className='postComment' />
+                <a href="">Post</a>
+              </div>
+
+              <div className='commentsDone'>
+                
+                <div className="profileImg profileImgS"></div>
+                <div id="comment-box" className='postComment'>Where did you spot that bird? <br />beautiful creature</div>
+
+                
+              </div>
+
+              <div className='commentsDone'>
+                
+                <div className="profileImg profileImgS"></div>
+                <div id="comment-box" className='postComment'>Where did you spot that bird? <br />beautiful creature</div>
+
+                
               </div>
 
             </div>

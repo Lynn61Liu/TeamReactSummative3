@@ -70,9 +70,50 @@ h3 {
 }
 
 .postComment {
-  background-color: #555452;
+  background-color:rgba(0, 0, 0, 0.15);
   color: white;
   border: 5px;
  
 }
 
+.postDescription {
+  display: none;
+}
+
+.comments {
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+.comments input {
+  margin: 0px 10px;
+  flex-basis: 100%;
+}
+
+.comments input::placeholder {
+  padding-left: 5px;
+}
+
+.comments a {
+  background-color: #1ca3a6;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  width: 70px;
+  text-align: center;
+  padding: 3px 0px;
+}
+
+.commentsDone {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0px;
+  gap: 5px;
+}
+
+#comment-box {
+  width: 100%;
+  padding: 5px 10px ;
+  color: black;
+}

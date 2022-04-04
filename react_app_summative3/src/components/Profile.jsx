@@ -24,7 +24,9 @@ function Profile(props) {
             to protect native species by developing new tools and techniques to
             completely remove possums, rats, and stoats from large mainland
             areas.
+            
           </p>
+         
         </div>
 
         <hr />
