@@ -36,12 +36,24 @@ function Login(props) {
     if ("email" in fieldValues) {
       temp.email = fieldValues.email ? "" : "email is required.";
       if (fieldValues.email)
-        temp.photo = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fieldValues.email)
+        temp.email = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fieldValues.email)
           ? ""
           : "Email is not valid.";
     }
     setErrors({ ...temp });
+    console.log(errors)
   };
+
+  const formIsValid = (fieldValues = values) => {
+    console.log('formIsValid trggled')
+    const isValid =
+      fieldValues.email &&
+      fieldValues.password &&
+      Object.values(errors).every((x) => x === "");
+      console.log('isValid',isValid)
+    return isValid;
+  };
+
 
   return (
     <div className="container">
@@ -51,25 +63,38 @@ function Login(props) {
         <div className="input-field">
           <label>E-mail:</label>
           <input
+           className={errors.email ? "input-error" : ''}
             type="email"
             name="email"
             value={formValues.email}
             onChange={handleChange}
-          />
+          /> 
+          <div className="errors">
+          {errors.email ? errors.email : ''}
+          </div>
         </div>
-        <div className="input-field">
+        
+        <div className="input-field ">
           <label>Password:</label>
           <input
+          className={errors.password ? "input-error" : ''}
             type="password"
             name="password"
             value={formValues.password}
             onChange={handleChange}
           />
+           <div className= {errors.password ? "errors" : ''}>
+          {errors.password ? errors.password : ''}
+          </div>
         </div>
         <div className="nav-wrap">
           <nav>
             <Link to="/home">
-              <button className="loginbtn" type="submit">
+              <button 
+              className="loginbtn" 
+              type="submit" 
+              disabled={!formIsValid()}
+              >
                 Login
               </button>
             </Link>
@@ -78,7 +103,7 @@ function Login(props) {
       </form>
 
       <div className="signup">
-        Not a member? <a href=" ">Sign up now</a>
+        Not a member? <span>Sign up now</span>
       </div>
     </div>
   );

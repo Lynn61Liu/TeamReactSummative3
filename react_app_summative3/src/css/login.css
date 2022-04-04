@@ -1,34 +1,15 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  font-family: sans-serif;
-  justify-content: center;
-  font-family: "PT Sans", sans-serif;
-} */
 
-/* 1. the global style recommended to move to App.CSS */
 
 .container {
   height: 100vh;
   overflow: hidden;
-  /* position: relative; */
   background-color: #4267b2;
-  /* width: 400px;     donot need set width , let them fullscreen    */
   padding: 60px 40px;
   background: url(../img/splashnew.png);
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
 }
 
 .login-logo {
@@ -42,37 +23,31 @@ body {
 }
 
 
-/* .h1 { */
+
 .login-title {
   margin: 0;
   font-size: 30px;
   margin-bottom: 60px;
   color: white;
   text-align: center;
-  /* font-family: "PT Sans", sans-serif;   
-  have set it and app.css as global font-family which every page can use it */
 }
 .login-form {
   width: 100%;
   margin-bottom: 32px;
 }
-
+.input-field{height: 150px;}
 .input-field input {
   height: 48px;
   width: 100%;
   border-radius: 10px;
-  /* border: 1px solid silver; */
   border: 1px solid #1ca3a6;
   padding-left: 15px;
   outline: none;
   font-size: 19px;
-  /* transition: 0.1s;
-   */
-
   background-color: #1ca4a64b;
   color: white;
   box-sizing: border-box;
-  margin-bottom: 32px;
+ 
   margin-top: 8px;
 }
 input:focus {
@@ -86,7 +61,6 @@ input:focus {
   color: white;
   font-size: 20px;
   padding: 16px;
-  transition: 0.4s;
 }
 .nav-wrap {
   display: flex;
@@ -106,6 +80,14 @@ input:focus {
   background-color: #1ca3a6;
   border-radius: 10px;
   align-items: center;
+  margin-top: 32px;
+}
+
+.loginbtn:disabled,
+.loginbtn[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 .container .auth {
   margin: 35px 0 20px 16px;
@@ -127,11 +109,25 @@ input:focus {
   color: aliceblue;
   font-family: "Noto Sans", sans-serif;
 }
-.signup a {
+.signup span {
   font-weight: bold;
   color: #3498db;
   text-decoration: none;
 }
-.signup a:hover {
+.signup span:hover {
   text-decoration: underline;
+}
+
+.errors{
+  height: 32px;
+  color:red;
+  margin-top: 5px;
+ 
+   /* margin-bottom: 32px; */
+   padding-left: 16px;
+   /* border:1px solid red; */
+}
+.input-field .input-error{
+   border:1px solid red;
+   background-color: rgba(255, 255, 255, 0.369);
 }
