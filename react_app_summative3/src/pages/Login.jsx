@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../css/login.css";
 
+// import { Link } from "react-router-dom";
+import "../css/login.css";
+import axios from 'axios';
 
 const initialFormValues = {
   email: "",
   password: "",
-  formSubmitted: false,
-  success: false,
+  // formSubmitted: false,
+  // success: false,
 };
 function Login(props) {
   const initialValues = { email: "", password: "" };
@@ -41,7 +42,7 @@ function Login(props) {
           : "Email is not valid.";
     }
     setErrors({ ...temp });
-   
+
   };
 
   const formIsValid = (fieldValues = values) => {
@@ -50,16 +51,34 @@ function Login(props) {
       fieldValues.email &&
       fieldValues.password &&
       Object.values(errors).every((x) => x === "");
-    
+
     return isValid;
   };
 
   const handleFormSubmit =(e)=>{
-    // alert(" I'M in handleFormSubmit");
+    let temp = { email: "", password: "" };
     e.preventDefault();
     if (formIsValid()) {
-      //   await postContactForm(values);
-      alert("You've posted your form!");
+      // validate db userInfo
+      axios.get(`http://localhost:4000/api/login-by-email/${e.target.email.value}` )
+      .then((response) => {
+        console.log(response.data.users);
+        if(response.status === 200 && response.data.users.length > 0)
+        {
+          if(response.data.users[0].Password === e.target.password.value){
+            alert(" change home page")
+          }
+          else{
+            temp.password = "Incorrect password.";
+            setErrors({ ...temp });
+          }
+        }
+        else{
+          temp.email = "Email does not exist.";
+          setErrors({ ...temp });
+        }
+
+      });
 
     }
   };
@@ -75,16 +94,17 @@ function Login(props) {
           <label>E-mail:</label>
           <input
            className={errors.email ? "input-error" : ''}
+           autoFocus="autoFocus"
             type="email"
             name="email"
             value={inputValues.email}
             onChange={handleChange}
-          /> 
+          />
           <div className="errors">
           {errors.email ? errors.email : ''}
           </div>
         </div>
-        
+
         <div className="input-field ">
           <label>Password:</label>
           <input
@@ -99,17 +119,15 @@ function Login(props) {
           </div>
         </div>
         <div className="nav-wrap">
-          {/* <nav>
-            <Link to="/home"> */}
-              <button 
-              className="loginbtn" 
-              type="submit" 
+
+              <button
+              className="loginbtn"
+              type="submit"
               disabled={!formIsValid()}
               >
                 Login
               </button>
-            {/* </Link>
-          </nav> */}
+
         </div>
       </form>
 
