@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/login.css";
-import history from ''
+
 
 const initialFormValues = {
   email: "",
@@ -60,7 +60,7 @@ function Login(props) {
     if (formIsValid()) {
       //   await postContactForm(values);
       alert("You've posted your form!");
-      history.push()
+
     }
   };
 
