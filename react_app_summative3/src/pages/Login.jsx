@@ -1,40 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/login.css";
 
+const initialFormValues = {
+  email: "",
+  password: "",
+  formSubmitted: false,
+  success: false,
+};
 function Login(props) {
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
 
+  const [values, setValues] = useState(initialFormValues);
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
-    console.log(formValues);
-    // if(e.target.name==="email"){
-    //   setemail(e.target.value);
-    // }
-    // if(e.target.name==="password"){
-    //   setpassword(e.target.value)}
     const { name, value } = e.target;
-    // let temp = {...formValues, name: value}  name is a object property
     let temp = { ...formValues, [name]: value };
     setFormValues(temp);
+
+    setValues({
+      ...values,
+      [name]: value,
+    });
+    validate({ [name]: value });
   };
+
+  const validate = (fieldValues = values) => {
+    // this function will check if the form values are valid
+    let temp = { ...errors };
+    if ("password" in fieldValues)
+      temp.password = fieldValues.password ? "" : "Password is required.";
+
+    if ("email" in fieldValues) {
+      temp.email = fieldValues.email ? "" : "email is required.";
+      if (fieldValues.email)
+        temp.photo = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fieldValues.email)
+          ? ""
+          : "Email is not valid.";
+    }
+    setErrors({ ...temp });
+  };
+
   return (
-    // <body>  cannot set body in component。 i think all components are part of body
-    // we can see the <body > exit in  ’../public/index.html ‘
     <div className="container">
       <div className="login-logo"></div>
-      {/* <h1 >Sign in</h1>    if no set className for H1 in here  ，your style will effect others page H1 style.            */}
       <h1 className="login-title">Welcome to the ZIP Community!</h1>
       <form className="login-form">
-        {/* <div className="divider">
-          <div className="pageform"> */}
         <div className="input-field">
           <label>E-mail:</label>
           <input
             type="email"
             name="email"
-            // placeholder="Email"
-            // value={email}
             value={formValues.email}
             onChange={handleChange}
           />
@@ -45,9 +63,7 @@ function Login(props) {
             type="password"
             name="password"
             value={formValues.password}
-            // value={password}
             onChange={handleChange}
-            // placeholder="Password"
           />
         </div>
         <div className="nav-wrap">
@@ -59,16 +75,12 @@ function Login(props) {
             </Link>
           </nav>
         </div>
-
-        {/* </div>
-        </div> */}
       </form>
 
       <div className="signup">
-        Not a member? <a href="#">Sign up now</a>
+        Not a member? <a href=" ">Sign up now</a>
       </div>
     </div>
-    // </body>
   );
 }
 
