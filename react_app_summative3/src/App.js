@@ -1,4 +1,4 @@
-import Launch from './pages/Launch'
+
 import Login from './pages/Login'
 import Home from './pages/Home'
 import { Route, Routes } from "react-router-dom";
@@ -18,8 +18,8 @@ setuserID(loginID)
   return (
     <div className="App">
     <Routes>
-          <Route path="/" element={<Launch/>}/>
-          <Route path="/login" element={<Login getUID={getUID}/> }/>
+  
+          <Route path="/" element={<Login getUID={getUID}/> }/>
           <Route path="/home/*" element={<Home uID={userID} /> }/>
           {/* <Route path="/home/detail" element={<Detail postID={postID} userID={userID}/>}/> */}
           {/* <Route path="/add" element={<Add/>}/> */}

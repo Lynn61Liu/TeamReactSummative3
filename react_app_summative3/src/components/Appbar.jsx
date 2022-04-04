@@ -62,7 +62,7 @@ export default function ButtonAppBar() {
         </ListItem>
         </Link>
 
-        <Link to="/login" className="appBarLink">
+        <Link to="/" className="appBarLink">
         <ListItem button>
           <ListItemIcon sx={{fontSize:30,color:'white'}}><LogoutIcon /></ListItemIcon>
           <ListItemText primary="Logout" />
