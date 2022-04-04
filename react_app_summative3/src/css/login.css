@@ -1,128 +1,165 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: sans-serif;
+  justify-content: center;
+  font-family: "PT Sans", sans-serif;
+} */
 
+/* 1. the global style recommended to move to App.CSS */
 
-*{
-    margin: 0;
-    padding: 0;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  body{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-family: sans-serif;
-    justify-content: center;
-    font-family: "PT Sans", sans-serif;
+.container {
+  height: 100vh;
+  overflow: hidden;
+  /* position: relative; */
+  background-color: #4267b2;
+  /* width: 400px;     donot need set width , let them fullscreen    */
+  padding: 60px 40px;
+  background: url(../img/splashnew.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+}
 
-  }
-  .container{
-    position: relative;
-    width: 400px;
-    padding: 60px 40px;
-    background: url(../img/splashnew.png);
-    background-size: cover;
-    background-position: center;
-  }
+/* .h1 { */
+.login-title {
+  margin: 0;
+  font-size: 40px;
+  margin-bottom: 60px;
+  color: #1ca3a6;
+  /* font-family: "PT Sans", sans-serif;   
+  have set it and app.css as global font-family which every page can use it */
+}
+.login-form {
+  width: 100%;
+  margin-bottom: 32px;
+}
 
-  h1{
-    font-size: 40px;
-    margin-bottom: 60px;
-    color: #1ca3a6;
-    font-family: "PT Sans", sans-serif;
-  }
-  .input-field, form .button{
-    margin: 25px 0;
-    position: relative;
-    height: 50px;
-    width: 100%;
-    padding: 5px;
-    text-align: left;
-    color: white;
-  }
-  .input-field input{
-    height: 100%;
-    width: 100%;
-    border: 1px solid silver;
-    padding-left: 15px;
-    outline: none;
-    font-size: 19px;
-    transition: .4s;
-  }
-  input:focus{
-    border: 1px solid #83a1b4;
-  }
+.input-field input {
+  height: 48px;
+  width: 100%;
+  border-radius: 10px;
+  /* border: 1px solid silver; */
+  border: 1px solid #1ca3a6;
+  padding-left: 15px;
+  outline: none;
+  font-size: 19px;
+  /* transition: 0.1s;
+   */
 
-  .input-field label{
-    left: 15px;
-    pointer-events: none;
-    color: grey;
-    font-size: 20px;
-    padding: 20px;
-    transition: .4s;
-  }
+  background-color: #1ca4a64b;
+  color: white;
+  box-sizing: border-box;
+  margin-bottom: 32px;
+  margin-top: 8px;
+}
+input:focus {
+  border: 1px solid #83a1b4;
+}
 
-  .loginbtn{
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: none;
-    outline: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  .container .auth{
-    margin: 35px 0 20px 0;
-    font-size: 19px;
-    color: grey;
-  }
-  .links{
-    display: flex;
-    cursor: pointer;
-  }
-  .facebook, .google{
-    height: 40px;
-    width: 100%;
-    border: 1px solid silver;
-    background-color: aliceblue;
-    border-radius: 10px;
-    margin: 0 10px;
-    transition: .4s;
-  }
-  .facebook:hover{
-    border: 1px solid #4267B2;
-  }
-  .google:hover{
-    border: 1px solid #dd4b39;
-  }
-  .facebook i, .facebook span{
-    color: #4267B2;
-  }
-  .google i, .google span{
-    color: #dd4b39;
-  }
-  .links i{
-    font-size: 23px;
-    line-height: 40px;
-    margin-left: -90px;
-  }
-  .links span{
-    position: absolute;
-    font-size: 17px;
-    font-weight: bold;
-    padding-left: 8px;
-    font-family: 'Open Sans', sans-serif;
-  }
-  .signup{
-    margin-top: 50px;
-    font-family: 'Noto Sans', sans-serif;
-  }
-  .signup a{
-    color: #3498db;
-    text-decoration: none;
-  }
-  .signup a:hover{
-    text-decoration: underline;
-  }
-  
+.input-field label {
+  font-weight: bold;
+  left: 15px;
+  pointer-events: none;
+  color: white;
+  font-size: 20px;
+  padding: 16px;
+  transition: 0.4s;
+}
+.nav-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loginbtn {
+  width: 100px;
+  height: 40px;
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #1ca3a6;
+  border-radius: 10px;
+}
+.container .auth {
+  margin: 35px 0 20px 16px;
+  font-size: 19px;
+  /* color: grey; */
+  color: white;
+}
+.links {
+  display: flex;
+  cursor: pointer;
+}
+
+.facebook,
+.google {
+  height: 40px;
+  width: 100%;
+  border: 1px solid silver;
+  background-color: rgba(240, 248, 255, 0.7);
+  border-radius: 10px;
+  margin: 0 10px;
+  /* transition: 0.4s;  
+
+  use background-color: rgba(240, 248, 255, 0.7)
+  to set the background transparency 
+  */
+}
+.facebook:hover {
+  border: 1px solid #4267b2;
+}
+.google:hover {
+  border: 1px solid #dd4b39;
+}
+.facebook i,
+.facebook span {
+  color: #4267b2;
+}
+.google i,
+.google span {
+  color: #dd4b39;
+}
+.links i {
+  font-size: 23px;
+  line-height: 40px;
+  display: flex;
+}
+.links span {
+  /* position: absolute; */
+  margin: 0 auto;
+  font-size: 17px;
+  font-weight: bold;
+  /* padding-left: 8px; */
+  font-family: "Open Sans", sans-serif;
+}
+
+.signup {
+  position: absolute;
+  align-self: center;
+  font-size: 20px;
+  top: "auto";
+  bottom: 30px;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+}
+.signup a {
+  font-weight: bold;
+  color: #3498db;
+  text-decoration: none;
+}
+.signup a:hover {
+  text-decoration: underline;
+}
