@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link} from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,10 +15,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import GroupIcon from '@mui/icons-material/Group';
 import LogoutIcon from '@mui/icons-material/Logout';
 import '../css/Appbar.css'
-
-
-//Cookies.remove('logged_in');
-//props.onUpdateLoggedInState(false);
+import Cookies from 'js-cookie';
 
 
 export default function Appbar() {
@@ -65,7 +62,7 @@ export default function Appbar() {
         </ListItem>
         </Link>
 
-        <Link to="/" className="appBarLink">
+        <Link to="/" className="appBarLink" onClick={handlelogout}>
         <ListItem button>
           <ListItemIcon sx={{fontSize:30,color:'white'}}><LogoutIcon /></ListItemIcon>
           <ListItemText primary="Logout" />
@@ -77,7 +74,10 @@ export default function Appbar() {
     </Box>
   );
 
-  
+  const handlelogout=()=>{
+    Cookies.remove('userRole');
+    Cookies.remove('userID');
+  }
 
   return (
     <Box sx={{ flexGrow: 1}} className="AppbarTool" >
