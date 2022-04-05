@@ -10,7 +10,7 @@ import Appbar from "../components/Appbar";
 import BottomAppBar from "../components/BottomAppBar.jsx";
 
 function Home(props) {
-  console.log(props);
+  // console.log(props);
   const [postID, setPostID] = useState("");
   const getPostID = (PostID) => {
     console.log("homepage return PostID=", PostID);
@@ -25,16 +25,16 @@ function Home(props) {
         <Routes>
           <Route
             index
-            element={<Discover getPostID={getPostID} uID={props.uID} />}
+            element={<Discover getPostID={getPostID} uID={props.userID} />}
           />
           <Route
             path=":postId"
-            element={<Detail uID={props.uID} pID={postID} />}
+            element={<Detail uID={props.userID} pID={postID} />}
           />
           <Route path="/add" element={<Add />} />
           <Route
             path="/profile"
-            element={<Profile uID={props.uID} getPostID={getPostID} />}
+            element={<Profile uID={props.userID} getPostID={getPostID} />}
           />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

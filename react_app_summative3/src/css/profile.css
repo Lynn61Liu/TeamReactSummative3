@@ -17,11 +17,11 @@ body {
   margin-bottom: 20px;
 }
 
-.profileImg {
+.profileImg img{
   height: 83px;
   width: 83px;
   background-color: #1ca3a6;
-  background-image: url(../img/mike.jpg);
+  /* background-image: url(../img/mike.jpg); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

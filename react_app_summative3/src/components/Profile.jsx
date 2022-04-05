@@ -1,17 +1,31 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
+import React,{useEffect,useState} from 'react';
+import axios from 'axios';
 import '../css/profile.css';
 import Editbtn from '../components/Editbtn.jsx';
 
 function Profile(props) {
+  const [profileData,setprofileData]=useState({});
+  const [myPost,setmyPost]=useState([]);
+useEffect(() => {
+  axios.get(`http://localhost:4000/api/profile/${props.uID}` )
+  .then((response) => {
+     console.log(response.data.profile);
+     setprofileData(response.data.profile[0].userID);
+     setmyPost(response.data.profile);
+  });
+}, [])
+
+ 
   return (
     <>
       <div className="profileDisplay">
         <div className="profileDetails">
-          <div className="profileImg"></div>
+          <div className="profileImg">
+            <img src={profileData.userImg} alt=" " />
+          </div>
           <div>
-            <h3>username</h3>
-            <p>User number:</p>
+            <h3>{profileData.userName}</h3>
+            <p> user Role:{profileData.userRole}</p>
           </div>
         </div>
 
@@ -20,11 +34,7 @@ function Profile(props) {
         <div className="profileDescription">
           <h3>Description</h3>
           <p>
-            I like to document bugs and wildlife in New Zealand ZIP is helping
-            to protect native species by developing new tools and techniques to
-            completely remove possums, rats, and stoats from large mainland
-            areas.
-            
+            {profileData.userDescription}
           </p>
          
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Cookies from 'js-cookie';
 // import { Link } from "react-router-dom";
 import "../css/login.css";
 import axios from 'axios';
@@ -18,6 +18,9 @@ function Login(props) {
 
   const [values, setValues] = useState(initialFormValues);
   const [errors, setErrors] = useState({});
+
+  // const [showLogin, setShowLogin] = useState(false);
+	const [isLoggedIn, setLoggedInStatus] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,13 +67,14 @@ function Login(props) {
       // validate db userInfo
       axios.get(`http://localhost:4000/api/login-by-email/${e.target.email.value}` )
       .then((response) => {
-        // console.log(response.data.users[0]);
         if(response.status === 200 && response.data.users.length > 0)
         {
           if(response.data.users[0].Password === e.target.password.value){
-          //  alert(" change home page")
            navigate('/home');
           props.getUID(response.data.users[0]);
+          Cookies.set('logged_in', true, { expires: 7 });
+          setLoggedInStatus(true);
+			props.onUpdateLoggedInState(true);
           }
           else{
             temp.password = "Incorrect password.";

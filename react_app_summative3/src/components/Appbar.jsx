@@ -17,8 +17,11 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import '../css/Appbar.css'
 
 
+//Cookies.remove('logged_in');
+//props.onUpdateLoggedInState(false);
 
-export default function ButtonAppBar() {
+
+export default function Appbar() {
   const [state, setState] = React.useState({
     top: false,
   });

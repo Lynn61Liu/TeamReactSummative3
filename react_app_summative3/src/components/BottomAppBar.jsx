@@ -8,7 +8,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
-import mike from '../img/mike.jpg'
 import PersonIcon from '@mui/icons-material/Person';
 const StyledFab = styled(Fab)({
   position: "absolute",

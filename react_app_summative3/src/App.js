@@ -13,7 +13,6 @@ let temp = { ...userInfor, userID: userObg._id, userRole: userObg.userRole};
 setUserInfor(temp);
 }
 
-
   return (
     <div className="App">
     <Routes>
