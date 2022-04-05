@@ -10,11 +10,13 @@ import Appbar from "../components/Appbar";
 import BottomAppBar from "../components/BottomAppBar.jsx";
 
 function Home(props) {
+  console.log(props);
   const [postID, setPostID] = useState("");
   const getPostID = (PostID) => {
     console.log("homepage return PostID=", PostID);
     setPostID(PostID);
   };
+
   return (
     <>
       <Appbar />
