@@ -1,12 +1,15 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
-}
+} */
 
 h3, h2 {
   color: #1ca3a6;
 }
-
+.tab-title{
+  margin-top: 0;
+  padding-top: 0;
+}
 
 
 .postPage {
@@ -28,8 +31,6 @@ h3, h2 {
   font-size: 30px;
 
 }
-
-
 
 .postDetail {
   margin-top: 20px;
@@ -124,3 +125,24 @@ h3, h2 {
   padding: 5px 10px ;
   color: black;
 }
+
+
+.profileImg img{
+  height: 83px;
+  width: 83px;
+  background-color: #1ca3a6;
+  /* background-image: url(../img/mike.jpg); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+}
+
+.profileImgS {
+  height: 24px;
+  width: 24px;
+}
+
+.detail-tab{
+  border-bottom: 1px solid rgb(203, 201, 201);
+  }
