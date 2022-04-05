@@ -2,16 +2,20 @@ import React,{useEffect,useState} from 'react';
 import axios from 'axios';
 import '../css/profile.css';
 import Editbtn from '../components/Editbtn.jsx';
+import Cookies from 'js-cookie';
+
 
 function Profile(props) {
+ 
   const [profileData,setprofileData]=useState({});
-  const [myPost,setmyPost]=useState([]);
+  // const [myPost,setmyPost]=useState([]);
+
 useEffect(() => {
-  axios.get(`http://localhost:4000/api/profile/${props.uID}` )
+  axios.get(`http://localhost:4000/api/profile/${Cookies.get('userID')}` )
   .then((response) => {
      console.log(response.data.profile);
      setprofileData(response.data.profile[0].userID);
-     setmyPost(response.data.profile);
+    //  setmyPost(response.data.profile);
   });
 }, [])
 
@@ -55,8 +59,8 @@ useEffect(() => {
                 </div>
                 <div>
                   <a href=" ">
-                    {' '}
-                    <Editbtn />{' '}
+                    
+                    <Editbtn />
                   </a>
                 </div>
               </div>

@@ -19,9 +19,6 @@ function Login(props) {
   const [values, setValues] = useState(initialFormValues);
   const [errors, setErrors] = useState({});
 
-  // const [showLogin, setShowLogin] = useState(false);
-	const [isLoggedIn, setLoggedInStatus] = useState(false);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     let temp = { ...inputValues, [name]: value };
@@ -70,11 +67,12 @@ function Login(props) {
         if(response.status === 200 && response.data.users.length > 0)
         {
           if(response.data.users[0].Password === e.target.password.value){
-           navigate('/home');
+          
           props.getUID(response.data.users[0]);
-          Cookies.set('logged_in', true, { expires: 7 });
-          setLoggedInStatus(true);
-			props.onUpdateLoggedInState(true);
+          Cookies.set('userID',response.data.users[0]._id , {expires: 1})
+          Cookies.set('userRole', response.data.users[0].userRole, {expires: 1})
+          navigate('/home');
+		  
           }
           else{
             temp.password = "Incorrect password.";
@@ -95,6 +93,8 @@ function Login(props) {
 
   return (
     <div className="container">
+
+
       <div className="login-logo"></div>
       <h1 className="login-title">Welcome to the ZIP Community!</h1>
       <form className="login-form" onSubmit={handleFormSubmit}>
