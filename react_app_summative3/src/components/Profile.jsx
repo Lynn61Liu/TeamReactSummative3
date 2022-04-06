@@ -49,8 +49,8 @@ useEffect(() => {
           <h3>Past Posts</h3>
           <div className="profileGallery">
             <div className="profilePost">
-              <div className="postImg"></div>
-              <div className="postMenu">
+              <div className="userpostImg"></div>
+              <div className="userpostMenu">
                 <div>
                   <p>
                     <span>animal</span>
@@ -67,8 +67,8 @@ useEffect(() => {
             </div>
 
             <div className="profilePost">
-              <div className="postImg"></div>
-              <div className="postMenu">
+              <div className="userpostImg"></div>
+              <div className="userpostMenu">
                 <div>
                   <p>
                     <span>animal</span>
@@ -85,8 +85,8 @@ useEffect(() => {
             </div>
 
             <div className="profilePost">
-              <div className="postImg"></div>
-              <div className="postMenu">
+              <div className="userpostImg"></div>
+              <div className="userpostMenu">
                 <div>
                   <p>
                     <span>animal</span>
@@ -103,8 +103,8 @@ useEffect(() => {
             </div>
 
             <div className="profilePost">
-              <div className="postImg"></div>
-              <div className="postMenu">
+              <div className="userpostImg"></div>
+              <div className="userpostMenu">
                 <div>
                   <p>
                     <span>animal</span>

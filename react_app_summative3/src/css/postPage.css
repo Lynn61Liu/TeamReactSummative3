@@ -13,6 +13,7 @@ h3, h2 {
 
 
 .postPage {
+  color:rgb(143, 141, 141);
   padding: 0px 20px;
   margin: 10px auto auto auto;
   background-color: white;
@@ -33,41 +34,44 @@ h3, h2 {
 }
 
 .postDetail {
-  margin-top: 20px;
+  margin: 20px auto;
   border-radius: 5px;
-  height: 300px;
+  /* height: 300px; */
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
   background-color: white;
 }
 
 .detailImg {
-  height: 90%;
-  background-image: url(../img/bird.jpg);
+  /* height: 90%; */
+  /* background-image: url(../img/bird.jpg); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 5px 5px 0px 0px;
 }
 
+.detailImg img{
+  /* max-width: 100%; */
+  height: 100%;
+  width: 100%;
+}
+
 .postMenu {
+  color:rgb(143, 141, 141);
   display: flex;
   justify-content: space-between;
-  margin: auto;
-  padding: 5px 10px;
+  /* margin: 20px auto; */
+  padding: 15px 10px;
   font-size: 13px;
   align-items: center;
 }
+.post-name{
+  font-size: 20px;
+  /* color:rgb(138, 135, 135); */
+  font-family: 'Times New Roman', Times, serif;
 
-
-
-.postMenu p {
-  margin: 0px;
-  padding: 0px;
 }
 
-.postMenu span {
-  font-weight: bold;
-}
 
 .btnDetail {
   margin:  20px auto 20px auto;

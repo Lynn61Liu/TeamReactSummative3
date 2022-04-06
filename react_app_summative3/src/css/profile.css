@@ -81,7 +81,7 @@ body {
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
 }
 
-.postImg {
+.userpostImg {
   height: 70%;
   background-image: url(../img/bird.jpg);
   background-size: cover;
@@ -90,7 +90,7 @@ body {
   border-radius: 5px 5px 0px 0px;
 }
 
-.postMenu {
+.userpostMenu {
   display: flex;
   justify-content: space-between;
   margin: auto;
@@ -101,12 +101,12 @@ body {
 
 
 
-.postMenu p {
+.userpostMenu p {
   margin: 0px;
   padding: 0px;
 }
 
-.postMenu span {
+.userpostMenu span {
   font-weight: bold;
 }
 

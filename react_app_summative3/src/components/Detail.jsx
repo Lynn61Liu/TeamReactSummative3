@@ -2,13 +2,16 @@ import React from "react";
 import "../css/postPage.css";
 import Backbtn from "../components/Backbtn.jsx";
 import mike from "../img/mike.jpg";
+import bird from "../img/bird.jpg";
+
 import Avatar from "@mui/material/Avatar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-import PhoneIcon from "@mui/icons-material/Phone";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import InfoIcon from '@mui/icons-material/Info';
+import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
+
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
@@ -66,22 +69,23 @@ function Detail(props) {
     <>
       <div className="postPage">
         <div className="title">
-          <a href="">
+          <a href=" ">
             <Backbtn />
           </a>
           <h2>Animal Title</h2>
         </div>
 
         <div className="postDetail">
-          <div className="detailImg"> </div>
-          <div className="postMenu">
-            <>
-              <p>
-                <span>username</span>
-              </p>
-              <p>post date</p>
-            </>
+          <div className="detailImg">
+            <img src={bird} alt="" />
           </div>
+          <div className="postMenu">
+                <span className="post-name" >Australia Bird</span>
+                <span>2022-10-08</span>
+        </div>
+        </div>
+
+
           {/* ================tab bar========================= */}
           <Box
             sx={{
@@ -90,7 +94,6 @@ function Detail(props) {
               "& .MuiPaper-root": {
                 backgroundColor: "white",
                 boxShadow:'none',
-          
               },
              
             }}
@@ -102,13 +105,22 @@ function Detail(props) {
                 onChange={handleChange}
                 variant="fullWidth"
                 aria-label="full width tabs example"
+                sx={{
+                  //MuiButtonBase-root-MuiTab-root
+                  '& .MuiTabs-indicator':{
+                    backgroundColor:'#1ca3a6'
+                  },
+                  '& .Mui-selected':{
+                    color:'#1ca3a6'
+                  },
+                }}
               >
                 <Tab
-                  icon={<PhoneIcon />}
+                  icon={<InfoIcon />}
                   aria-label="Item One"
                   {...a11yProps(0)}
                 />
-                <Tab icon={<FavoriteIcon />} {...a11yProps(1)} />
+                <Tab icon={<ForumOutlinedIcon />} {...a11yProps(1)} />
               </Tabs>
             </AppBar>
             <SwipeableViews
@@ -117,6 +129,8 @@ function Detail(props) {
               onChangeIndex={handleChangeIndex}
             >
               <TabPanel value={value} index={0} dir={theme.direction}>
+                <div className="TabPanelWrap">
+               
                 <h3 className="tab-title">Description</h3>
                 <p>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero
@@ -127,10 +141,13 @@ function Detail(props) {
                   alias, aliquam veritatis ducimus rem deserunt corporis
                   exercitationem.
                 </p>
+                </div>
               </TabPanel>
 
               {/* ===========================comments =========================== */}
               <TabPanel value={value} index={1} dir={theme.direction}>
+              <div className="TabPanelWrap">
+               
                 <div className="comments">
                   <Avatar alt="Mike" src={mike} />
 
@@ -150,10 +167,12 @@ function Detail(props) {
                     </p>
                   </div>
                 </div>
+
+                </div>
               </TabPanel>
             </SwipeableViews>
           </Box>
-        </div>
+        
       </div>
     </>
   );
