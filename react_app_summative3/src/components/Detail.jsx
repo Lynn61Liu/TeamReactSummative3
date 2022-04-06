@@ -26,7 +26,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
-import CommentItem from "./CommentItem";
+// import CommentItem from "./CommentItem";
+import CommentItem from "./CommentItem.jsx"
+
 
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
