@@ -17,7 +17,7 @@ function About() {
         can be used. Therefore on the mainland, the current predator management
         approach is ongoing suppression of predator populations using traps or
         toxins. This carries a significant long-term cost as reinvasion must be
-        continually managed.{" "}
+        continually managed.
       </p>
       <h1>How we’re helping</h1>
       <p>

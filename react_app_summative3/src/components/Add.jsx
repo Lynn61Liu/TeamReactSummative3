@@ -5,18 +5,37 @@ import { AiOutlineFileImage } from "react-icons/ai";
 function Add() {
   return (
     <>
-      <h3>Add New Listing</h3>
-      <form action="/">
-        <label for="description">Listing description:</label>
-        <input type="text" id="description" name="description"></input>
-        <label for="img">Select image:</label>
-        <h1>
-          <AiOutlineFileImage />
-        </h1>
-        <input type="file" id="img" name="img" accept="image/*"></input>
-        <button type="cancel">Cancel</button>
-        <button type="submit">Upload</button>
-      </form>
+      <div className="addDisplay">
+        <h3>Add New Listing</h3>
+        <form action="/">
+          <div className="imageUpload">
+            <label for="img">Select Image</label>
+            <br></br>
+            <div className="chooseImage">
+              <AiOutlineFileImage />
+            </div>
+            <input type="file" id="img" name="img" accept="image/*" />
+            <br></br>
+          </div>
+          <br></br>
+          <label for="description">Listing description:</label>
+          <input
+            className="description"
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Write a listing description..."
+          ></input>
+          <br></br>
+          <br></br>
+          <button className="cancel" type="cancel">
+            Cancel
+          </button>
+          <button className="upload" type="submit">
+            Upload
+          </button>
+        </form>
+      </div>
     </>
   );
 }
