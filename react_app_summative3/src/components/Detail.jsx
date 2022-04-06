@@ -8,6 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
 import InfoIcon from "@mui/icons-material/Info";
 import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
@@ -61,6 +62,27 @@ function a11yProps(index) {
   };
 }
 //  the tabbar SwipeableViews   end
+
+//CUSTOM INPUT CSS
+const CssTextField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: "#1ca3a6",
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "#1ca3a6",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#B5B2B2",
+    },
+    "&:hover fieldset": {
+      borderColor: "#1ca3a6",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#1ca3a6",
+    },
+  },
+});
 
 function Detail(props) {
   // console.log(props);
@@ -129,7 +151,7 @@ function Detail(props) {
                   backgroundColor: "#1ca3a6",
                 },
                 "& .Mui-selected": {
-                   color: "rgb(28, 163, 166) ",
+                  color: "rgb(28, 163, 166) !important ",
                   //color: "#1ca3a6",
                 },
               }}
@@ -163,14 +185,17 @@ function Detail(props) {
             </TabPanel>
 
             {/* ===========================comments =========================== */}
-            <TabPanel value={value} index={1} dir={theme.direction}
-             sx={{ margin: "20px 0px"}}
-            //   // MuiBox-root css-19kzrtu
-            //   "& .css-19kzrtu": {
-            //      margin: "20px 0px",
-            //     padding: "20px 0px",
-            //   },
-            // }}
+            <TabPanel
+              value={value}
+              index={1}
+              dir={theme.direction}
+              sx={{ margin: "20px 0px" }}
+              //   // MuiBox-root css-19kzrtu
+              //   "& .css-19kzrtu": {
+              //      margin: "20px 0px",
+              //     padding: "20px 0px",
+              //   },
+              // }}
             >
               <div className="TabPanelWrap">
                 <div className="comments">
@@ -178,7 +203,6 @@ function Detail(props) {
 
                   <input
                     type="text"
-        
                     placeholder="Write a comment..."
                     className="postComment"
                     onClick={handleClickOpen}
@@ -199,19 +223,26 @@ function Detail(props) {
         <DialogTitle>Comment</DialogTitle>
         <DialogContent>
           <FormControl fullWidth sx={{ m: 1 }}>
-            <TextField
+            <CssTextField
               autoFocus
-              id="outlined-multiline-static"
-              label="Multiline"
               multiline
               rows={8}
-              defaultValue="autoFocus"
+              // defaultValue="Write a comment..."
+              // label="Write a comment"
             />
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <button  className="comment-cancel"
+           onClick={handleClose}>Cancel</button>
+          <Button 
+          
+          variant="contained" 
+          color="success"
+         
+          >
+  Post
+</Button>
         </DialogActions>
       </Dialog>
     </>
