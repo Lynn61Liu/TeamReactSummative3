@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../css/postPage.css";
 import Backbtn from "../components/Backbtn.jsx";
 import mike from "../img/mike.jpg";
@@ -16,7 +16,17 @@ import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
-// import Typography from "@mui/material/Typography";
+
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import FormControl from '@mui/material/FormControl';
+
+
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -63,6 +73,14 @@ function Detail(props) {
 
   const handleChangeIndex = (index) => {
     setValue(index);
+  };
+
+////////DialogActions
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {setOpen(true);};
+  const handleClose = () => {
+    console.log("handleClose")
+    setOpen(false);
   };
 
   return (
@@ -151,6 +169,8 @@ function Detail(props) {
                     type="text"
                     placeholder="Write a comment..."
                     className="postComment"
+onClick={handleClickOpen}
+                   
                   />
                   <a href=" ">Post</a>
                 </div>
@@ -169,6 +189,31 @@ function Detail(props) {
           </SwipeableViews>
         </Box>
       </div>
+
+
+      {/* //DialogActions */}
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Comment</DialogTitle>
+        <DialogContent>
+        <FormControl fullWidth sx={{ m: 1 }}>
+         
+          <TextField
+            autoFocus
+          id="outlined-multiline-static"
+          label="Multiline"
+          multiline
+          rows={8}
+          defaultValue="autoFocus"
+          />
+        </FormControl>
+
+         
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Subscribe</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }
