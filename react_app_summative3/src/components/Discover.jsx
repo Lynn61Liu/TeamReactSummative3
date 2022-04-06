@@ -35,7 +35,7 @@ function Discover(props) {
                       <p>
                         <span>Animal</span>
                       </p>
-                      <p>Post date</p>
+                      <p>Username, Post date</p>
                     </div>
                     <div>
                       <a href="">
@@ -63,7 +63,7 @@ function Discover(props) {
                       <p>
                         <span>Animal</span>
                       </p>
-                      <p>Post date</p>
+                      <p>Username, Post date</p>
                     </div>
                     <div>
                       <a href="">

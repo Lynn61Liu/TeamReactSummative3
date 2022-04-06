@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "PT Sans", sans-serif;
+}
+
+.discoverDisplay {
+  padding: 0px 20px;
+  margin: auto;
+  background-color: white;
+  align-items: center;
+}
+
+.discoverDetails {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.discoverDetails h3 {
+  color: #1ca3a6;
+  padding-top: 5px;
+  margin: 0 auto;
+  font-size: 30px;
+  text-align: center;
+}
+.discoverDetails p {
+  padding: 0px;
+  margin: 0px;
+  font-size: 12px;
+}
+
+.searchButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 12px;
+}
+
+.searchButtons button {
+  font-weight: bold;
+  letter-spacing: normal;
+  font-size: 13px;
+  border-radius: 5px;
+  background-color: lightgray;
+  border: 1px rgb(194, 192, 192) solid;
+  padding: 8px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  color: rgb(58, 58, 59);
+}
+
+.searchButtons button:hover {
+  background-color: rgb(160, 158, 158);
+  color: rgb(58, 58, 59);
+}
+
+.searchButtons button:active {
+  background-color: rgb(160, 158, 158);
+  color: rgb(58, 58, 59);
+}
+
+.discoveryGallery {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  border-radius: 5px;
+}
+
+.discoverPost {
+  border-radius: 5px;
+  height: 150px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+.discoverImg {
+  height: 70%;
+  background-image: url(../img/stingray.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.postText {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  padding: 5px 10px;
+  font-size: 13px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.postText p {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+.postText span {
+  font-weight: bold;
+  text-decoration: none;
+}
