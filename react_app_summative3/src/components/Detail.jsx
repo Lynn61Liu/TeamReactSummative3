@@ -17,15 +17,15 @@ import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import FormControl from '@mui/material/FormControl';
-
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import FormControl from "@mui/material/FormControl";
+import CommentItem from "./CommentItem";
 
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
@@ -75,11 +75,13 @@ function Detail(props) {
     setValue(index);
   };
 
-////////DialogActions
+  ////////DialogActions
   const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {setOpen(true);};
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
   const handleClose = () => {
-    console.log("handleClose")
+    // console.log("handleClose")
     setOpen(false);
   };
 
@@ -127,7 +129,8 @@ function Detail(props) {
                   backgroundColor: "#1ca3a6",
                 },
                 "& .Mui-selected": {
-                  color: "rgb(28, 163, 166) ",
+                   color: "rgb(28, 163, 166) ",
+                  //color: "#1ca3a6",
                 },
               }}
             >
@@ -160,54 +163,51 @@ function Detail(props) {
             </TabPanel>
 
             {/* ===========================comments =========================== */}
-            <TabPanel value={value} index={1} dir={theme.direction}>
+            <TabPanel value={value} index={1} dir={theme.direction}
+             sx={{ margin: "20px 0px"}}
+            //   // MuiBox-root css-19kzrtu
+            //   "& .css-19kzrtu": {
+            //      margin: "20px 0px",
+            //     padding: "20px 0px",
+            //   },
+            // }}
+            >
               <div className="TabPanelWrap">
                 <div className="comments">
                   <Avatar alt="Mike" src={mike} />
 
                   <input
                     type="text"
+        
                     placeholder="Write a comment..."
                     className="postComment"
-onClick={handleClickOpen}
-                   
+                    onClick={handleClickOpen}
                   />
-                  <a href=" ">Post</a>
+                  {/* <a href=" ">Post</a> */}
                 </div>
-                <div className="commentsDone">
-                  <Avatar alt="Mike" src={mike} />
-                  <div id="comment-box" className="postComment">
-                    <p>
-                      {" "}
-                      Where did you spot that bird? <br />
-                      beautiful creature updating
-                    </p>
-                  </div>
-                </div>
+                <CommentItem />
+                <CommentItem />
+                <CommentItem />
               </div>
             </TabPanel>
           </SwipeableViews>
         </Box>
       </div>
 
-
       {/* //DialogActions */}
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Comment</DialogTitle>
         <DialogContent>
-        <FormControl fullWidth sx={{ m: 1 }}>
-         
-          <TextField
-            autoFocus
-          id="outlined-multiline-static"
-          label="Multiline"
-          multiline
-          rows={8}
-          defaultValue="autoFocus"
-          />
-        </FormControl>
-
-         
+          <FormControl fullWidth sx={{ m: 1 }}>
+            <TextField
+              autoFocus
+              id="outlined-multiline-static"
+              label="Multiline"
+              multiline
+              rows={8}
+              defaultValue="autoFocus"
+            />
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
