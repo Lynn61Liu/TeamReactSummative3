@@ -107,6 +107,11 @@ function Detail(props) {
     setOpen(false);
   };
 
+  const handlePost = (e) => {
+    e.preventDefault();
+    console.log(e.target.newcomment.value);
+  };
+
   return (
     <>
       <div className="postPage">
@@ -220,30 +225,28 @@ function Detail(props) {
 
       {/* //DialogActions */}
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Comment</DialogTitle>
-        <DialogContent>
-          <FormControl fullWidth sx={{ m: 1 }}>
+        <DialogTitle className="comment-title">
+          <span>Add Comment</span>
+          <div className="comment-cancel" onClick={handleClose}> x
+          </div>
+        </DialogTitle>
+        <DialogContent sx={{ m: 1 }}>
+          <form onSubmit={handlePost} className="comment-form">
             <CssTextField
+              fullWidth
               autoFocus
               multiline
               rows={8}
+              name="newcomment"
               // defaultValue="Write a comment..."
               // label="Write a comment"
             />
-          </FormControl>
+
+            <div className="post-wrap">
+              <input type="submit" value="Post" className="comment-post" />
+            </div>
+          </form>
         </DialogContent>
-        <DialogActions>
-          <button  className="comment-cancel"
-           onClick={handleClose}>Cancel</button>
-          <Button 
-          
-          variant="contained" 
-          color="success"
-         
-          >
-  Post
-</Button>
-        </DialogActions>
       </Dialog>
     </>
   );
