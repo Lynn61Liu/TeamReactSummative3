@@ -7,17 +7,26 @@ h3, h2 {
   color: #1ca3a6;
 }
 .tab-title{
+  color: #1ca3a6;
+  font-weight: bold;
+  font-size: 20px;
   margin-top: 0;
   padding-top: 0;
+}
+.tab-title p{
+  color:rgb(143, 141, 141)  ;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 
 .postPage {
-  color:rgb(143, 141, 141);
+  color:rgb(143, 141, 141)  ;
   padding: 0px 20px;
   margin: 10px auto auto auto;
   background-color: white;
-  align-items: center;
+  align-items: center
+  
 }
 
 .title {
@@ -61,7 +70,7 @@ h3, h2 {
   display: flex;
   justify-content: space-between;
   /* margin: 20px auto; */
-  padding: 15px 10px;
+  padding: 15px 18px;
   font-size: 13px;
   align-items: center;
 }

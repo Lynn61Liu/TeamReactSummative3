@@ -9,14 +9,14 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-import InfoIcon from '@mui/icons-material/Info';
-import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
+import InfoIcon from "@mui/icons-material/Info";
+import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
 
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -31,7 +31,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -53,7 +53,7 @@ function a11yProps(index) {
 //  the tabbar SwipeableViews   end
 
 function Detail(props) {
-  console.log(props);
+  // console.log(props);
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -80,58 +80,55 @@ function Detail(props) {
             <img src={bird} alt="" />
           </div>
           <div className="postMenu">
-                <span className="post-name" >Australia Bird</span>
-                <span>2022-10-08</span>
-        </div>
+            <span className="post-name">Australia Bird</span>
+            <span>2022-10-08</span>
+          </div>
         </div>
 
-
-          {/* ================tab bar========================= */}
-          <Box
-            sx={{
-              width: "100%",
-              margin: "20px 0px",
-              "& .MuiPaper-root": {
-                backgroundColor: "white",
-                boxShadow:'none',
-              },
-             
-            }}
-          >
-            <AppBar position="static">
-              <Tabs
-                className="detail-tab"
-                value={value}
-                onChange={handleChange}
-                variant="fullWidth"
-                aria-label="full width tabs example"
-                sx={{
-                  //MuiButtonBase-root-MuiTab-root
-                  '& .MuiTabs-indicator':{
-                    backgroundColor:'#1ca3a6'
-                  },
-                  '& .Mui-selected':{
-                    color:'#1ca3a6'
-                  },
-                }}
-              >
-                <Tab
-                  icon={<InfoIcon />}
-                  aria-label="Item One"
-                  {...a11yProps(0)}
-                />
-                <Tab icon={<ForumOutlinedIcon />} {...a11yProps(1)} />
-              </Tabs>
-            </AppBar>
-            <SwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={value}
-              onChangeIndex={handleChangeIndex}
+        {/* ================tab bar========================= */}
+        <Box
+          sx={{
+            width: "100%",
+            margin: "20px 0px",
+            "& .MuiPaper-root": {
+              backgroundColor: "white",
+              boxShadow: "none",
+            },
+          }}
+        >
+          <AppBar position="static">
+            <Tabs
+              className="detail-tab"
+              value={value}
+              onChange={handleChange}
+              variant="fullWidth"
+              aria-label="full width tabs example"
+              sx={{
+                //MuiButtonBase-root-MuiTab-root
+                "& .MuiTabs-indicator": {
+                  backgroundColor: "#1ca3a6",
+                },
+                "& .Mui-selected": {
+                  color: "rgb(28, 163, 166) ",
+                },
+              }}
             >
-              <TabPanel value={value} index={0} dir={theme.direction}>
-                <div className="TabPanelWrap">
-               
-                <h3 className="tab-title">Description</h3>
+              <Tab
+                icon={<InfoIcon />}
+                aria-label="Item One"
+                {...a11yProps(0)}
+              />
+              <Tab icon={<ForumOutlinedIcon />} {...a11yProps(1)} />
+            </Tabs>
+          </AppBar>
+          <SwipeableViews
+            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+            index={value}
+            onChangeIndex={handleChangeIndex}
+          >
+            <TabPanel value={value} index={0} dir={theme.direction}>
+              <div className="TabPanelWrap">
+                <div className="tab-title">Description</div>
                 <p>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero
                   unde hic nesciunt quis asperiores voluptate officia vitae
@@ -141,13 +138,12 @@ function Detail(props) {
                   alias, aliquam veritatis ducimus rem deserunt corporis
                   exercitationem.
                 </p>
-                </div>
-              </TabPanel>
+              </div>
+            </TabPanel>
 
-              {/* ===========================comments =========================== */}
-              <TabPanel value={value} index={1} dir={theme.direction}>
+            {/* ===========================comments =========================== */}
+            <TabPanel value={value} index={1} dir={theme.direction}>
               <div className="TabPanelWrap">
-               
                 <div className="comments">
                   <Avatar alt="Mike" src={mike} />
 
@@ -162,17 +158,16 @@ function Detail(props) {
                   <Avatar alt="Mike" src={mike} />
                   <div id="comment-box" className="postComment">
                     <p>
+                      {" "}
                       Where did you spot that bird? <br />
                       beautiful creature updating
                     </p>
                   </div>
                 </div>
-
-                </div>
-              </TabPanel>
-            </SwipeableViews>
-          </Box>
-        
+              </div>
+            </TabPanel>
+          </SwipeableViews>
+        </Box>
       </div>
     </>
   );
