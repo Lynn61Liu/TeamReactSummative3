@@ -1,16 +1,43 @@
-import React from 'react'
+import React from "react";
+import "../css/addPost.css";
+import { AiOutlineFileImage } from "react-icons/ai";
 
 function Add() {
   return (
     <>
-     <h3> This is add page</h3>
-     <h3> Task </h3>
-     <ol>
-       <li>select images from local and preview</li>
-       <li>Validate the form</li>
-       <li> insert this form to DB</li>
-     </ol></>
-  )
+      <div className="addDisplay">
+        <h3>Add New Listing</h3>
+        <form action="/">
+          <div className="imageUpload">
+            <label for="img">Select Image</label>
+            <br></br>
+            <div className="chooseImage">
+              <AiOutlineFileImage />
+            </div>
+            <input type="file" id="img" name="img" accept="image/*" />
+            <br></br>
+          </div>
+          <br></br>
+          <label for="description">Listing description:</label>
+          <input
+            className="description"
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Write a listing description..."
+          ></input>
+          <br></br>
+          <br></br>
+          <button className="cancel" type="cancel">
+            Cancel
+          </button>
+          <button className="upload" type="submit">
+            Upload
+          </button>
+        </form>
+      </div>
+    </>
+  );
 }
 
-export default Add
+export default Add;
