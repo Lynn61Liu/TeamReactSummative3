@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../css/discover.css";
-import Editbtn from "../components/Editbtn.jsx";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../css/discover.css';
+import Editbtn from '../components/Editbtn.jsx';
 function Discover(props) {
   return (
     <>
@@ -9,23 +9,35 @@ function Discover(props) {
         <div className="discoverDetails">
           <h3>Discover NZ Wildlife</h3>
         </div>
-        <div className="searchButtons">
-          <button>ALL</button>
-          <button>MARINE MAMMALS</button>
-          <button>REPTILES AND FROGS</button>
-          <button>RODENTS</button>
-          <button>BIRDS</button>
-          <button>INSECTS</button>
+        <div className="searchButtons" >
+          <button>
+            ALL
+          </button>
+          <button>
+            MARINE MAMMALS
+          </button>
+          <button >
+            REPTILES AND FROGS
+          </button>
+          <button>
+            RODENTS
+          </button>
+          <button >
+            BIRDS
+          </button>
+          <button >
+            INSECTS
+          </button>
         </div>
         <div className="pastPosts">
-          <div className="discoveryGallery">
+          <div className="discoveryGallery container">
             <div>
               <Link to="/home/detail">
                 <div
-                  className="discoverPost"
+                  className="discoverPost filterDiv all bird"
                   onClick={() => {
                     props.getPostID(
-                      "onclick post from profile page & postid42394283"
+                      'onclick post from profile page & postid42394283',
                     );
                   }}
                 >
@@ -39,8 +51,8 @@ function Discover(props) {
                     </div>
                     <div>
                       <a href="">
-                        {" "}
-                        <Editbtn />{" "}
+                        {' '}
+                        <Editbtn />{' '}
                       </a>
                     </div>
                   </div>
@@ -53,7 +65,7 @@ function Discover(props) {
                   className="discoverPost"
                   onClick={() => {
                     props.getPostID(
-                      "onclick post from profile page & postid42394283"
+                      'onclick post from profile page & postid42394283',
                     );
                   }}
                 >
@@ -67,8 +79,8 @@ function Discover(props) {
                     </div>
                     <div>
                       <a href="">
-                        {" "}
-                        <Editbtn />{" "}
+                        {' '}
+                        <Editbtn />{' '}
                       </a>
                     </div>
                   </div>
@@ -81,7 +93,7 @@ function Discover(props) {
                   className="discoverPost"
                   onClick={() => {
                     props.getPostID(
-                      "onclick post from profile page & postid42394283"
+                      'onclick post from profile page & postid42394283',
                     );
                   }}
                 >
@@ -95,8 +107,8 @@ function Discover(props) {
                     </div>
                     <div>
                       <a href="">
-                        {" "}
-                        <Editbtn />{" "}
+                        {' '}
+                        <Editbtn />{' '}
                       </a>
                     </div>
                   </div>
@@ -109,7 +121,7 @@ function Discover(props) {
                   className="discoverPost"
                   onClick={() => {
                     props.getPostID(
-                      "onclick post from profile page & postid42394283"
+                      'onclick post from profile page & postid42394283',
                     );
                   }}
                 >
@@ -123,8 +135,8 @@ function Discover(props) {
                     </div>
                     <div>
                       <a href="">
-                        {" "}
-                        <Editbtn />{" "}
+                        {' '}
+                        <Editbtn />{' '}
                       </a>
                     </div>
                   </div>
@@ -137,7 +149,7 @@ function Discover(props) {
                   className="discoverPost"
                   onClick={() => {
                     props.getPostID(
-                      "onclick post from profile page & postid42394283"
+                      'onclick post from profile page & postid42394283',
                     );
                   }}
                 >
@@ -151,8 +163,8 @@ function Discover(props) {
                     </div>
                     <div>
                       <a href="">
-                        {" "}
-                        <Editbtn />{" "}
+                        {' '}
+                        <Editbtn />{' '}
                       </a>
                     </div>
                   </div>
@@ -165,7 +177,7 @@ function Discover(props) {
                   className="discoverPost"
                   onClick={() => {
                     props.getPostID(
-                      "onclick post from profile page & postid42394283"
+                      'onclick post from profile page & postid42394283',
                     );
                   }}
                 >
@@ -179,8 +191,8 @@ function Discover(props) {
                     </div>
                     <div>
                       <a href="">
-                        {" "}
-                        <Editbtn />{" "}
+                        {' '}
+                        <Editbtn />{' '}
                       </a>
                     </div>
                   </div>
@@ -193,7 +205,7 @@ function Discover(props) {
                   className="discoverPost"
                   onClick={() => {
                     props.getPostID(
-                      "onclick post from profile page & postid42394283"
+                      'onclick post from profile page & postid42394283',
                     );
                   }}
                 >
@@ -207,8 +219,8 @@ function Discover(props) {
                     </div>
                     <div>
                       <a href="">
-                        {" "}
-                        <Editbtn />{" "}
+                        {' '}
+                        <Editbtn />{' '}
                       </a>
                     </div>
                   </div>
@@ -221,7 +233,7 @@ function Discover(props) {
                   className="discoverPost"
                   onClick={() => {
                     props.getPostID(
-                      "onclick post from profile page & postid42394283"
+                      'onclick post from profile page & postid42394283',
                     );
                   }}
                 >
@@ -235,8 +247,8 @@ function Discover(props) {
                     </div>
                     <div>
                       <a href="">
-                        {" "}
-                        <Editbtn />{" "}
+                        {' '}
+                        <Editbtn />{' '}
                       </a>
                     </div>
                   </div>
