@@ -52,6 +52,16 @@ router.get("/animals", (req, res, next) => {
     });
 });
 
+router.get("/animals-category/:name", function (req, res) {
+  
+    Animal.find({ category: req.params.name }).populate('userID').then((response) => {
+        res.status(200).json({
+            message: "post detail retrieved successfully!  ok---",
+            post_detail: response
+        });
+    });
+  });
+
 router.get("/animals-detail/:postID", function (req, res) {
   
     Animal.findOne({ _id: req.params.postID }).populate('userID').then((response) => {
