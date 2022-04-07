@@ -129,20 +129,20 @@ function Detail(props) {
       });
   }, []);
 
-  // const [commentData, setcommentData] = useState({});
+   const [commentData, setcommentData] = useState({});
   // const [updatcomment, setupdatcomment] = useState({});
-  // const [iscommentLoading, setiscommentLoading] = useState(false);
+   const [iscommentLoading, setiscommentLoading] = useState(false);
   // // const {titleName,postTime,description,images,userID}=detailData.post_detail;
   // // const {userImg}=userID
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:4000/api/comments/624183ae3c89efb61c18040a")
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setcommentData(response.data.post_detail);
-  //       setiscommentLoading(true);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/comments/624183ae3c89efb61c18040a")
+      .then((response) => {
+        console.log("commet data",response.data);
+        setcommentData(response.data);
+        setiscommentLoading(true);
+      });
+  }, []);
 
   return (
     <>
@@ -236,13 +236,13 @@ function Detail(props) {
                       onClick={handleClickOpen}
                     />
                   </div>
-                  {/* {iscommentLoading &&
+                  {iscommentLoading &&
                     commentData.map((item, id) => {
                       return <CommentItem {...item} key={id} />;
-                    })} */}
+                    })}
+                     {/* <CommentItem/>
                      <CommentItem/>
-                     <CommentItem/>
-                     <CommentItem/>
+                     <CommentItem/> */}
 
                 </div>
               </TabPanel>
