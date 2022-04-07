@@ -28,6 +28,20 @@ router.get("/comments/:postID", function (req, res) {
     });
   });
 
+  router.post('/add-comment', function (req, res) {
+    // Comment.init()
+	var newComment = new Comment();
+    console.log('>>>NEW');
+	var theFormData = req.body;
+	console.log('>>> ', theFormData);
+
+	Object.assign(newComment, theFormData);
+
+	newComment.save().then((response) => {
+		return res.json(response);
+	});
+});
+
 
 // =========================user model==========================
 let User = require('../models/ZIPuser');
