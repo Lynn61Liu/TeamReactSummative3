@@ -226,7 +226,7 @@ font-weight: 500;
   }
 
 .comment-form{
-  width: 300px;
+  width: 280px;
 }
 
 .comment-post{
@@ -246,6 +246,7 @@ font-weight: 500;
   align-items: center;
 }
 .post-wrap{
+  padding: 0 20px;
   display: flex;
   justify-content: flex-end;
   /* margin-right: auto; */

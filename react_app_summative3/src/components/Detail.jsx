@@ -28,6 +28,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 import CommentItem from "./CommentItem";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
@@ -107,10 +108,36 @@ function Detail(props) {
     // console.log("handleClose")
     setOpen(false);
   };
-
+const [author, setauthor]=useState(Cookies.get('userID'));
+const [commentValue, setcommentValue] =useState('')
+  let shortdate = new Date();
+  const handlecommentChange = (e) => {
+    setcommentValue(e.target.value);
+  } 
   const handlePost = (e) => {
-    e.preventDefault();
     console.log(e.target.newcomment.value);
+    e.preventDefault();
+    // setcommentValue(e.target.newcomment.value)
+    console.log('e.target.newcomment.value=',commentValue);
+    if( commentValue !== " "){
+      console.log('can save to db  ',);
+      let formdata = {
+        postID: "624183ae3c89efb61c18040a",
+        comment: e.target.newcomment.value,
+        userID: author,
+        createTime: shortdate,
+        updateTime: shortdate,
+      };
+      console.log("formdata=", formdata);
+      axios
+        .post("//localhost:4000/api/add-comment", formdata)
+        .then((response) => {
+           console.log("res=", response.data);
+           setcommentValue("")
+        });
+    }
+    handleClose()
+    
   };
 
   //getdata
@@ -267,6 +294,8 @@ function Detail(props) {
               multiline
               rows={8}
               name="newcomment"
+              value={commentValue}
+              onChange={handlecommentChange}
               // defaultValue="Write a comment..."
               // label="Write a comment"
             />

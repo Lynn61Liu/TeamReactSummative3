@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState ,useRef} from "react";
 import Avatar from "@mui/material/Avatar";
 import Cookies from 'js-cookie';
 
 function CommentItem(props) {
   const [author, setauthor]=useState(Cookies.get('userID'));
   const [isAuthor, setisAuthor]=useState(false);
-  const handeDeletCommet=()=>{
+  const commentRef = useRef()
+  const handeDeletCommet=(e)=>{
     console.log('Cookies uid=', author);
     console.log('props uid=', props.userID._id);
+   
     
   }
   return (
@@ -23,7 +25,7 @@ function CommentItem(props) {
           {/* <div className="comment-time">AUG 25 2022 @ 14:33</div> */}
           <div className="comment-time">{props.createTime}</div>
           <div className="comment-context">
-          {props.content}
+          {props.comment}
           </div>
         </div>
       </div>
