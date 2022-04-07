@@ -8,7 +8,8 @@ let express = require('express'),
 let Comment = require('../models/comment');
 
 router.get("/comments/:postID", function (req, res) {
-    Comment.find({ postID: req.params.postID }).populate('userID').then((response) => {
+    Comment.find({ postID: req.params.postID }).populate('userID').sort({createTime: -1})
+    .then((response) => {
       res.json(response);
     });
   });
@@ -31,7 +32,6 @@ router.get("/comments/:postID", function (req, res) {
   router.post('/add-comment', function (req, res) {
     // Comment.init()
 	var newComment = new Comment();
-    console.log('>>>NEW');
 	var theFormData = req.body;
 	console.log('>>> ', theFormData);
 

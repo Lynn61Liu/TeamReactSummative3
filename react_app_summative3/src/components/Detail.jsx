@@ -115,12 +115,8 @@ const [commentValue, setcommentValue] =useState('')
     setcommentValue(e.target.value);
   } 
   const handlePost = (e) => {
-    console.log(e.target.newcomment.value);
     e.preventDefault();
-    // setcommentValue(e.target.newcomment.value)
-    console.log('e.target.newcomment.value=',commentValue);
     if( commentValue !== " "){
-      console.log('can save to db  ',);
       let formdata = {
         postID: "624183ae3c89efb61c18040a",
         comment: e.target.newcomment.value,
@@ -128,11 +124,10 @@ const [commentValue, setcommentValue] =useState('')
         createTime: shortdate,
         updateTime: shortdate,
       };
-      console.log("formdata=", formdata);
       axios
         .post("//localhost:4000/api/add-comment", formdata)
         .then((response) => {
-           console.log("res=", response.data);
+           setupdatData(response.data._id)
            setcommentValue("")
         });
     }
@@ -142,10 +137,8 @@ const [commentValue, setcommentValue] =useState('')
 
   //getdata
   const [detailData, setDetailData] = useState({});
-  const [updatData, setupdatData] = useState({});
+ const [updatData, setupdatData] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  // const { titleName, postTime, description, images, userID } = detailData.post_detail;
-  // const { userImg } = userID;
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/animals-detail/624183ae3c89efb61c18040a")
@@ -156,20 +149,33 @@ const [commentValue, setcommentValue] =useState('')
       });
   }, []);
 
+
+
    const [commentData, setcommentData] = useState({});
-  // const [updatcomment, setupdatcomment] = useState({});
+   const [havecomment, sethavecomment] = useState(false);
    const [iscommentLoading, setiscommentLoading] = useState(false);
-  // // const {titleName,postTime,description,images,userID}=detailData.post_detail;
-  // // const {userImg}=userID
+   const [flagDele,setsflagDele]=useState(false);
+
+   const shortcomment = (newflag)=>{
+setsflagDele(newflag);
+   }
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/comments/624183ae3c89efb61c18040a")
       .then((response) => {
-        console.log("commet data",response.data);
+        // console.log("commet data=",response.data);
         setcommentData(response.data);
         setiscommentLoading(true);
       });
-  }, []);
+  }, [flagDele,updatData]);
+
+
+  const commentIsValid = () => {
+
+    const isValid = commentData && havecomment
+  
+    return isValid;
+  };
 
   return (
     <>
@@ -265,12 +271,9 @@ const [commentValue, setcommentValue] =useState('')
                   </div>
                   {iscommentLoading &&
                     commentData.map((item, id) => {
-                      return <CommentItem {...item} key={id} />;
+                      return <CommentItem {...item} key={id} shortcomment={shortcomment} flagDele={flagDele}/>;
                     })}
-                     {/* <CommentItem/>
-                     <CommentItem/>
-                     <CommentItem/> */}
-
+                  
                 </div>
               </TabPanel>
             </SwipeableViews>
@@ -301,7 +304,9 @@ const [commentValue, setcommentValue] =useState('')
             />
 
             <div className="post-wrap">
-              <input type="submit" value="Post" className="comment-post" />
+              <input type="submit" value="Post"  
+              // disabled={!commentIsValid()} 
+              className="comment-post" />
             </div>
           </form>
         </DialogContent>

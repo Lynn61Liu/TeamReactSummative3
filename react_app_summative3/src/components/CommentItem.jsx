@@ -1,32 +1,35 @@
-import React, { useState ,useRef} from "react";
+import React, { useState, useRef } from "react";
 import Avatar from "@mui/material/Avatar";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import axios from "axios";
 
 function CommentItem(props) {
-  const [author, setauthor]=useState(Cookies.get('userID'));
-  const [isAuthor, setisAuthor]=useState(false);
-  const commentRef = useRef()
-  const handeDeletCommet=(e)=>{
-    console.log('Cookies uid=', author);
-    console.log('props uid=', props.userID._id);
-   
+  const handeDeletCommet = (e) => {
     
-  }
+    axios
+      .delete(`http://localhost:4000/api/delete-comment-by-id/${props._id}`)
+      .then((response) => {
+         console.log(response.data);
+      });
+      props.shortcomment(!props.flagDele);
+
+  };
   return (
     <div>
       <div className="commentsDone">
         <Avatar alt="Mike" src={props.userID.userImg} />
         <div id="comment-box" className="postComment">
           <div className="comment-name">
-            <span>{props.userID.userName}</span> 
-            {Cookies.get('userID') === props.userID._id ? <button onClick={handeDeletCommet} >DELETE </button> :""}
-            
+            <span>{props.userID.userName}</span>
+            {Cookies.get("userID") === props.userID._id ? (
+              <button onClick={handeDeletCommet}>DELETE </button>
+            ) : (
+              ""
+            )}
           </div>
           {/* <div className="comment-time">AUG 25 2022 @ 14:33</div> */}
           <div className="comment-time">{props.createTime}</div>
-          <div className="comment-context">
-          {props.comment}
-          </div>
+          <div className="comment-context">{props.comment}</div>
         </div>
       </div>
     </div>
