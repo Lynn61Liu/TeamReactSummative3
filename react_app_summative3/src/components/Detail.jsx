@@ -20,6 +20,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CommentItem from "./CommentItem";
 import axios from "axios";
 import Cookies from "js-cookie";
+import moment from 'moment';
+import 'moment/locale/en-nz';
 
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
@@ -111,7 +113,7 @@ function Detail(props) {
   
   };
   const handlePost = (e) => {
-    let shortdate = new Date();
+
     e.preventDefault();
   //  console.log(updateCID.length);
 
@@ -120,7 +122,7 @@ function Detail(props) {
       
       let update = {
         comment: e.target.newcomment.value,
-        createTime: new Date(),
+        updateTime: new Date(),
       };
       axios
         .patch(`//localhost:4000/api/update-comment/${updateCID}`, update)
@@ -138,8 +140,8 @@ function Detail(props) {
         postID: "624183ae3c89efb61c18040a",
         comment: e.target.newcomment.value,
         userID: author,
-        createTime: shortdate,
-        updateTime: shortdate,
+        createTime: new Date(),
+        updateTime: new Date(),
       };
       axios
         .post("//localhost:4000/api/add-comment", formdata)

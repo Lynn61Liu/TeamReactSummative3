@@ -45,13 +45,14 @@ router.get("/comments/:postID", function (req, res) {
 router.patch('/update-comment/:id', function (req, res) {
     // Comment.init()
 	let newComment = req.body.comment;
-    let newTime = req.body.createTime;
+    let newTime = req.body.updateTime;
 
 	console.log('>>> ', req.body);
     console.log('newComment ', newComment);
+    console.log('req.body.updateTime ', req.body.updateTime);
     console.log('newTime ', newTime);
 
-	Comment.findByIdAndUpdate(req.params.id, {  comment: newComment , createTime: newTime }, { new: true })
+	Comment.findByIdAndUpdate(req.params.id, {  comment: newComment , updateTime: newTime }, { new: true })
     .then((response) => {res.json(response);})
     .catch((error) => {res.json({ success: false, error: error });});
 

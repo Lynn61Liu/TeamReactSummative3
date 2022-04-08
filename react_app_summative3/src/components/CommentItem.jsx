@@ -1,9 +1,18 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Cookies from "js-cookie";
 import axios from "axios";
+import moment from 'moment';
+import 'moment/locale/en-nz';
+
 
 function CommentItem(props) { 
+  moment.locale('en-nz')
+  const newCreateTime = moment(props.createTime).format('LLL');
+  const newUpdateTime =moment(props.updateTime).format('LLL');
+  // useEffect(() => {
+  //   console.log('item did mount');
+  // }, [])
   const handeDeletCommet = (e) => {
     
     axios
@@ -36,7 +45,12 @@ function CommentItem(props) {
             )}
           </div>
           {/* <div className="comment-time">AUG 25 2022 @ 14:33</div> */}
-          <div className="comment-time">{props.createTime}</div>
+          {
+            props.createTime === props.updateTime ? 
+            <div className="comment-time">{newCreateTime}</div>
+            :  <div className="comment-time"> edit@ {newUpdateTime}</div>
+          }
+          {/* <div className="comment-time">{props.createTime}</div> */}
           <div className="comment-context">{props.comment}</div>
         </div>
       </div>
