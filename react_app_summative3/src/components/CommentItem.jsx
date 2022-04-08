@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-function CommentItem(props) {
+function CommentItem(props) { 
   const handeDeletCommet = (e) => {
     
     axios
@@ -14,6 +14,11 @@ function CommentItem(props) {
       props.shortcomment(!props.flagDele);
 
   };
+
+  const handeUpdataCommet = ()=>{
+  console.log('form item cid=',props._id);
+    props.updatecomment(props._id);
+  }
   return (
     <div>
       <div className="commentsDone">
@@ -22,7 +27,10 @@ function CommentItem(props) {
           <div className="comment-name">
             <span>{props.userID.userName}</span>
             {Cookies.get("userID") === props.userID._id ? (
+              <div>
               <button onClick={handeDeletCommet}>DELETE </button>
+               <button onClick={handeUpdataCommet}>UPATE </button>
+              </div>
             ) : (
               ""
             )}

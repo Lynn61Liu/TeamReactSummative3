@@ -230,7 +230,7 @@ font-weight: 500;
 }
 
 .comment-post{
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 4px 4px 0 rgba(0,0,0,0.19);
   width: 80px;
   height: 33px;
   border-radius: 10px;
@@ -251,4 +251,11 @@ font-weight: 500;
   justify-content: flex-end;
   /* margin-right: auto; */
 
+}
+
+.comment-post:disabled,
+.comment-post[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }

@@ -42,6 +42,21 @@ router.get("/comments/:postID", function (req, res) {
 	});
 });
 
+router.patch('/update-comment/:id', function (req, res) {
+    // Comment.init()
+	let newComment = req.body.comment;
+    let newTime = req.body.createTime;
+
+	console.log('>>> ', req.body);
+    console.log('newComment ', newComment);
+    console.log('newTime ', newTime);
+
+	Comment.findByIdAndUpdate(req.params.id, {  comment: newComment , createTime: newTime }, { new: true })
+    .then((response) => {res.json(response);})
+    .catch((error) => {res.json({ success: false, error: error });});
+
+});
+
 
 // =========================user model==========================
 let User = require('../models/ZIPuser');

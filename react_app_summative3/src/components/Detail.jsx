@@ -1,34 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "../css/postPage.css";
 import Backbtn from "../components/Backbtn.jsx";
-import mike from "../img/mike.jpg";
-import bird from "../img/bird.jpg";
-
 import Avatar from "@mui/material/Avatar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-
 import InfoIcon from "@mui/icons-material/Info";
 import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
-
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import FormControl from "@mui/material/FormControl";
 import CommentItem from "./CommentItem";
 import axios from "axios";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
@@ -85,7 +76,7 @@ const CssTextField = styled(TextField)({
     },
   },
 });
-
+//=============================================================================================================
 function Detail(props) {
   // console.log(props);
   const theme = useTheme();
@@ -99,24 +90,50 @@ function Detail(props) {
     setValue(index);
   };
 
-  ////////DialogActions
+  ////////DialogActions  about new comment
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
-    // console.log("handleClose")
     setOpen(false);
+    setHaveComment(false);
+    setcommentValue("");
   };
-const [author, setauthor]=useState(Cookies.get('userID'));
-const [commentValue, setcommentValue] =useState('')
-  let shortdate = new Date();
+  const [author, setauthor] = useState(Cookies.get("userID"));
+  const [commentValue, setcommentValue] = useState("");
+  const [havecomment,setHaveComment]=useState(false)
+ 
   const handlecommentChange = (e) => {
     setcommentValue(e.target.value);
-  } 
+    if(e.target.value.length > 0){ setHaveComment(true)}
+    if(e.target.value.length === 0){ setHaveComment(false)}
+  
+  };
   const handlePost = (e) => {
+    let shortdate = new Date();
     e.preventDefault();
-    if( commentValue !== " "){
+  //  console.log(updateCID.length);
+
+    if (updateCID.length > 0) {
+      console.log("here is  update comment");
+      
+      let update = {
+        comment: e.target.newcomment.value,
+        createTime: new Date(),
+      };
+      axios
+        .patch(`//localhost:4000/api/update-comment/${updateCID}`, update)
+        .then((response) => {
+          console.log(response.data);
+          sethaveUpdate(!haveUpdate);
+         
+        });
+
+        setupdateCID('');
+    }
+    else{
+      // console.log("here is new comment");
       let formdata = {
         postID: "624183ae3c89efb61c18040a",
         comment: e.target.newcomment.value,
@@ -127,38 +144,37 @@ const [commentValue, setcommentValue] =useState('')
       axios
         .post("//localhost:4000/api/add-comment", formdata)
         .then((response) => {
-           setupdatData(response.data._id)
-           setcommentValue("")
+          setupdatData(response.data._id);
+          setcommentValue("");
+          // console.log('SAVE It');
         });
     }
-    handleClose()
-    
+    //end updat post
+
+    handleClose();
   };
 
   //getdata
   const [detailData, setDetailData] = useState({});
- const [updatData, setupdatData] = useState();
+  const [updatData, setupdatData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/animals-detail/624183ae3c89efb61c18040a")
       .then((response) => {
-        console.log(response.data);
         setDetailData(response.data.post_detail);
         setIsLoading(true);
       });
-  }, []);
+  }, [ ]);
 
-
-
-   const [commentData, setcommentData] = useState({});
-   const [havecomment, sethavecomment] = useState(false);
-   const [iscommentLoading, setiscommentLoading] = useState(false);
-   const [flagDele,setsflagDele]=useState(false);
-
-   const shortcomment = (newflag)=>{
-setsflagDele(newflag);
-   }
+  //GET COMMENT DATA
+  const [commentData, setcommentData] = useState({});
+  const [iscommentLoading, setiscommentLoading] = useState(false);
+  const [flagDele, setsflagDele] = useState(false);
+const [haveUpdate,sethaveUpdate]=useState(false);
+  const shortcomment = (newflag) => {
+    setsflagDele(newflag);
+  };
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/comments/624183ae3c89efb61c18040a")
@@ -167,14 +183,21 @@ setsflagDele(newflag);
         setcommentData(response.data);
         setiscommentLoading(true);
       });
-  }, [flagDele,updatData]);
+  }, [flagDele, updatData,haveUpdate]);
 
 
-  const commentIsValid = () => {
+  //GET COMMENT DATA END
 
-    const isValid = commentData && havecomment
-  
-    return isValid;
+  //UPDATE COMMENT
+  const [updateCID, setupdateCID] = useState("");
+  const updatecomment = (cid) => {
+
+    setupdateCID(cid);
+    handleClickOpen();
+     const updateItem = commentData.filter(e => e._id === cid);
+     setcommentValue(updateItem[0].comment);
+   
+     
   };
 
   return (
@@ -190,11 +213,14 @@ setsflagDele(newflag);
 
           <div className="postDetail">
             <div className="detailImg">
-              {/* <img src={detailData.post_detail.images} alt="" /> */}
               <img src={detailData.images} alt="" />
             </div>
             <div className="postMenu">
-              <span className="post-name">{detailData.titleName === undefined ? "title":detailData.titleName}</span>
+              <span className="post-name">
+                {detailData.titleName === undefined
+                  ? "title"
+                  : detailData.titleName}
+              </span>
               <span>{detailData.postTime}</span>
             </div>
           </div>
@@ -260,7 +286,7 @@ setsflagDele(newflag);
               >
                 <div className="TabPanelWrap">
                   <div className="comments">
-                    <Avatar alt="Mike" src={detailData.userID.userImg} />
+                    <Avatar alt="" src={detailData.userID.userImg} />
 
                     <input
                       type="text"
@@ -271,9 +297,16 @@ setsflagDele(newflag);
                   </div>
                   {iscommentLoading &&
                     commentData.map((item, id) => {
-                      return <CommentItem {...item} key={id} shortcomment={shortcomment} flagDele={flagDele}/>;
+                      return (
+                        <CommentItem
+                          {...item}
+                          key={id}
+                          shortcomment={shortcomment}
+                          updatecomment={updatecomment}
+                          flagDele={flagDele}
+                        />
+                      );
                     })}
-                  
                 </div>
               </TabPanel>
             </SwipeableViews>
@@ -283,7 +316,7 @@ setsflagDele(newflag);
 
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle className="comment-title">
-          <span>Add Comment</span>
+          <span> Comment</span>
           <div className="comment-cancel" onClick={handleClose}>
             {" "}
             x
@@ -304,9 +337,12 @@ setsflagDele(newflag);
             />
 
             <div className="post-wrap">
-              <input type="submit" value="Post"  
-              // disabled={!commentIsValid()} 
-              className="comment-post" />
+              <input
+                type="submit"
+                value="Post"
+                 disabled={!havecomment}
+                className="comment-post"
+              />
             </div>
           </form>
         </DialogContent>
