@@ -30,8 +30,8 @@ function Discover(props) {
           </button>
         </div>
         <div className="pastPosts">
-          <div className="discoveryGallery container">
-            <div>
+          <div className="discoveryGallery containerDiscover">
+            <div> 
               <Link to="/home/detail">
                 <div
                   className="discoverPost filterDiv all bird"

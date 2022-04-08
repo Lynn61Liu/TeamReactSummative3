@@ -27,9 +27,9 @@ useEffect(() => {
           <div className="profileImg">
             <img src={profileData.userImg} alt=" " />
           </div>
-          <div>
+          <div className='userDetails'>
             <h3>{profileData.userName}</h3>
-            <p> user Role:{profileData.userRole}</p>
+            <p>user Role:{profileData.userRole}</p>
           </div>
         </div>
 

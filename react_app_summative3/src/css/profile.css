@@ -17,6 +17,11 @@ body {
   margin-bottom: 20px;
 }
 
+.userDetails {
+  display: grid;
+  justify-items: start;
+}
+
 .profileImg img{
   height: 83px;
   width: 83px;
@@ -36,6 +41,7 @@ body {
 .profileDetails h3 {
   color: #1ca3a6;
   padding: 0px;
+  
   margin: 0px;
   font-size: 20px;
 }
