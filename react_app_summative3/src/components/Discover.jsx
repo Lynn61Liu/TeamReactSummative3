@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../css/discover.css';
 import Editbtn from '../components/Editbtn.jsx';
+
+
 function Discover(props) {
+
+ 
+  
   return (
     <>
       <div className="discoverDisplay">
@@ -10,6 +15,7 @@ function Discover(props) {
           <h3>Discover NZ Wildlife</h3>
         </div>
         <div className="searchButtons" >
+          
           <button>
             ALL
           </button>
@@ -261,6 +267,7 @@ function Discover(props) {
     </>
   );
 }
+
 
 export default Discover;
 
