@@ -104,22 +104,27 @@ function Detail(props) {
   };
   const [author, setauthor] = useState(Cookies.get("userID"));
   const [commentValue, setcommentValue] = useState("");
-  const [havecomment,setHaveComment]=useState(false)
+  const [havecomment,setHaveComment]=useState(false);
+  const validComment = () => {
+let isValid = false;
+// 1)havecomment  have
+// AND 2)havecomment != NULL
+
+
+    return isValid
+  }
  
   const handlecommentChange = (e) => {
     setcommentValue(e.target.value);
-    if(e.target.value.length > 0){ setHaveComment(true)}
-    if(e.target.value.length === 0){ setHaveComment(false)}
+if(e.target.value.replace(/\s/g, '') === ''){
   
+      setHaveComment(false)
+    }else{ setHaveComment(true);} 
+ 
   };
   const handlePost = (e) => {
-
     e.preventDefault();
-  //  console.log(updateCID.length);
-
     if (updateCID.length > 0) {
-      console.log("here is  update comment");
-      
       let update = {
         comment: e.target.newcomment.value,
         updateTime: new Date(),
@@ -128,10 +133,8 @@ function Detail(props) {
         .patch(`//localhost:4000/api/update-comment/${updateCID}`, update)
         .then((response) => {
           console.log(response.data);
-          sethaveUpdate(!haveUpdate);
-         
+          sethaveUpdate(!haveUpdate); 
         });
-
         setupdateCID('');
     }
     else{
@@ -193,13 +196,10 @@ const [haveUpdate,sethaveUpdate]=useState(false);
   //UPDATE COMMENT
   const [updateCID, setupdateCID] = useState("");
   const updatecomment = (cid) => {
-
     setupdateCID(cid);
     handleClickOpen();
      const updateItem = commentData.filter(e => e._id === cid);
-     setcommentValue(updateItem[0].comment);
-   
-     
+     setcommentValue(updateItem[0].comment);   
   };
 
   return (

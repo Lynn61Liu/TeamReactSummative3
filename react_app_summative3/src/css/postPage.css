@@ -179,6 +179,7 @@ font-weight: 500;
   margin: 6px auto;
 }
 .comment-context{
+  white-space: pre-wrap;
   font-size: 13px;
   color:#817e7e;
   margin: 6px auto;

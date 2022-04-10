@@ -28,6 +28,8 @@ function CommentItem(props) {
   console.log('form item cid=',props._id);
     props.updatecomment(props._id);
   }
+
+
   return (
     <div>
       <div className="commentsDone">
@@ -51,7 +53,9 @@ function CommentItem(props) {
             :  <div className="comment-time"> edit@ {newUpdateTime}</div>
           }
           {/* <div className="comment-time">{props.createTime}</div> */}
-          <div className="comment-context">{props.comment}</div>
+          <div className="comment-context" dangerouslySetInnerHTML={{__html: props.comment}}/>
+          {/* <div className="comment-context" >{props.comment} </div> */}
+        
         </div>
       </div>
     </div>
