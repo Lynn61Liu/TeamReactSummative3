@@ -288,7 +288,7 @@ const [haveUpdate,sethaveUpdate]=useState(false);
               >
                 <div className="TabPanelWrap">
                   <div className="comments">
-                    <Avatar alt="" src={detailData.userID.userImg} />
+                    <Avatar alt="" src={Cookies.get('userImg')} />
 
                     <input
                       type="text"
