@@ -8,7 +8,8 @@ let express = require('express'),
 let Comment = require('../models/comment');
 
 router.get("/comments/:postID", function (req, res) {
-    Comment.find({ postID: req.params.postID }).populate('userID').then((response) => {
+    Comment.find({ postID: req.params.postID }).populate('userID').sort({createTime: -1})
+    .then((response) => {
       res.json(response);
     });
   });
@@ -27,6 +28,35 @@ router.get("/comments/:postID", function (req, res) {
         });
     });
   });
+
+  router.post('/add-comment', function (req, res) {
+    // Comment.init()
+	var newComment = new Comment();
+	var theFormData = req.body;
+	console.log('>>> ', theFormData);
+
+	Object.assign(newComment, theFormData);
+
+	newComment.save().then((response) => {
+		return res.json(response);
+	});
+});
+
+router.patch('/update-comment/:id', function (req, res) {
+    // Comment.init()
+	let newComment = req.body.comment;
+    let newTime = req.body.updateTime;
+
+	console.log('>>> ', req.body);
+    console.log('newComment ', newComment);
+    console.log('req.body.updateTime ', req.body.updateTime);
+    console.log('newTime ', newTime);
+
+	Comment.findByIdAndUpdate(req.params.id, {  comment: newComment , updateTime: newTime }, { new: true })
+    .then((response) => {res.json(response);})
+    .catch((error) => {res.json({ success: false, error: error });});
+
+});
 
 
 // =========================user model==========================
@@ -51,6 +81,16 @@ router.get("/animals", (req, res, next) => {
         });
     });
 });
+
+router.get("/animals-category/:name", function (req, res) {
+  
+    Animal.find({ category: req.params.name }).populate('userID').then((response) => {
+        res.status(200).json({
+            message: "post detail retrieved successfully!  ok---",
+            post_detail: response
+        });
+    });
+  });
 
 router.get("/animals-detail/:postID", function (req, res) {
   

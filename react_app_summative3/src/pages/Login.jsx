@@ -71,6 +71,7 @@ function Login(props) {
           props.getUID(response.data.users[0]);
           Cookies.set('userID',response.data.users[0]._id , {expires: 1})
           Cookies.set('userRole', response.data.users[0].userRole, {expires: 1})
+          Cookies.set('userImg', response.data.users[0].userImg, {expires: 1})
           navigate('/home');
 		  
           }

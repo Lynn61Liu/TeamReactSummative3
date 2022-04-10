@@ -179,6 +179,7 @@ font-weight: 500;
   margin: 6px auto;
 }
 .comment-context{
+  white-space: pre-wrap;
   font-size: 13px;
   color:#817e7e;
   margin: 6px auto;
@@ -226,11 +227,11 @@ font-weight: 500;
   }
 
 .comment-form{
-  width: 300px;
+  width: 280px;
 }
 
 .comment-post{
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 4px 4px 0 rgba(0,0,0,0.19);
   width: 80px;
   height: 33px;
   border-radius: 10px;
@@ -246,8 +247,16 @@ font-weight: 500;
   align-items: center;
 }
 .post-wrap{
+  padding: 0 20px;
   display: flex;
   justify-content: flex-end;
   /* margin-right: auto; */
 
+}
+
+.comment-post:disabled,
+.comment-post[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
