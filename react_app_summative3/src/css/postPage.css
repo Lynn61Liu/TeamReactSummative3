@@ -66,6 +66,7 @@ h3, h2 {
 }
 
 .postMenu {
+  text-transform:uppercase;
   color:rgb(143, 141, 141);
   display: flex;
   justify-content: space-between;
@@ -74,12 +75,32 @@ h3, h2 {
   font-size: 13px;
   align-items: center;
 }
-.post-name{
-  font-size: 20px;
-  /* color:rgb(138, 135, 135); */
-  font-family: "PT Sans", sans-serif;
+
+.postMenuLeft{
+  font-weight: bold;
+ 
+  display: flex;
+  flex-direction: column;
 
 }
+.postMenuLeft div:first-child{
+  letter-spacing: 4.5px;
+font-size: 15px;
+color:#707070
+}
+.postMenuLeft div:last-child{
+  letter-spacing: 4.2px;
+font-size: 21px;
+color:#000000;
+  }
+
+  .postMenuRight{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: rgba(255, 0, 0, 0.372); */
+  }
 
 
 .btnDetail {
@@ -148,6 +169,7 @@ font-weight: 500;
   
 }
 
+
 .comment-name{
   color:#1ca3a6;
   display: flex;
@@ -160,6 +182,7 @@ font-weight: 500;
 }
 
 .comment-name button{
+  margin-right: 5px;
   font-size: 9px;
   background-color: white;
   color:#1ca3a6;

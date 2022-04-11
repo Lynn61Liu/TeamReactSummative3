@@ -22,6 +22,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import moment from 'moment';
 import 'moment/locale/en-nz';
+import { Link } from "react-router-dom";
 
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
@@ -105,15 +106,7 @@ function Detail(props) {
   const [author, setauthor] = useState(Cookies.get("userID"));
   const [commentValue, setcommentValue] = useState("");
   const [havecomment,setHaveComment]=useState(false);
-  const validComment = () => {
-let isValid = false;
-// 1)havecomment  have
-// AND 2)havecomment != NULL
 
-
-    return isValid
-  }
- 
   const handlecommentChange = (e) => {
     setcommentValue(e.target.value);
 if(e.target.value.replace(/\s/g, '') === ''){
@@ -202,14 +195,16 @@ const [haveUpdate,sethaveUpdate]=useState(false);
      setcommentValue(updateItem[0].comment);   
   };
 
+  moment.locale('en-nz')
+
   return (
     <>
       {isLoading && (
         <div className="postPage">
           <div className="title">
-            <a href=" ">
+          <Link to="/home">
               <Backbtn />
-            </a>
+              </Link>
             <h2>Animal {detailData.category}</h2>
           </div>
 
@@ -218,12 +213,17 @@ const [haveUpdate,sethaveUpdate]=useState(false);
               <img src={detailData.images} alt="" />
             </div>
             <div className="postMenu">
-              <span className="post-name">
-                {detailData.titleName === undefined
-                  ? "title"
-                  : detailData.titleName}
-              </span>
-              <span>{detailData.postTime}</span>
+
+              <div className="postMenuLeft">
+                <div> {detailData.category} </div>
+                <div> {detailData.titleName}</div>
+              </div>
+              <div className="postMenuRight">
+                <Avatar src={detailData.userID.userImg}/>
+                <div> {detailData.userID.userName}</div>
+               
+                <div>{ moment(detailData.postTime).format('LL')}</div>
+              </div>
             </div>
           </div>
 
@@ -272,10 +272,7 @@ const [haveUpdate,sethaveUpdate]=useState(false);
               <TabPanel value={value} index={0} dir={theme.direction}>
                 <div className="TabPanelWrap">
                   <div className="tab-title">Description</div>
-                  <p>
-                    {detailData.description}
-                    {/* description */}
-                  </p>
+                  <p  dangerouslySetInnerHTML={{__html:detailData.description}} />
                 </div>
               </TabPanel>
 
