@@ -7,6 +7,7 @@ import 'moment/locale/en-nz';
 
 
 function CommentItem(props) { 
+  console.log("CommentItem render");
   moment.locale('en-nz')
   const newCreateTime = moment(props.createTime).format('LLL');
   const newUpdateTime =moment(props.updateTime).format('LLL');
