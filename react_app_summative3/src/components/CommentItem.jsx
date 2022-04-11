@@ -41,7 +41,7 @@ function CommentItem(props) {
             {Cookies.get("userID") === props.userID._id ? (
               <div>
               <button onClick={handeDeletCommet}>DELETE </button>
-               <button onClick={handeUpdataCommet}>UPATE </button>
+               <button onClick={handeUpdataCommet}>UPDATE </button>
               </div>
             ) : (
               ""

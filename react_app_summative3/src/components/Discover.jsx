@@ -37,7 +37,7 @@ function Discover(props) {
         </div>
         <div className="pastPosts">
           <div className="discoveryGallery containerDiscover">
-            <div> 
+            <div className='displayNone'> 
               <Link to="/home/detail">
                 <div
                   className="discoverPost filterDiv all bird"
