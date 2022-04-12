@@ -7,7 +7,7 @@ import 'moment/locale/en-nz';
 
 
 function CommentItem(props) { 
-  console.log("CommentItem render");
+
   moment.locale('en-nz')
   const newCreateTime = moment(props.createTime).format('LLL');
   const newUpdateTime =moment(props.updateTime).format('LLL');
@@ -40,8 +40,8 @@ function CommentItem(props) {
             <span>{props.userID.userName}</span>
             {Cookies.get("userID") === props.userID._id ? (
               <div>
-              <button onClick={handeDeletCommet}>DELETE </button>
-               <button onClick={handeUpdataCommet}>UPDATE </button>
+              <button onClick={handeDeletCommet}>Del </button>
+               <button onClick={handeUpdataCommet}>Edit </button>
               </div>
             ) : (
               ""

@@ -12,6 +12,8 @@ import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
+import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -20,8 +22,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CommentItem from "./CommentItem";
 import axios from "axios";
 import Cookies from "js-cookie";
-import moment from 'moment';
-import 'moment/locale/en-nz';
+import moment from "moment";
+import "moment/locale/en-nz";
+import { Link } from "react-router-dom";
+import Alert from "@mui/material/Alert";
 
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
@@ -80,7 +84,7 @@ const CssTextField = styled(TextField)({
 });
 //=============================================================================================================
 function Detail(props) {
-  // console.log(props);
+  // console.log('detail props=',props);
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -104,23 +108,15 @@ function Detail(props) {
   };
   const [author, setauthor] = useState(Cookies.get("userID"));
   const [commentValue, setcommentValue] = useState("");
-  const [havecomment,setHaveComment]=useState(false);
-  const validComment = () => {
-let isValid = false;
-// 1)havecomment  have
-// AND 2)havecomment != NULL
+  const [havecomment, setHaveComment] = useState(false);
 
-
-    return isValid
-  }
- 
   const handlecommentChange = (e) => {
     setcommentValue(e.target.value);
-if(e.target.value.replace(/\s/g, '') === ''){
-  
-      setHaveComment(false)
-    }else{ setHaveComment(true);} 
- 
+    if (e.target.value.replace(/\s/g, "") === "") {
+      setHaveComment(false);
+    } else {
+      setHaveComment(true);
+    }
   };
   const handlePost = (e) => {
     e.preventDefault();
@@ -133,14 +129,13 @@ if(e.target.value.replace(/\s/g, '') === ''){
         .patch(`//localhost:4000/api/update-comment/${updateCID}`, update)
         .then((response) => {
           console.log(response.data);
-          sethaveUpdate(!haveUpdate); 
+          sethaveUpdate(!haveUpdate);
         });
-        setupdateCID('');
-    }
-    else{
+      setupdateCID("");
+    } else {
       // console.log("here is new comment");
       let formdata = {
-        postID: "624183ae3c89efb61c18040a",
+        postID: props.pID,
         comment: e.target.newcomment.value,
         userID: author,
         createTime: new Date(),
@@ -162,34 +157,44 @@ if(e.target.value.replace(/\s/g, '') === ''){
   //getdata
   const [detailData, setDetailData] = useState({});
   const [updatData, setupdatData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [detailisLoading, setdetailisLoading] = useState(false);
+  const [detailisError, setdetailisError] = useState(false);
+  const [detailError, setdetailError] = useState("");
+ const [havePostData, sethavePostData] = useState(false);
   useEffect(() => {
+    setdetailisLoading(false);
     axios
-      .get("http://localhost:4000/api/animals-detail/624183ae3c89efb61c18040a")
+      .get(`http://localhost:4000/api/animals-detail/${props.pID}`)
       .then((response) => {
         setDetailData(response.data.post_detail);
-        setIsLoading(true);
+        sethavePostData(true);
+      console.log(detailisLoading);
+      console.log(detailisError);
+       
+      })
+      .catch(function (error) {
+      //  setdetailisLoading(false);
+        setdetailisError(true);
+        setdetailError(error);
       });
-  }, [ ]);
+  }, []);
 
   //GET COMMENT DATA
   const [commentData, setcommentData] = useState({});
   const [iscommentLoading, setiscommentLoading] = useState(false);
   const [flagDele, setsflagDele] = useState(false);
-const [haveUpdate,sethaveUpdate]=useState(false);
+  const [haveUpdate, sethaveUpdate] = useState(false);
   const shortcomment = (newflag) => {
     setsflagDele(newflag);
   };
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/comments/624183ae3c89efb61c18040a")
+      .get(`http://localhost:4000/api/comments/${props.pID}`)
       .then((response) => {
-        // console.log("commet data=",response.data);
         setcommentData(response.data);
         setiscommentLoading(true);
       });
-  }, [flagDele, updatData,haveUpdate]);
-
+  }, [flagDele, updatData, haveUpdate]);
 
   //GET COMMENT DATA END
 
@@ -198,122 +203,148 @@ const [haveUpdate,sethaveUpdate]=useState(false);
   const updatecomment = (cid) => {
     setupdateCID(cid);
     handleClickOpen();
-     const updateItem = commentData.filter(e => e._id === cid);
-     setcommentValue(updateItem[0].comment);   
+    const updateItem = commentData.filter((e) => e._id === cid);
+    setcommentValue(updateItem[0].comment);
   };
+
+  moment.locale("en-nz");
 
   return (
     <>
-      {isLoading && (
-        <div className="postPage">
-          <div className="title">
-            <a href=" ">
-              <Backbtn />
-            </a>
-            <h2>Animal {detailData.category}</h2>
-          </div>
-
-          <div className="postDetail">
-            <div className="detailImg">
-              <img src={detailData.images} alt="" />
-            </div>
-            <div className="postMenu">
-              <span className="post-name">
-                {detailData.titleName === undefined
-                  ? "title"
-                  : detailData.titleName}
-              </span>
-              <span>{detailData.postTime}</span>
-            </div>
-          </div>
-
-          {/* ================tab bar========================= */}
-          <Box
-            sx={{
-              width: "100%",
-              margin: "20px 0px",
-              "& .MuiPaper-root": {
-                backgroundColor: "white",
-                boxShadow: "none",
-              },
-            }}
+      {detailisLoading ? (
+        <div>
+          <Stack
+            sx={{ color: "grey.500" }}
+            spacing={2}
+            direction="row"
+            className="pageLoading"
           >
-            <AppBar position="static">
-              <Tabs
-                className="detail-tab"
-                value={value}
-                onChange={handleChange}
-                variant="fullWidth"
-                aria-label="full width tabs example"
-                sx={{
-                  //MuiButtonBase-root-MuiTab-root
-                  "& .MuiTabs-indicator": {
-                    backgroundColor: "#1ca3a6",
-                  },
-                  "& .Mui-selected": {
-                    color: "rgb(28, 163, 166) !important ",
-                    //color: "#1ca3a6",
-                  },
-                }}
-              >
-                <Tab
-                  icon={<InfoIcon />}
-                  aria-label="Item One"
-                  {...a11yProps(0)}
-                />
-                <Tab icon={<ForumOutlinedIcon />} {...a11yProps(1)} />
-              </Tabs>
-            </AppBar>
-            <SwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={value}
-              onChangeIndex={handleChangeIndex}
-            >
-              <TabPanel value={value} index={0} dir={theme.direction}>
-                <div className="TabPanelWrap">
-                  <div className="tab-title">Description</div>
-                  <p>
-                    {detailData.description}
-                    {/* description */}
-                  </p>
+            <CircularProgress color="inherit" />
+          </Stack>
+          <h3>Page Loading...</h3>
+        </div>
+      ) : detailError ? (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          CONNECTION DB ERRORS !
+        </Alert>
+      ) : (
+        havePostData && (
+          <div className="postPage">
+            <div className="title">
+              <Link to="/home">
+                <Backbtn />
+              </Link>
+              {/* <h2>Animal {detailData.category}</h2> */}
+            </div>
+
+            <div className="postDetail">
+              <div className="detailImg">
+                <img src={detailData.images} alt="" />
+              </div>
+              <div className="postMenu">
+                <div className="postMenuLeft">
+                  <div> {detailData.category} </div>
+                  <div> {detailData.titleName}</div>
                 </div>
-              </TabPanel>
+                <div className="postMenuRight">
+                  <Avatar src={detailData.userID.userImg} />
+                   {/* <div> {detailData.userID.userName}</div> */}
 
-              {/* ===========================comments =========================== */}
-              <TabPanel
-                value={value}
-                index={1}
-                dir={theme.direction}
-                sx={{ margin: "20px 0px" }}
+                  <div>{moment(detailData.postTime).format("LL")}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* ================tab bar========================= */}
+            <Box
+              sx={{
+                width: "100%",
+                margin: "20px 0px",
+                "& .MuiPaper-root": {
+                  backgroundColor: "white",
+                  boxShadow: "none",
+                },
+              }}
+            >
+              <AppBar position="static">
+                <Tabs
+                  className="detail-tab"
+                  value={value}
+                  onChange={handleChange}
+                  variant="fullWidth"
+                  aria-label="full width tabs example"
+                  sx={{
+                    //MuiButtonBase-root-MuiTab-root
+                    "& .MuiTabs-indicator": {
+                      backgroundColor: "#1ca3a6",
+                    },
+                    "& .Mui-selected": {
+                      color: "rgb(28, 163, 166) !important ",
+                      //color: "#1ca3a6",
+                    },
+                  }}
+                >
+                  <Tab
+                    icon={<InfoIcon />}
+                    aria-label="Item One"
+                    {...a11yProps(0)}
+                  />
+                  <Tab icon={<ForumOutlinedIcon />} {...a11yProps(1)} />
+                </Tabs>
+              </AppBar>
+              <SwipeableViews
+                axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+                index={value}
+                onChangeIndex={handleChangeIndex}
               >
-                <div className="TabPanelWrap">
-                  <div className="comments">
-                    <Avatar alt="" src={Cookies.get('userImg')} />
-
-                    <input
-                      type="text"
-                      placeholder="Write a comment..."
-                      className="postComment"
-                      onClick={handleClickOpen}
+                <TabPanel value={value} index={0} dir={theme.direction}>
+                  <div className="TabPanelWrap">
+                    <div className="tab-title">Description</div>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: detailData.description,
+                      }}
                     />
                   </div>
-                  {iscommentLoading &&
-                    commentData.map((item, id) => {
-                      return (
-                        <CommentItem
-                          {...item}
-                          key={id}
-                          shortcomment={shortcomment}
-                          updatecomment={updatecomment}
-                          flagDele={flagDele}
-                        />
-                      );
-                    })}
-                </div>
-              </TabPanel>
-            </SwipeableViews>
-          </Box>
-        </div>
+                </TabPanel>
+
+                {/* ===========================comments =========================== */}
+                <TabPanel
+                  value={value}
+                  index={1}
+                  dir={theme.direction}
+                  sx={{ margin: "20px 0px" }}
+                >
+                  <div className="TabPanelWrap">
+                    <div className="comments">
+                      <Avatar alt="" src={Cookies.get("userImg")} />
+
+                      <input
+                        type="text"
+                        placeholder="Write a comment..."
+                        className="postComment"
+                        onClick={handleClickOpen}
+                      />
+                    </div>
+                    {
+                    iscommentLoading &&
+                      commentData.map((item, id) => {
+                        return (
+                          <CommentItem
+                            {...item}
+                            key={id}
+                            shortcomment={shortcomment}
+                            updatecomment={updatecomment}
+                            flagDele={flagDele}
+                          />
+                        );
+                      })}
+                  </div>
+                </TabPanel>
+              </SwipeableViews>
+            </Box>
+          </div>
+         )
       )}
 
       <Dialog open={open} onClose={handleClose}>
@@ -342,7 +373,7 @@ const [haveUpdate,sethaveUpdate]=useState(false);
               <input
                 type="submit"
                 value="Post"
-                 disabled={!havecomment}
+                disabled={!havecomment}
                 className="comment-post"
               />
             </div>

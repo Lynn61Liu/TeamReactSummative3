@@ -57,8 +57,8 @@ function Discover(props) {
                     </div>
                     <div>
                       <a href="">
-                        {' '}
-                        <Editbtn />{' '}
+                       
+                        <Editbtn />
                       </a>
                     </div>
                   </div>
