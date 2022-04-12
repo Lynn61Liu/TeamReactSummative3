@@ -14,7 +14,7 @@ const initialFormValues = {
   password: "",
 };
 function Login(props) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
   const initialValues = { email: "", password: "" };

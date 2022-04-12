@@ -33,7 +33,7 @@ router.get("/comments/:postID", function (req, res) {
     // Comment.init()
 	var newComment = new Comment();
 	var theFormData = req.body;
-	console.log('>>> ', theFormData);
+	// console.log('>>> ', theFormData);
 
 	Object.assign(newComment, theFormData);
 
@@ -47,10 +47,10 @@ router.patch('/update-comment/:id', function (req, res) {
 	let newComment = req.body.comment;
     let newTime = req.body.updateTime;
 
-	console.log('>>> ', req.body);
-    console.log('newComment ', newComment);
-    console.log('req.body.updateTime ', req.body.updateTime);
-    console.log('newTime ', newTime);
+	// console.log('>>> ', req.body);
+    // console.log('newComment ', newComment);
+    // console.log('req.body.updateTime ', req.body.updateTime);
+    // console.log('newTime ', newTime);
 
 	Comment.findByIdAndUpdate(req.params.id, {  comment: newComment , updateTime: newTime }, { new: true })
     .then((response) => {res.json(response);})
