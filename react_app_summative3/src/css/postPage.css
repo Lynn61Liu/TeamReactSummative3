@@ -2,7 +2,11 @@
   margin: 0;
   padding: 0;
 } */
-
+.pageLoading{
+  margin-top: 200px;
+  display: flex;
+  justify-content: center
+}
 h3, h2 {
   color: #1ca3a6;
 }

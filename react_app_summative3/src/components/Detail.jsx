@@ -12,6 +12,8 @@ import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
+import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -24,9 +26,6 @@ import moment from "moment";
 import "moment/locale/en-nz";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
-import IconButton from "@mui/material/IconButton";
-import Collapse from "@mui/material/Collapse";
-import CloseIcon from "@mui/icons-material/Close";
 
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
@@ -159,23 +158,25 @@ function Detail(props) {
   const [detailData, setDetailData] = useState({});
   const [updatData, setupdatData] = useState();
   const [detailisLoading, setdetailisLoading] = useState(false);
-  const [detailisError, setdetailisError] = useState("");
+  const [detailisError, setdetailisError] = useState(false);
   const [detailError, setdetailError] = useState("");
-  const [alertOpen,setalertOpen] = useState(false)
+ const [havePostData, sethavePostData] = useState(false);
   useEffect(() => {
-    setdetailisError(false);
-    setdetailisLoading(true);
+    setdetailisLoading(false);
     axios
       .get("http://localhost:4000/api/animals-detail/624183ae3c89efb61c18040a")
       .then((response) => {
         setDetailData(response.data.post_detail);
-        setdetailisLoading(false);
-      }).catch(function (error) {
+        sethavePostData(true);
+      console.log(detailisLoading);
+      console.log(detailisError);
+       
+      })
+      .catch(function (error) {
+      //  setdetailisLoading(false);
+        setdetailisError(true);
         setdetailError(error);
-        setalertOpen(true);
       });
-  
-
   }, []);
 
   //GET COMMENT DATA
@@ -190,7 +191,6 @@ function Detail(props) {
     axios
       .get("http://localhost:4000/api/comments/624183ae3c89efb61c18040a")
       .then((response) => {
-        // console.log("commet data=",response.data);
         setcommentData(response.data);
         setiscommentLoading(true);
       });
@@ -211,140 +211,140 @@ function Detail(props) {
 
   return (
     <>
-      {
-      detailisLoading ? 'Page is loading . . .' :
-     detailisError ? ( <Box sx={{ width: "100%" }}>
-     <Collapse in={alertOpen}>
-       <Alert
-         severity="error"
-         action={
-           <IconButton aria-label="close"
-             onClick={() => {
-               setalertOpen(false);
-             }}
-           > 
-             <CloseIcon fontSize="inherit" />
-           </IconButton>
-         }
-         sx={{ mb: 2 }}
-       >
-        {detailError}！— check it out!
-       </Alert>
-     </Collapse>
-   </Box>) 
-     : detailData &&(
-        <div className="postPage">
-          <div className="title">
-            <Link to="/home">
-              <Backbtn />
-            </Link>
-            {/* <h2>Animal {detailData.category}</h2> */}
-          </div>
-
-          <div className="postDetail">
-            <div className="detailImg">
-              <img src={detailData.images} alt="" />
-            </div>
-            <div className="postMenu">
-              <div className="postMenuLeft">
-                <div> {detailData.category} </div>
-                <div> {detailData.titleName}</div>
-              </div>
-              <div className="postMenuRight">
-                <Avatar src={detailData.userID.userImg} />
-                <div> {detailData.userID.userName}</div>
-
-                <div>{moment(detailData.postTime).format("LL")}</div>
-              </div>
-            </div>
-          </div>
-
-          {/* ================tab bar========================= */}
-          <Box
-            sx={{
-              width: "100%",
-              margin: "20px 0px",
-              "& .MuiPaper-root": {
-                backgroundColor: "white",
-                boxShadow: "none",
-              },
-            }}
+      {detailisLoading ? (
+        <div>
+          <Stack
+            sx={{ color: "grey.500" }}
+            spacing={2}
+            direction="row"
+            className="pageLoading"
           >
-            <AppBar position="static">
-              <Tabs
-                className="detail-tab"
-                value={value}
-                onChange={handleChange}
-                variant="fullWidth"
-                aria-label="full width tabs example"
-                sx={{
-                  //MuiButtonBase-root-MuiTab-root
-                  "& .MuiTabs-indicator": {
-                    backgroundColor: "#1ca3a6",
-                  },
-                  "& .Mui-selected": {
-                    color: "rgb(28, 163, 166) !important ",
-                    //color: "#1ca3a6",
-                  },
-                }}
-              >
-                <Tab
-                  icon={<InfoIcon />}
-                  aria-label="Item One"
-                  {...a11yProps(0)}
-                />
-                <Tab icon={<ForumOutlinedIcon />} {...a11yProps(1)} />
-              </Tabs>
-            </AppBar>
-            <SwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={value}
-              onChangeIndex={handleChangeIndex}
-            >
-              <TabPanel value={value} index={0} dir={theme.direction}>
-                <div className="TabPanelWrap">
-                  <div className="tab-title">Description</div>
-                  <p
-                    dangerouslySetInnerHTML={{ __html: detailData.description }}
-                  />
+            <CircularProgress color="inherit" />
+          </Stack>
+          <h3>Page Loading...</h3>
+        </div>
+      ) : detailError ? (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          CONNECTION DB ERRORS !
+        </Alert>
+      ) : (
+        havePostData && (
+          <div className="postPage">
+            <div className="title">
+              <Link to="/home">
+                <Backbtn />
+              </Link>
+              {/* <h2>Animal {detailData.category}</h2> */}
+            </div>
+
+            <div className="postDetail">
+              <div className="detailImg">
+                <img src={detailData.images} alt="" />
+              </div>
+              <div className="postMenu">
+                <div className="postMenuLeft">
+                  <div> {detailData.category} </div>
+                  <div> {detailData.titleName}</div>
                 </div>
-              </TabPanel>
+                <div className="postMenuRight">
+                  <Avatar src={detailData.userID.userImg} />
+                  <div> {detailData.userID.userName}</div>
 
-              {/* ===========================comments =========================== */}
-              <TabPanel
-                value={value}
-                index={1}
-                dir={theme.direction}
-                sx={{ margin: "20px 0px" }}
+                  <div>{moment(detailData.postTime).format("LL")}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* ================tab bar========================= */}
+            <Box
+              sx={{
+                width: "100%",
+                margin: "20px 0px",
+                "& .MuiPaper-root": {
+                  backgroundColor: "white",
+                  boxShadow: "none",
+                },
+              }}
+            >
+              <AppBar position="static">
+                <Tabs
+                  className="detail-tab"
+                  value={value}
+                  onChange={handleChange}
+                  variant="fullWidth"
+                  aria-label="full width tabs example"
+                  sx={{
+                    //MuiButtonBase-root-MuiTab-root
+                    "& .MuiTabs-indicator": {
+                      backgroundColor: "#1ca3a6",
+                    },
+                    "& .Mui-selected": {
+                      color: "rgb(28, 163, 166) !important ",
+                      //color: "#1ca3a6",
+                    },
+                  }}
+                >
+                  <Tab
+                    icon={<InfoIcon />}
+                    aria-label="Item One"
+                    {...a11yProps(0)}
+                  />
+                  <Tab icon={<ForumOutlinedIcon />} {...a11yProps(1)} />
+                </Tabs>
+              </AppBar>
+              <SwipeableViews
+                axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+                index={value}
+                onChangeIndex={handleChangeIndex}
               >
-                <div className="TabPanelWrap">
-                  <div className="comments">
-                    <Avatar alt="" src={Cookies.get("userImg")} />
-
-                    <input
-                      type="text"
-                      placeholder="Write a comment..."
-                      className="postComment"
-                      onClick={handleClickOpen}
+                <TabPanel value={value} index={0} dir={theme.direction}>
+                  <div className="TabPanelWrap">
+                    <div className="tab-title">Description</div>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: detailData.description,
+                      }}
                     />
                   </div>
-                  {iscommentLoading &&
-                    commentData.map((item, id) => {
-                      return (
-                        <CommentItem
-                          {...item}
-                          key={id}
-                          shortcomment={shortcomment}
-                          updatecomment={updatecomment}
-                          flagDele={flagDele}
-                        />
-                      );
-                    })}
-                </div>
-              </TabPanel>
-            </SwipeableViews>
-          </Box>
-        </div>
+                </TabPanel>
+
+                {/* ===========================comments =========================== */}
+                <TabPanel
+                  value={value}
+                  index={1}
+                  dir={theme.direction}
+                  sx={{ margin: "20px 0px" }}
+                >
+                  <div className="TabPanelWrap">
+                    <div className="comments">
+                      <Avatar alt="" src={Cookies.get("userImg")} />
+
+                      <input
+                        type="text"
+                        placeholder="Write a comment..."
+                        className="postComment"
+                        onClick={handleClickOpen}
+                      />
+                    </div>
+                    {
+                    iscommentLoading &&
+                      commentData.map((item, id) => {
+                        return (
+                          <CommentItem
+                            {...item}
+                            key={id}
+                            shortcomment={shortcomment}
+                            updatecomment={updatecomment}
+                            flagDele={flagDele}
+                          />
+                        );
+                      })}
+                  </div>
+                </TabPanel>
+              </SwipeableViews>
+            </Box>
+          </div>
+         )
       )}
 
       <Dialog open={open} onClose={handleClose}>
