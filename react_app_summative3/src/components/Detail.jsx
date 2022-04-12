@@ -20,9 +20,13 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CommentItem from "./CommentItem";
 import axios from "axios";
 import Cookies from "js-cookie";
-import moment from 'moment';
-import 'moment/locale/en-nz';
+import moment from "moment";
+import "moment/locale/en-nz";
 import { Link } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
 
 //  the tabbar SwipeableViews start
 function TabPanel(props) {
@@ -105,15 +109,15 @@ function Detail(props) {
   };
   const [author, setauthor] = useState(Cookies.get("userID"));
   const [commentValue, setcommentValue] = useState("");
-  const [havecomment,setHaveComment]=useState(false);
+  const [havecomment, setHaveComment] = useState(false);
 
   const handlecommentChange = (e) => {
     setcommentValue(e.target.value);
-if(e.target.value.replace(/\s/g, '') === ''){
-  
-      setHaveComment(false)
-    }else{ setHaveComment(true);} 
- 
+    if (e.target.value.replace(/\s/g, "") === "") {
+      setHaveComment(false);
+    } else {
+      setHaveComment(true);
+    }
   };
   const handlePost = (e) => {
     e.preventDefault();
@@ -126,11 +130,10 @@ if(e.target.value.replace(/\s/g, '') === ''){
         .patch(`//localhost:4000/api/update-comment/${updateCID}`, update)
         .then((response) => {
           console.log(response.data);
-          sethaveUpdate(!haveUpdate); 
+          sethaveUpdate(!haveUpdate);
         });
-        setupdateCID('');
-    }
-    else{
+      setupdateCID("");
+    } else {
       // console.log("here is new comment");
       let formdata = {
         postID: "624183ae3c89efb61c18040a",
@@ -155,21 +158,31 @@ if(e.target.value.replace(/\s/g, '') === ''){
   //getdata
   const [detailData, setDetailData] = useState({});
   const [updatData, setupdatData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [detailisLoading, setdetailisLoading] = useState(false);
+  const [detailisError, setdetailisError] = useState("");
+  const [detailError, setdetailError] = useState("");
+  const [alertOpen,setalertOpen] = useState(false)
   useEffect(() => {
+    setdetailisError(false);
+    setdetailisLoading(true);
     axios
       .get("http://localhost:4000/api/animals-detail/624183ae3c89efb61c18040a")
       .then((response) => {
         setDetailData(response.data.post_detail);
-        setIsLoading(true);
+        setdetailisLoading(false);
+      }).catch(function (error) {
+        setdetailError(error);
+        setalertOpen(true);
       });
-  }, [ ]);
+  
+
+  }, []);
 
   //GET COMMENT DATA
   const [commentData, setcommentData] = useState({});
   const [iscommentLoading, setiscommentLoading] = useState(false);
   const [flagDele, setsflagDele] = useState(false);
-const [haveUpdate,sethaveUpdate]=useState(false);
+  const [haveUpdate, sethaveUpdate] = useState(false);
   const shortcomment = (newflag) => {
     setsflagDele(newflag);
   };
@@ -181,8 +194,7 @@ const [haveUpdate,sethaveUpdate]=useState(false);
         setcommentData(response.data);
         setiscommentLoading(true);
       });
-  }, [flagDele, updatData,haveUpdate]);
-
+  }, [flagDele, updatData, haveUpdate]);
 
   //GET COMMENT DATA END
 
@@ -191,21 +203,42 @@ const [haveUpdate,sethaveUpdate]=useState(false);
   const updatecomment = (cid) => {
     setupdateCID(cid);
     handleClickOpen();
-     const updateItem = commentData.filter(e => e._id === cid);
-     setcommentValue(updateItem[0].comment);   
+    const updateItem = commentData.filter((e) => e._id === cid);
+    setcommentValue(updateItem[0].comment);
   };
 
-  moment.locale('en-nz')
+  moment.locale("en-nz");
 
   return (
     <>
-      {isLoading && (
+      {
+      detailisLoading ? 'Page is loading . . .' :
+     detailisError ? ( <Box sx={{ width: "100%" }}>
+     <Collapse in={alertOpen}>
+       <Alert
+         severity="error"
+         action={
+           <IconButton aria-label="close"
+             onClick={() => {
+               setalertOpen(false);
+             }}
+           > 
+             <CloseIcon fontSize="inherit" />
+           </IconButton>
+         }
+         sx={{ mb: 2 }}
+       >
+        {detailError}！— check it out!
+       </Alert>
+     </Collapse>
+   </Box>) 
+     : detailData &&(
         <div className="postPage">
           <div className="title">
-          <Link to="/home">
+            <Link to="/home">
               <Backbtn />
-              </Link>
-            <h2>Animal {detailData.category}</h2>
+            </Link>
+            {/* <h2>Animal {detailData.category}</h2> */}
           </div>
 
           <div className="postDetail">
@@ -213,16 +246,15 @@ const [haveUpdate,sethaveUpdate]=useState(false);
               <img src={detailData.images} alt="" />
             </div>
             <div className="postMenu">
-
               <div className="postMenuLeft">
                 <div> {detailData.category} </div>
                 <div> {detailData.titleName}</div>
               </div>
               <div className="postMenuRight">
-                <Avatar src={detailData.userID.userImg}/>
+                <Avatar src={detailData.userID.userImg} />
                 <div> {detailData.userID.userName}</div>
-               
-                <div>{ moment(detailData.postTime).format('LL')}</div>
+
+                <div>{moment(detailData.postTime).format("LL")}</div>
               </div>
             </div>
           </div>
@@ -272,7 +304,9 @@ const [haveUpdate,sethaveUpdate]=useState(false);
               <TabPanel value={value} index={0} dir={theme.direction}>
                 <div className="TabPanelWrap">
                   <div className="tab-title">Description</div>
-                  <p  dangerouslySetInnerHTML={{__html:detailData.description}} />
+                  <p
+                    dangerouslySetInnerHTML={{ __html: detailData.description }}
+                  />
                 </div>
               </TabPanel>
 
@@ -285,7 +319,7 @@ const [haveUpdate,sethaveUpdate]=useState(false);
               >
                 <div className="TabPanelWrap">
                   <div className="comments">
-                    <Avatar alt="" src={Cookies.get('userImg')} />
+                    <Avatar alt="" src={Cookies.get("userImg")} />
 
                     <input
                       type="text"
@@ -339,7 +373,7 @@ const [haveUpdate,sethaveUpdate]=useState(false);
               <input
                 type="submit"
                 value="Post"
-                 disabled={!havecomment}
+                disabled={!havecomment}
                 className="comment-post"
               />
             </div>

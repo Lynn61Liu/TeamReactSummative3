@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function useGetData(url) {
+function UseGetData(url) {
   const [data, setData] = useState([]);
   // const [url, setUrl] = useState("http://localhost:4000/api/commnet");
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,7 @@ function useGetData(url) {
         const result = await axios(url);
         setData(result.data);
         // console.log(result.data.testCommentAuthor);
-        console.log('useGetData = ',result.data);
+        console.log('from useGetData = ',result.data);
         // console.log('useGetData =json2 ',result.data);
 
       } catch (error) {
@@ -33,4 +33,4 @@ function useGetData(url) {
   return { data, isLoading, isError,error };
 }
 
-export default useGetData;
+export default UseGetData;

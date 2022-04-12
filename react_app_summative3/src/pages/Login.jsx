@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
-// import { Link } from "react-router-dom";
 import "../css/login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -13,8 +12,6 @@ import CloseIcon from "@mui/icons-material/Close";
 const initialFormValues = {
   email: "",
   password: "",
-  // formSubmitted: false,
-  // success: false,
 };
 function Login(props) {
   const [open, setOpen] = React.useState(true);
