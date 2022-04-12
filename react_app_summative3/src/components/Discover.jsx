@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../css/discover.css';
 import Editbtn from '../components/Editbtn.jsx';
-
+import img from '../img/bird.jpg';
+import picturesrc from '../img/bird.jpg';
 
 function Discover(props) {
 
@@ -42,12 +43,12 @@ function Discover(props) {
                 <div
                   className="discoverPost filterDiv all bird"
                   onClick={() => {
-                    props.getPostID(
-                      'onclick post from profile page & postid42394283',
-                    );
+                    props.getPostID('624183ae3c89efb61c18040a');
                   }}
                 >
-                  <div className="discoverImg"></div>
+                  <div className="discoverImg">
+                    <img src={picturesrc} alt="" />
+                  </div>
                   <div className="postText">
                     <div>
                       <p>
@@ -70,12 +71,13 @@ function Discover(props) {
                 <div
                   className="discoverPost"
                   onClick={() => {
-                    props.getPostID(
-                      'onclick post from profile page & postid42394283',
-                    );
+                    console.log("postID to home=624183ae3c89efb61c18040f");
+                    props.getPostID('624183ae3c89efb61c18040f');
                   }}
                 >
-                  <div className="discoverImg"></div>
+                  <div className="discoverImg">
+                    <img src={picturesrc} alt="" />
+                  </div>
                   <div className="postText">
                     <div>
                       <p>

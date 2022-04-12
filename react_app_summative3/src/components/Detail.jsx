@@ -162,6 +162,7 @@ function Detail(props) {
   const [detailError, setdetailError] = useState("");
  const [havePostData, sethavePostData] = useState(false);
   useEffect(() => {
+    console.log("detai= use effect start");
     setdetailisLoading(false);
     axios
       .get(`http://localhost:4000/api/animals-detail/${props.pID}`)
@@ -193,6 +194,7 @@ function Detail(props) {
       .then((response) => {
         setcommentData(response.data);
         setiscommentLoading(true);
+
       });
   }, [flagDele, updatData, haveUpdate]);
 

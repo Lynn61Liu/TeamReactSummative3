@@ -25,7 +25,7 @@ function PostCardItme(props) {
       .then((response) => {
          console.log(response.data);
       });
-      console.log('get delFlag:',props.delFlag);
+    //   console.log('get delFlag:',props.delFlag);
       props.profileHandleDel(!props.delFlag);
 
   };
