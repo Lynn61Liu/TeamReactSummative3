@@ -84,7 +84,7 @@ const CssTextField = styled(TextField)({
 });
 //=============================================================================================================
 function Detail(props) {
-  // console.log(props);
+  // console.log('detail props=',props);
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -135,7 +135,7 @@ function Detail(props) {
     } else {
       // console.log("here is new comment");
       let formdata = {
-        postID: "624183ae3c89efb61c18040a",
+        postID: props.pID,
         comment: e.target.newcomment.value,
         userID: author,
         createTime: new Date(),
@@ -164,7 +164,7 @@ function Detail(props) {
   useEffect(() => {
     setdetailisLoading(false);
     axios
-      .get("http://localhost:4000/api/animals-detail/624183ae3c89efb61c18040a")
+      .get(`http://localhost:4000/api/animals-detail/${props.pID}`)
       .then((response) => {
         setDetailData(response.data.post_detail);
         sethavePostData(true);
@@ -189,7 +189,7 @@ function Detail(props) {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/comments/624183ae3c89efb61c18040a")
+      .get(`http://localhost:4000/api/comments/${props.pID}`)
       .then((response) => {
         setcommentData(response.data);
         setiscommentLoading(true);
@@ -248,7 +248,7 @@ function Detail(props) {
                 </div>
                 <div className="postMenuRight">
                   <Avatar src={detailData.userID.userImg} />
-                  <div> {detailData.userID.userName}</div>
+                   {/* <div> {detailData.userID.userName}</div> */}
 
                   <div>{moment(detailData.postTime).format("LL")}</div>
                 </div>

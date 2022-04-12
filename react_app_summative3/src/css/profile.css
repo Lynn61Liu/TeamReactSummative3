@@ -4,6 +4,7 @@ body {
 }
 
 .profileDisplay {
+  color:rgb(143, 141, 141);
   padding: 0px 20px;
   margin: auto;
   background-color: white;
@@ -11,6 +12,7 @@ body {
 }
 
 .profileDetails {
+  margin-top: 85px;
   display: flex;
   gap: 20px;
   align-items: center;
@@ -18,9 +20,11 @@ body {
 }
 
 .userDetails {
+   text-transform:capitalize;
   display: grid;
   justify-items: start;
 }
+/* .userDetails div{font-weight: bold;} */
 
 .profileImg img{
   height: 83px;

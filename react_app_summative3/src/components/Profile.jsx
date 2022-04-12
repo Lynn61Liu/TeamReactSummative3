@@ -1,25 +1,31 @@
-import React,{useEffect,useState} from 'react';
-import axios from 'axios';
-import '../css/profile.css';
-import Editbtn from '../components/Editbtn.jsx';
-import Cookies from 'js-cookie';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../css/profile.css";
+import Editbtn from "../components/Editbtn.jsx";
+import Cookies from "js-cookie";
+import PostCardItme from './PostCardItme'
 
 function Profile(props) {
- 
-  const [profileData,setprofileData]=useState({});
-  // const [myPost,setmyPost]=useState([]);
+  const [profileData, setprofileData] = useState({});
+  const [myPost,setmyPost]=useState([]);
+   const [delFlag, setdelFlag] = useState(false);
+   const profileHandleDel =(delFlag)=>{
+// console.log('return delFlag:',delFlag);
+    setdelFlag(delFlag);
+   }
+const [isLoading,setisLoading]=useState(false);
+  useEffect(() => {
+    setisLoading(true);
+    axios
+      .get(`http://localhost:4000/api/profile/${Cookies.get("userID")}`)
+      .then((response) => {
+         console.log(response.data.profile);
+        setprofileData(response.data.profile[0].userID);
+        setmyPost(response.data.profile);
+      });
 
-useEffect(() => {
-  axios.get(`http://localhost:4000/api/profile/${Cookies.get('userID')}` )
-  .then((response) => {
-     console.log(response.data.profile);
-     setprofileData(response.data.profile[0].userID);
-    //  setmyPost(response.data.profile);
-  });
-}, [])
+  }, [delFlag]);
 
- 
   return (
     <>
       <div className="profileDisplay">
@@ -27,111 +33,37 @@ useEffect(() => {
           <div className="profileImg">
             <img src={profileData.userImg} alt=" " />
           </div>
-          <div className='userDetails'>
+          <div className="userDetails">
             <h3>{profileData.userName}</h3>
-            <p>user Role:{profileData.userRole}</p>
+            <div>user Role: {profileData.userRole}</div>
           </div>
         </div>
-
         <hr />
-
         <div className="profileDescription">
           <h3>Description</h3>
-          <p>
-            {profileData.userDescription}
-          </p>
-         
+          <p>{profileData.userDescription}</p>
         </div>
-
         <hr />
 
         <div className="pastPosts">
           <h3>Past Posts</h3>
           <div className="profileGallery">
-            <div className="profilePost">
-              <div className="userpostImg"></div>
-              <div className="userpostMenu">
-                <div>
-                  <p>
-                    <span>animal</span>
-                  </p>
-                  <p>post date</p>
-                </div>
-                <div>
-                  <a href=" ">
-                    
-                    <Editbtn />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="profilePost">
-              <div className="userpostImg"></div>
-              <div className="userpostMenu">
-                <div>
-                  <p>
-                    <span>animal</span>
-                  </p>
-                  <p>post date</p>
-                </div>
-                <div>
-                  <a href=" ">
-                    {' '}
-                    <Editbtn />{' '}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="profilePost">
-              <div className="userpostImg"></div>
-              <div className="userpostMenu">
-                <div>
-                  <p>
-                    <span>animal</span>
-                  </p>
-                  <p>post date</p>
-                </div>
-                <div>
-                  <a href="">
-                    {' '}
-                    <Editbtn />{' '}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="profilePost">
-              <div className="userpostImg"></div>
-              <div className="userpostMenu">
-                <div>
-                  <p>
-                    <span>animal</span>
-                  </p>
-                  <p>post date</p>
-                </div>
-                <div>
-                  <a href="">
-                    {' '}
-                    <Editbtn />{' '}
-                  </a>
-                </div>
-              </div>
-            </div>
+            {isLoading &&
+              myPost.map((item, id) => {
+                return (
+                  <PostCardItme
+                    {...item}
+                    key={id}
+                    getPostID={props.getPostID}
+                    profileHandleDel={profileHandleDel}
+                    delFlag={delFlag}
+                  />
+                );
+              })}
           </div>
         </div>
 
-        {/* <ol>
-          <li>get login user infor from DB </li>
-          <li>Listing all own posts </li>
-          <li>view the post detail</li>
-          <li>can delete posts </li>
-          <li>can edit posts </li>
-        </ol>
-
-        <h3>The following parameters come to props: </h3>
-        <div>userID:props.uID={props.uID}</div> */}
+    
       </div>
 
       {/* <nav>
