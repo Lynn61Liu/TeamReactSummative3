@@ -1,7 +1,5 @@
 import React from "react";
 import "../css/addPost.css";
-// import { AiOutlineFileImage } from "react-icons/ai";
-
 function Add() {
   return (
     <>

@@ -11,9 +11,6 @@ function CommentItem(props) {
   moment.locale('en-nz')
   const newCreateTime = moment(props.createTime).format('LLL');
   const newUpdateTime =moment(props.updateTime).format('LLL');
-  // useEffect(() => {
-  //   console.log('item did mount');
-  // }, [])
   const handeDeletCommet = (e) => {
     
     axios
