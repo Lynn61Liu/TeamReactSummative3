@@ -10,7 +10,6 @@ function Profile(props) {
   const [myPost,setmyPost]=useState([]);
    const [delFlag, setdelFlag] = useState(false);
    const profileHandleDel =(delFlag)=>{
-// console.log('return delFlag:',delFlag);
     setdelFlag(delFlag);
    }
 const [isLoading,setisLoading]=useState(false);
@@ -65,20 +64,6 @@ const [isLoading,setisLoading]=useState(false);
 
     
       </div>
-
-      {/* <nav>
-        <Link to="/home/detail">
-          <button
-            onClick={() => {
-              props.getPostID(
-                'onclick post from profile page & postid42394283',
-              );
-            }}
-          >
-            i'm a post
-          </button>
-        </Link>
-      </nav> */}
     </>
   );
 }
