@@ -30,8 +30,11 @@ export const Add = () => {
 
   const [selectedFile, setSelectedFile] = useState([]);
   const [preview, setPreview] = useState(false);
-  const [imgCollection, setimgCollection] = useState({});
+   const [imgCollection, setimgCollection] = useState({});
   const searchInput = useRef();
+  // const nameRef = useRef();
+  // const CategoryRef = useRef();
+  // const moreRef = useRef();
   const classes = useStyles();
 
   useEffect(() => {
@@ -125,12 +128,11 @@ export const Add = () => {
         <div className="categoryWrap" >
           <select className="Category" name="category" onChange={handleInputValue}>
           <option value=""></option>
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="hamster">Hamster</option>
-            <option value="parrot">Parrot</option>
-            <option value="spider">Spider</option>
-            <option value="goldfish">Goldfish</option>
+            <option value="Marinemammals">Marinemammals</option>
+            <option value="Reptilesandfrogs">Reptilesandfrogs</option>
+            <option value="Rodents">Rodents</option>
+            <option value="Birds">Birds</option>
+            <option value="Insects">Insects</option>
           </select>
         </div>
 
@@ -156,9 +158,9 @@ export const Add = () => {
           />
         </div>
 
-        <Button type="submit" disabled={!formIsValid()}>
-          posting
-        </Button>
+        <button type="submit" disabled={!formIsValid()} className="posting">
+          Posting
+        </button>
       </form>
     </div>
   );
