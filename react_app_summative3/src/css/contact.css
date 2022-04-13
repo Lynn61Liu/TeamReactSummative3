@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "PT Sans", sans-serif;
+}
+
+.contact {
+  margin: 0 auto;
+  background-color: white;
+  align-items: center;
+  display: grid;
+}
+
+.contact h1 {
+  padding: 0px;
+  margin: 12px;
+  text-align: center;
+}
+
+form label {
+  font-size: 22px;
+  padding: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+form input, textarea, select {
+  width: 85vw;
+  border: 1px solid #1ca3a6;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.contact-button  {
+  border: 1px solid #159294;
+  background-color:  #1ca3a6;
+  color: white;
+  border-radius: 5px;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: 120px;
+  width: 40vw;
+}
+

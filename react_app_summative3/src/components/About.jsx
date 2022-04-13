@@ -1,8 +1,14 @@
 import React from "react";
+import "../css/about.css";
+import header from "../img/about-image.jpg";
 
 function About() {
   return (
-    <div>
+    <div className="aboutContent">
+      <h2>About Us</h2>
+      <div className="header-text">
+        <img src={header} alt="header" className="aboutHeader" />
+      </div>
       <h1>The big challenge</h1>
       <p>
         Three introduced predators – rats, possums and stoats – are generally

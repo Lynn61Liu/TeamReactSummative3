@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "PT Sans", sans-serif;
+}
+
+.aboutContent {
+  margin: 0 auto;
+  background-color: white;
+  align-items: center;
+  display: grid;
+}
+
+.aboutContent h1 {
+  padding: 0px;
+  margin: 12px 12px 0px 12px;
+}
+.aboutContent h2 {
+  padding: 0px;
+  margin: 5px 10px 10px 10px;
+  text-align: center;
+  font-size: 35px;
+}
+
+.aboutContent p {
+  padding: 0px;
+  margin: 12px;
+}
+
+.aboutHeader {
+  width: 100vw;
+
+}
