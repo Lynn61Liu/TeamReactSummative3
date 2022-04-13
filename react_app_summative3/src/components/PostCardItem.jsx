@@ -12,19 +12,19 @@ import Cookies from "js-cookie";
 function PostCardItem(props) {
   moment.locale("en-nz");
   const handlonclick = () => {
-    console.log("handlonclick pid ", props._id);
+    // console.log("handlonclick pid ", props._id);
     props.getPostID(props._id);
   };
   const handeDelet = (e) => {
     axios
       .delete(`http://localhost:4000/api/delete-comment-by-postID/${props._id}`)
       .then((response) => {
-         console.log(response.data);
+        //  console.log(response.data);
       });
       axios
       .delete(`http://localhost:4000/api/delete-animals/${props._id}`)
       .then((response) => {
-         console.log(response.data);
+        //  console.log(response.data);
       });
     //   console.log('get delFlag:',props.delFlag);
       props.profileHandleDel(!props.delFlag);

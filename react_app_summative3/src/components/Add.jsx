@@ -128,11 +128,11 @@ export const Add = () => {
         <div className="categoryWrap" >
           <select className="Category" name="category" onChange={handleInputValue}>
           <option value=""></option>
-            <option value="Marinemammals">Marinemammals</option>
-            <option value="Reptilesandfrogs">Reptilesandfrogs</option>
-            <option value="Rodents">Rodents</option>
-            <option value="Birds">Birds</option>
-            <option value="Insects">Insects</option>
+            <option value="marinemammals">Marinemammals</option>
+            <option value="reptilesandfrogs">Reptilesandfrogs</option>
+            <option value="rodents">Rodents</option>
+            <option value="birds">Birds</option>
+            <option value="insects">Insects</option>
           </select>
         </div>
 

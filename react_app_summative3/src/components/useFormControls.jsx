@@ -1,5 +1,7 @@
 import { useState ,useEffect} from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 const initialFormValues = {
   category: "",
   AnimalName: "",
@@ -10,25 +12,44 @@ const initialFormValues = {
 };
 
 const useFormControls = () => {
+  const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState([]);
   const [imgCollection, setimgCollection] = useState({});
   const [values, setValues] = useState(initialFormValues);
   const [errors, setErrors] = useState({});
   const [imgURL, setimgURL] = useState('');
   useEffect(() => { 
-    console.log('====effect 01==');
-      console.log('selectedFile',selectedFile);
-      console.log('=========');
 
   }, [selectedFile]);
 
   useEffect(() => { 
     if(imgURL !== ''){
-      console.log('+++effect 2+++');
-      console.log('imgURL',imgURL);
-      console.log('+++++++++');
+     
+      // console.log('imgURL',imgURL);
+      //save post
+      let formdata = {
+        images: imgURL,
+        category: values.category,
+        description: values.description,
+        postTime: new Date(),
+        userID:Cookies.get("userID"),
+        titleName:values.AnimalName,
+
+      };
+
+      // console.log(formdata);
+      axios
+        .post("//localhost:4000/api/add-animals", formdata)
+        .then((response) => {
+          // console.log(response.data);
+          navigate("/home/profile");
+          //  console.log('yes save post ');
+          // Navigate(/home/profile)
+        });
+
+     
     }
-    // else{console.log('imgURL is null');}
+  
   }, [imgURL]);
 
   const handleInputValue = (e) => {
@@ -96,23 +117,18 @@ const useFormControls = () => {
     axios
       .post("http://localhost:4000/api/upload-images", formData, {})
       .then((res) => {
-        // console.log(res.data.imgCreated.imgCollection[0]);
         setimgURL(res.data.imgCreated.imgCollection[0])
       })
       .catch(function (error) {
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
+          
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
           console.log(error.request);
         } else {
-          // Something happened in setting up the request that triggered an Error
+    
           console.log("Error", error.message);
         }
         console.log(error.config);
