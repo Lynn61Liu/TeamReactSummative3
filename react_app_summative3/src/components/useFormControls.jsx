@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
+import axios from "axios";
 const initialFormValues = {
   category: "",
   AnimalName: "",
@@ -9,15 +10,34 @@ const initialFormValues = {
 };
 
 const useFormControls = () => {
-  // We'll update "values" as the form updates
+  const [selectedFile, setSelectedFile] = useState([]);
+  const [imgCollection, setimgCollection] = useState({});
   const [values, setValues] = useState(initialFormValues);
-  // "errors" is used to check the form for errors
   const [errors, setErrors] = useState({});
+  const [imgURL, setimgURL] = useState('');
+  useEffect(() => { 
+    console.log('====effect 01==');
+      console.log('selectedFile',selectedFile);
+      console.log('=========');
+
+  }, [selectedFile]);
+
+  useEffect(() => { 
+    if(imgURL !== ''){
+      console.log('+++effect 2+++');
+      console.log('imgURL',imgURL);
+      console.log('+++++++++');
+    }
+    // else{console.log('imgURL is null');}
+  }, [imgURL]);
 
   const handleInputValue = (e) => {
     const { name, value } = e.target;
-    console.log('e.target.name=',e.target.name);
-    console.log('e.target.value=',e.target.value);
+    if (name === "photo") {
+      setSelectedFile(e.target.files);
+      setimgCollection(e.target.files);
+    }
+
     setValues({
       ...values,
       [name]: value,
@@ -28,10 +48,10 @@ const useFormControls = () => {
   const validate = (fieldValues = values) => {
     // this function will check if the form values are valid
     let temp = { ...errors };
-    //   console.log(temp);
-
     if ("AnimalName" in fieldValues)
-      temp.AnimalName = fieldValues.AnimalName ? "" : "title name is  required.";
+      temp.AnimalName = fieldValues.AnimalName
+        ? ""
+        : "title name is  required.";
 
     if ("email" in fieldValues) {
       temp.email = fieldValues.email ? "" : "email is not valid.";
@@ -58,28 +78,56 @@ const useFormControls = () => {
     });
   };
 
-  const handleFormSubmit = async (e) => {
-    // console.log('handleFormSubmit');
-    // this function will be triggered by the submit event
+  const handleFormSubmit = async (e, obj) => {
     e.preventDefault();
     if (formIsValid()) {
-      console.log("values=", values);
-      //   await postContactForm(values);
-      alert("You've posted your form!");
+      //   1. upload imga
+      upLoadImg();
+      //2 save db
+     
     }
   };
-
+  const upLoadImg = () => {
+    // console.log("upLoadImg start",imgCollection);
+    var formData = new FormData();
+    for (const key of Object.keys(imgCollection)) {
+      formData.append("imgCollection", imgCollection[key]);
+    }
+    axios
+      .post("http://localhost:4000/api/upload-images", formData, {})
+      .then((res) => {
+        // console.log(res.data.imgCreated.imgCollection[0]);
+        setimgURL(res.data.imgCreated.imgCollection[0])
+      })
+      .catch(function (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
+     
+  };
 
   const formIsValid = (fieldValues = values) => {
-    // this function will check if the form values and return a boolean value
-    //   (fieldValues = values) => {
-      console.log('errors',errors);
+    // console.log('errors',errors);
     const isValid =
       fieldValues.AnimalName &&
       fieldValues.photo &&
       fieldValues.description &&
-      fieldValues.category
-      Object.values(errors).every((x) => x === "");
+      fieldValues.category;
+    Object.values(errors).every((x) => x === "");
 
     return isValid;
   };

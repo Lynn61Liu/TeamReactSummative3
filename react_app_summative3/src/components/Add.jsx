@@ -124,7 +124,7 @@ export const Add = () => {
         <label className="add-lable">Category:</label>
         <div className="categoryWrap" >
           <select className="Category" name="category" onChange={handleInputValue}>
-          <option value="">Category</option>
+          <option value=""></option>
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
             <option value="hamster">Hamster</option>
