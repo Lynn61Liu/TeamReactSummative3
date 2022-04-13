@@ -4,11 +4,12 @@ import moment from "moment";
 import "moment/locale/en-nz";
 import { Link } from "react-router-dom";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import axios from 'axios'
+import axios from 'axios';
+import Cookies from "js-cookie";
 
 
 
-function PostCardItme(props) {
+function PostCardItem(props) {
   moment.locale("en-nz");
   const handlonclick = () => {
     console.log("handlonclick pid ", props._id);
@@ -43,7 +44,11 @@ function PostCardItme(props) {
           <p> {props.userID.userName}, {moment(props.postTime).format("LL")} </p>
         </div>
         <div>
-          <DeleteForeverIcon onClick={handeDelet} sx={{ fontSize: 19 }}/>
+        {Cookies.get("userID") === props.userID._id ? (
+              <DeleteForeverIcon onClick={handeDelet} sx={{ fontSize: 19 }}/>
+            ) : (
+              ""
+            )}
         </div>
       </div>
       {/* </div> */}
@@ -51,4 +56,4 @@ function PostCardItme(props) {
   );
 }
 
-export default PostCardItme;
+export default PostCardItem;

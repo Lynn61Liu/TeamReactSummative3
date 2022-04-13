@@ -3,7 +3,7 @@ import axios from "axios";
 import "../css/profile.css";
 import Editbtn from "../components/Editbtn.jsx";
 import Cookies from "js-cookie";
-import PostCardItme from './PostCardItme'
+import PostCardItem from './PostCardItem'
 
 function Profile(props) {
   const [profileData, setprofileData] = useState({});
@@ -51,7 +51,7 @@ const [isLoading,setisLoading]=useState(false);
             {isLoading &&
               myPost.map((item, id) => {
                 return (
-                  <PostCardItme
+                  <PostCardItem
                     {...item}
                     key={id}
                     getPostID={props.getPostID}

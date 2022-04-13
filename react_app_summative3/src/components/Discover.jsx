@@ -1,292 +1,115 @@
-import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
-import '../css/discover.css';
-import Editbtn from '../components/Editbtn.jsx';
-import img from '../img/bird.jpg';
-import picturesrc from '../img/bird.jpg';
+import React, { useState, useEffect } from "react";
+import "../css/discover.css";
+import axios from "axios";
+import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
+import Alert from "@mui/material/Alert";
+import PostCardItem from "./PostCardItem";
 
 function Discover(props) {
-
- 
+  const [dicoverData, setdicoverData] = useState({});
+  const [discoverIsLoading, setDiscoverisLoading] = useState(true);
+  const [discoverIsError, setDiscoverIsError] = useState(false);
+  const [discoverError, setDiscoverError] = useState("");
+  const [havePostData, sethavePostData] = useState(false);
+  const [delFlag, setdelFlag] = useState(false);
+  const [url, setUrl] = useState("http://localhost:4000/api/animals");
+  const handleGetData = (url) => {
+    axios
+      .get(url)
+      .then((response) => {
+        setdicoverData(response.data.animals);
+        sethavePostData(true);
+      })
+      .catch(function (error) {
+        //  setdetailisLoading(false);
+        setDiscoverIsError(true);
+        setDiscoverError(error);
+      });
+  };
+  useEffect(() => {
   
+    setDiscoverisLoading(false);
+    handleGetData(url);
+  }, [delFlag, url]);
+  const profileHandleDel = (delFlag) => {
+    setdelFlag(delFlag);
+  };
+
+  const handleCategory = (e) => {
+    if (e.target.value === "all") {
+      setUrl("http://localhost:4000/api/animals");
+    } 
+  else {
+   setUrl(`http://localhost:4000/api/animals-category/${e.target.value}`);   
+    }
+   
+  };
+
   return (
     <>
-      <div className="discoverDisplay">
-        <div className="discoverDetails">
-          <h3>Discover NZ Wildlife</h3>
+      {discoverIsLoading ? (
+        <div>
+          <Stack
+            sx={{ color: "grey.500" }}
+            spacing={2}
+            direction="row"
+            className="pageLoading"
+          >
+            <CircularProgress color="inherit" />
+          </Stack>
+          <h3>Page Loading...</h3>
         </div>
-        <div className="searchButtons" >
-          
-          <button>
-            ALL
-          </button>
-          <button>
-            MARINE MAMMALS
-          </button>
-          <button >
-            REPTILES AND FROGS
-          </button>
-          <button>
-            RODENTS
-          </button>
-          <button >
-            BIRDS
-          </button>
-          <button >
-            INSECTS
-          </button>
-        </div>
-        <div className="pastPosts">
-          <div className="discoveryGallery containerDiscover">
-            <div className='displayNone'> 
-              <Link to="/home/detail">
-                <div
-                  className="discoverPost filterDiv all bird"
-                  onClick={() => {
-                    props.getPostID('624183ae3c89efb61c18040a');
-                  }}
-                >
-                  <div className="discoverImg">
-                    <img src={picturesrc} alt="" />
-                  </div>
-                  <div className="postText">
-                    <div>
-                      <p>
-                        <span>Animal</span>
-                      </p>
-                      <p>Username, Post date</p>
-                    </div>
-                    <div>
-                      <a href="">
-                       
-                        <Editbtn />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+      ) : discoverError ? (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          CONNECTION DB ERRORS !{discoverError}
+        </Alert>
+      ) : (
+        havePostData && (
+          <div className="discoverDisplay">
+            <div className="discoverDetails">
+              <h3>Discover NZ Wildlife</h3>
             </div>
-            <div>
-              <Link to="/home/detail">
-                <div
-                  className="discoverPost"
-                  onClick={() => {
-                    console.log("postID to home=624183ae3c89efb61c18040f");
-                    props.getPostID('624183ae3c89efb61c18040f');
-                  }}
-                >
-                  <div className="discoverImg">
-                    <img src={picturesrc} alt="" />
-                  </div>
-                  <div className="postText">
-                    <div>
-                      <p>
-                        <span>Animal</span>
-                      </p>
-                      <p>Username, Post date</p>
-                    </div>
-                    <div>
-                      <a href="">
-                        {' '}
-                        <Editbtn />{' '}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+            <div className="searchButtons">
+              <button value="all" onClick={handleCategory}>
+                ALL
+              </button>
+              <button value="marinemammals" onClick={handleCategory}>
+                MARINE MAMMALS
+              </button>
+              <button value="reptilesandfrogs" onClick={handleCategory}>
+                REPTILES AND FROGS
+              </button>
+              <button value="rodents" onClick={handleCategory}>
+                RODENTS
+              </button>
+              <button value="birds" onClick={handleCategory}>
+                BIRDS
+              </button>
+              <button value="insects" onClick={handleCategory}>
+                INSECTS
+              </button>
             </div>
-            <div>
-              <Link to="/home/detail">
-                <div
-                  className="discoverPost"
-                  onClick={() => {
-                    props.getPostID(
-                      'onclick post from profile page & postid42394283',
-                    );
-                  }}
-                >
-                  <div className="discoverImg"></div>
-                  <div className="postText">
-                    <div>
-                      <p>
-                        <span>Animal</span>
-                      </p>
-                      <p>Post date</p>
-                    </div>
-                    <div>
-                      <a href="">
-                        {' '}
-                        <Editbtn />{' '}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-            <div>
-              <Link to="/home/detail">
-                <div
-                  className="discoverPost"
-                  onClick={() => {
-                    props.getPostID(
-                      'onclick post from profile page & postid42394283',
-                    );
-                  }}
-                >
-                  <div className="discoverImg"></div>
-                  <div className="postText">
-                    <div>
-                      <p>
-                        <span>Animal</span>
-                      </p>
-                      <p>Post date</p>
-                    </div>
-                    <div>
-                      <a href="">
-                        {' '}
-                        <Editbtn />{' '}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-            <div>
-              <Link to="/home/detail">
-                <div
-                  className="discoverPost"
-                  onClick={() => {
-                    props.getPostID(
-                      'onclick post from profile page & postid42394283',
-                    );
-                  }}
-                >
-                  <div className="discoverImg"></div>
-                  <div className="postText">
-                    <div>
-                      <p>
-                        <span>Animal</span>
-                      </p>
-                      <p>Post date</p>
-                    </div>
-                    <div>
-                      <a href="">
-                        {' '}
-                        <Editbtn />{' '}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-            <div>
-              <Link to="/home/detail">
-                <div
-                  className="discoverPost"
-                  onClick={() => {
-                    props.getPostID(
-                      'onclick post from profile page & postid42394283',
-                    );
-                  }}
-                >
-                  <div className="discoverImg"></div>
-                  <div className="postText">
-                    <div>
-                      <p>
-                        <span>Animal</span>
-                      </p>
-                      <p>Post date</p>
-                    </div>
-                    <div>
-                      <a href="">
-                        {' '}
-                        <Editbtn />{' '}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-            <div>
-              <Link to="/home/detail">
-                <div
-                  className="discoverPost"
-                  onClick={() => {
-                    props.getPostID(
-                      'onclick post from profile page & postid42394283',
-                    );
-                  }}
-                >
-                  <div className="discoverImg"></div>
-                  <div className="postText">
-                    <div>
-                      <p>
-                        <span>Animal</span>
-                      </p>
-                      <p>Post date</p>
-                    </div>
-                    <div>
-                      <a href="">
-                        {' '}
-                        <Editbtn />{' '}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-            <div>
-              <Link to="/home/detail">
-                <div
-                  className="discoverPost"
-                  onClick={() => {
-                    props.getPostID(
-                      'onclick post from profile page & postid42394283',
-                    );
-                  }}
-                >
-                  <div className="discoverImg"></div>
-                  <div className="postText">
-                    <div>
-                      <p>
-                        <span>Animal</span>
-                      </p>
-                      <p>Post date</p>
-                    </div>
-                    <div>
-                      <a href="">
-                        {' '}
-                        <Editbtn />{' '}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+            <div className="pastPosts">
+              <div className="discoveryGallery containerDiscover">
+                {dicoverData.map((item, id) => {
+                  return (
+                    <PostCardItem
+                      {...item}
+                      key={id}
+                      getPostID={props.getPostID}
+                      profileHandleDel={profileHandleDel}
+                      delFlag={delFlag}
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        )
+      )}
     </>
   );
 }
 
-
 export default Discover;
-
-{
-  /* <h3>The following parameters come to props: </h3>
-      <div>userID:props.uID={props.uID}</div>
-      <nav>
-        <Link to="/home/detail">
-          <button
-            onClick={() => {
-              props.getPostID(
-                "onclick post from profile page & postid42394283"
-              );
-            }}
-          >
-            i'm a post
-          </button>
-        </Link>
-      </nav> */
-}

@@ -157,7 +157,7 @@ function Detail(props) {
   //getdata
   const [detailData, setDetailData] = useState({});
   const [updatData, setupdatData] = useState();
-  const [detailisLoading, setdetailisLoading] = useState(false);
+  const [detailisLoading, setdetailisLoading] = useState(true);
   const [detailisError, setdetailisError] = useState(false);
   const [detailError, setdetailError] = useState("");
  const [havePostData, sethavePostData] = useState(false);
