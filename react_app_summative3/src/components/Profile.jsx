@@ -1,7 +1,6 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import '../css/profile.css';
-import Editbtn from '../components/Editbtn.jsx';
 
 function Profile(props) {
   return (
@@ -44,7 +43,7 @@ function Profile(props) {
                 <div>
                   <a href=" ">
                     {' '}
-                    <Editbtn />{' '}
+                   
                   </a>
                 </div>
               </div>
@@ -62,7 +61,8 @@ function Profile(props) {
                 <div>
                   <a href=" ">
                     {' '}
-                    <Editbtn />{' '}
+                  
+                  
                   </a>
                 </div>
               </div>
@@ -80,7 +80,8 @@ function Profile(props) {
                 <div>
                   <a href="">
                     {' '}
-                    <Editbtn />{' '}
+                   
+                   
                   </a>
                 </div>
               </div>
@@ -98,7 +99,7 @@ function Profile(props) {
                 <div>
                   <a href="">
                     {' '}
-                    <Editbtn />{' '}
+                  
                   </a>
                 </div>
               </div>

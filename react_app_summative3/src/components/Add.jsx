@@ -9,6 +9,7 @@ import PanoramaOutlinedIcon from '@mui/icons-material/PanoramaOutlined';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 // import src from "../img/**.PNG";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiInputBase-input": {
@@ -121,7 +122,20 @@ export const Add = () => {
           })}
         />
         </div>
-        
+         {/*==================== Category section==================*/}
+         <label className='add-lable'>Category:</label>
+         <div className='categoryWrap'>
+         <select className="Category" >
+    {/* <option value="">--Category--</option> */}
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+</select>
+         </div>
+   
 
         {/*==================== description section==================*/}
         <div  className="section-wrap">

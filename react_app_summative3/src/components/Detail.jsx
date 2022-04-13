@@ -1,8 +1,8 @@
 import React from 'react';
 import '../css/postPage.css';
-import Backbtn from '../components/Backbtn.jsx'
-import Infobtn from '../components/Infobtn.jsx'
-import Commentbtn from '../components/Commentbtn.jsx'
+// import Backbtn from '../components/Backbtn.jsx'
+// import Infobtn from '../components/Infobtn.jsx'
+//import Commentbtn from '../components/Commentbtn.jsx'
 
 function Detail(props) {
   console.log(props);
@@ -11,7 +11,7 @@ function Detail(props) {
       <div className="postPage">
             <div className="title">
               <a href="">
-                < Backbtn />
+             
               </a>
               <h3>Animal Title</h3>
             </div>
@@ -28,8 +28,8 @@ function Detail(props) {
               </div>
 
               <div className="btnDetail">
-                <a href=""> <Infobtn /> </a>
-                <a href=""> <Commentbtn /> </a>
+               
+                {/* <a href=""> <Commentbtn /> </a> */}
               </div>
 
             </div>
