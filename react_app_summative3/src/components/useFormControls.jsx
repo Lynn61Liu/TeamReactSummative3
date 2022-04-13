@@ -1,5 +1,6 @@
 import { useState } from "react";
 const initialFormValues = {
+  category: "",
   AnimalName: "",
   photo: "",
   description: "",
@@ -43,6 +44,9 @@ const useFormControls = () => {
     if ("photo" in fieldValues) {
       temp.photo = fieldValues.photo ? "" : "need one img.";
     }
+    if ("category" in fieldValues) {
+      temp.category = fieldValues.category ? "" : "category is required ";
+    }
 
     if ("description" in fieldValues)
       temp.description = fieldValues.description
@@ -69,11 +73,12 @@ const useFormControls = () => {
   const formIsValid = (fieldValues = values) => {
     // this function will check if the form values and return a boolean value
     //   (fieldValues = values) => {
-    //  console.log('formIsValid ');
+      console.log('errors',errors);
     const isValid =
       fieldValues.AnimalName &&
       fieldValues.photo &&
       fieldValues.description &&
+      fieldValues.category
       Object.values(errors).every((x) => x === "");
 
     return isValid;
