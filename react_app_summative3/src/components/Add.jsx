@@ -107,7 +107,7 @@ export const Add = () => {
             aria-label="search"
             className={classes.root}
             variant="outlined"
-            color="rgb(97, 96, 96)"
+            // color="rgb(97, 96, 96)"
             size="small"
             type="text"
             fullWidth
@@ -146,8 +146,8 @@ export const Add = () => {
             fullWidth
             onBlur={handleInputValue}
             name="description"
-            multiline="ture"
-            rows="10"
+            multiline
+            minRows="10"
             autoComplete="none"
             {...(errors.description && {
               error: true,
