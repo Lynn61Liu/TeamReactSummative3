@@ -33,8 +33,6 @@ router.get("/comments/:postID", function (req, res) {
     // Comment.init()
 	var newComment = new Comment();
 	var theFormData = req.body;
-	// console.log('>>> ', theFormData);
-
 	Object.assign(newComment, theFormData);
 
 	newComment.save().then((response) => {
@@ -46,12 +44,6 @@ router.patch('/update-comment/:id', function (req, res) {
     // Comment.init()
 	let newComment = req.body.comment;
     let newTime = req.body.updateTime;
-
-	// console.log('>>> ', req.body);
-    // console.log('newComment ', newComment);
-    // console.log('req.body.updateTime ', req.body.updateTime);
-    // console.log('newTime ', newTime);
-
 	Comment.findByIdAndUpdate(req.params.id, {  comment: newComment , updateTime: newTime }, { new: true })
     .then((response) => {res.json(response);})
     .catch((error) => {res.json({ success: false, error: error });});
@@ -123,7 +115,7 @@ router.post('/upload-images', upload.array('imgCollection', 6), (req, res, next)
 // =========================animals model==========================
 let Animal = require('../models/animal');
 router.get("/animals", (req, res, next) => {
-    Animal.find().populate('userID').then(data => {
+    Animal.find().populate('userID').sort({postTime: -1}).then(data => {
         res.status(200).json({
             message: "animals list retrieved successfully!  ok---",
             animals: data
@@ -132,7 +124,7 @@ router.get("/animals", (req, res, next) => {
 });
 
 router.get("/animals-category/:name", function (req, res) {
-    Animal.find({ category: req.params.name }).populate('userID').then((response) => {
+    Animal.find({ category: req.params.name }).populate('userID').sort({postTime: -1}).then((response) => {
         res.status(200).json({
             message: "category  retrieved successfully!  ok---",
             animals: response
@@ -151,7 +143,7 @@ router.get("/animals-detail/:postID", function (req, res) {
   });
 
 router.get("/profile/:userID", function (req, res) {
-    Animal.find({ userID: req.params.userID }).populate('userID').then((response) => {
+    Animal.find({ userID: req.params.userID }).populate('userID').sort({postTime: -1}).then((response) => {
         res.status(200).json({
             message: "profile retrieved successfully!  ok---",
             profile: response
@@ -167,6 +159,20 @@ router.get("/profile/:userID", function (req, res) {
         });
     });
   });
+
+  router.post('/add-animals', function (req, res) {
+    // Comment.init()
+	var newAnimal = new Animal();
+	var theFormData = req.body;
+	Object.assign(newAnimal, theFormData);
+    console.log('newAnimal',theFormData);
+
+	newAnimal.save().then((response) => {
+		return res.json(response);
+	});
+});
+
+
   
 
 

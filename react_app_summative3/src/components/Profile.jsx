@@ -18,7 +18,7 @@ const [isLoading,setisLoading]=useState(false);
     axios
       .get(`http://localhost:4000/api/profile/${Cookies.get("userID")}`)
       .then((response) => {
-         console.log(response.data.profile);
+        //  console.log(response.data.profile);
         setprofileData(response.data.profile[0].userID);
         setmyPost(response.data.profile);
       });
