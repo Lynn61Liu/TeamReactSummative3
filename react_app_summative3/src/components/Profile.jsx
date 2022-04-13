@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/profile.css";
-import Editbtn from "../components/Editbtn.jsx";
+// import Editbtn from "../components/Editbtn.jsx";
 import Cookies from "js-cookie";
 import PostCardItem from './PostCardItem'
 

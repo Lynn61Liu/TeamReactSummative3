@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/addPost.css";
-import { AiOutlineFileImage } from "react-icons/ai";
+// import { AiOutlineFileImage } from "react-icons/ai";
 
 function Add() {
   return (
@@ -12,7 +12,7 @@ function Add() {
             <label for="img">Select Image</label>
             <br></br>
             <div className="chooseImage">
-              <AiOutlineFileImage />
+              {/* <AiOutlineFileImage /> */}
             </div>
             <input type="file" id="img" name="img" accept="image/*" />
             <br></br>

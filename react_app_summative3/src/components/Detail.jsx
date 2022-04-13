@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../css/postPage.css";
-import Backbtn from "../components/Backbtn.jsx";
+//import Backbtn from "../components/Backbtn.jsx";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Avatar from "@mui/material/Avatar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -234,7 +235,7 @@ function Detail(props) {
           <div className="postPage">
             <div className="title">
               <Link to="/home">
-                <Backbtn />
+                <ArrowBackIcon />
               </Link>
               {/* <h2>Animal {detailData.category}</h2> */}
             </div>

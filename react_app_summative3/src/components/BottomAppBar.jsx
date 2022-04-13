@@ -6,7 +6,7 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import HomeIcon from "@mui/icons-material/Home";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import Avatar from "@mui/material/Avatar";
+
 import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 const StyledFab = styled(Fab)({
@@ -22,7 +22,7 @@ const StyledFab = styled(Fab)({
 });
 
 export default function BottomAppBar() {
-  const handleOpenUserMenu = () => {};
+ 
   return (
     <React.Fragment>
       <AppBar sx={{ top: "auto", bottom: 0, backgroundColor: "#555452" }}>
@@ -47,11 +47,7 @@ export default function BottomAppBar() {
               
           
           </Link>
-          {/* <Tooltip title="Open settings"> */}
-          {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src='../img/mike.jpg' />
-              </IconButton> */}
-          {/* </Tooltip> */}
+         
         </Toolbar>
       </AppBar>
     </React.Fragment>

@@ -1,5 +1,5 @@
 import React from "react";
-import Editbtn from "./Editbtn";
+// import Editbtn from "./Editbtn";
 import moment from "moment";
 import "moment/locale/en-nz";
 import { Link } from "react-router-dom";
