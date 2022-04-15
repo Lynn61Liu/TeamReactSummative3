@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@material-ui/codemod": "^4.5.1",
     "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.3",
@@ -18,10 +19,11 @@
     "react-swipeable-views": "^0.14.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "analyze-build-bundle": "node scripts/analyze_build_bundle.js",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [
@@ -40,5 +42,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "customize-cra": "^1.0.0",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "react-app-rewired": "^2.2.1",
+    "webpack-bundle-analyzer": "^4.5.0"
   }
 }

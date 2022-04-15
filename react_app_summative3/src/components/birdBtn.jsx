@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
 import '../css/discover.css';
-import Editbtn from '../components/Editbtn.jsx';
-
 
 
 const birdBtn
